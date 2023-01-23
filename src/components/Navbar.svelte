@@ -1,11 +1,7 @@
 <!-- Navbar -->
 <script lang="ts">
   import { pages } from '$lib/constants';
-  import {
-    setFlyDirection,
-    removePreloadClass,
-    randFrom,
-  } from '$lib/utilities';
+  import { setFlyDirection, rmPreloadCls, randFrom } from '$lib/utilities';
 
   export let page: any, quote: any, quotes: any, animation: any;
 
@@ -25,7 +21,7 @@
     animation = setFlyDirection(prevPage, page);
     quote = randFrom(quotes);
 
-    removePreloadClass({ firstLoad: false });
+    rmPreloadCls({ firstLoad: false });
 
     // If viewing dropNav, minimize it.
     if (document.documentElement.clientWidth <= 600) toggleDropNav();
