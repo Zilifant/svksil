@@ -1,8 +1,6 @@
-<!-- sandbox -->
+<!-- SVGCanvas -->
 <script lang="ts">
   import { onMount } from 'svelte';
-  import '$styles/reset.css';
-  import '$styles/colors.css';
 
   let canvas: HTMLCanvasElement;
 
@@ -41,29 +39,15 @@
   });
 </script>
 
-<div><canvas bind:this={canvas} width={600} height={32} /></div>
+<canvas bind:this={canvas} width={600} height={32} />
 
-<style lang="scss">
-  div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    height: 100%;
-    width: 100%;
-
-    padding: 50px;
-
-    background-color: var(--black);
-  }
-
+<style>
   canvas {
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     background-color: rgb(255, 255, 255);
-    -webkit-mask: url('$lib/assets/images/closed-system-title.svg') 50% 50%
+    -webkit-mask: url($lib/assets/images/closed-system-title.svg) 50% 50%
       no-repeat;
-    mask: url('$lib/assets/images/closed-system-title.svg') 50% 50% no-repeat;
+    mask: url($lib/assets/images/closed-system-title.svg) 50% 50% no-repeat;
   }
 </style>
