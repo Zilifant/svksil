@@ -13,6 +13,8 @@ const config = {
     adapter: adapter(),
     alias: {
       $styles: './src/styles',
+      $pages: './src/pages',
+      $components: './src/components',
     },
   },
 };
