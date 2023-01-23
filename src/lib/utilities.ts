@@ -1,15 +1,7 @@
 // Utilities
 
 import { pageIds } from '$lib/constants';
-import { content } from '$lib/content-master.js';
 import { browser } from '$app/environment';
-
-//!!!
-export function getLocalData() {
-  return new Promise((resolve) => {
-    setTimeout(resolve, 1000);
-  }).then(() => content);
-}
 
 //------------//
 //Random Quote//
@@ -43,7 +35,7 @@ export function setFlyDirection(fromPg: number, toPg: number) {
 // otherwise, return the first page in `pageIds` array
 // (the default/landing page).
 export function getInitialPageId() {
-  console.log('browser', browser);
+  // console.log('browser', browser);
   if (!browser) return pageIds[0]; //!!!
 
   const targetPg = window.location.hash.substring(1);
@@ -60,7 +52,7 @@ export function getInitialPageId() {
 // The `preload` class disables animations.
 // TODO: Legacy code from vanilla site; check if needed,
 // then remove or refactor.
-export function removePreloadClass({ firstLoad = false }) {
+export function rmPreloadCls({ firstLoad = false }) {
   if (!browser) return; //!!!
 
   function remove() {
@@ -69,6 +61,7 @@ export function removePreloadClass({ firstLoad = false }) {
       for (let i = 0; i < targetNodes.length; i++) {
         targetNodes[i].classList.remove('preload');
       }
+      console.log('removePreloadClass');
     }, 1000);
   }
 
