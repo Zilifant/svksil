@@ -1,20 +1,20 @@
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 // import preprocess from 'svelte-preprocess';
+// https://kit.svelte.dev/docs/integrations#preprocessors
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  // Consult https://kit.svelte.dev/docs/integrations#preprocessors
-  // for more information about preprocessors
   preprocess: vitePreprocess(),
   // preprocess: preprocess(),
 
   kit: {
     adapter: adapter(),
     alias: {
-      $styles: './src/styles',
-      $pages: './src/pages',
+      $assets: './src/assets',
       $components: './src/components',
+      $pages: './src/pages',
+      $styles: './src/styles',
     },
   },
 };
