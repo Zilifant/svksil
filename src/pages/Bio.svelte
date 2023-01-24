@@ -10,7 +10,7 @@
       <img
         class="switchable-img"
         id="headshot"
-        src={`src/lib/assets/images/headshot${suffix}.png`}
+        src={`src/assets/images/headshot${suffix}.png`}
         title="Witness me!"
         alt="Headshot: Scott Silsbe, Cool Guy"
       />
@@ -26,7 +26,7 @@
       <div class="partner-logo-wrapper">
         <img
           class="switchable-img"
-          src={`src/lib/assets/images/${id}${suffix}.png`}
+          src={`src/assets/images/${id}${suffix}.png`}
           {id}
           {alt}
         />
