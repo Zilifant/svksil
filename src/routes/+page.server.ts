@@ -11,11 +11,10 @@ const opts = {
 };
 
 export const load = (async ({ fetch, setHeaders }) => {
-  // return;
   const response = await fetch(url, opts);
   const json = await response.json();
 
-  setHeaders({ 'Cache-Control': 'max-age=1000' });
+  setHeaders({ 'Cache-Control': 'max-age=60000' });
 
   return { content: json.record };
 }) satisfies PageServerLoad;
