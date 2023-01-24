@@ -1,6 +1,6 @@
 <!-- App -->
 <script lang="ts">
-  import type { Theme, PageId, Animation, Quote } from '$lib/types';
+  import type { Theme, PageId, Animation } from '$lib/types';
   import type { PageData } from './$types';
   import { browser } from '$app/environment';
   import Wrap from '$components/Wrap.svelte';
