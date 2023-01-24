@@ -1,7 +1,9 @@
 <!-- Resume -->
 <script lang="ts">
-  let highlightedCat = 'coding';
+  import '$styles/pages/resume.scss';
+
   export let res: any;
+  let highlightedCat = 'coding';
 
   // Alphabetize skills.
   $: skills = res?.skills.skills.sort((a: any, b: any) => {
@@ -163,7 +165,3 @@
     </ul>
   </section>
 </div>
-
-<style lang="scss">
-  @import '$styles/pages/resume.scss';
-</style>

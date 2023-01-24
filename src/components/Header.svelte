@@ -1,9 +1,10 @@
 <!-- Header -->
 <script lang="ts">
+  import type { Theme } from '$lib/types';
   import { light, dark } from '$lib/constants';
   import { applySafariNavFix } from '$lib/utilities';
   import { browser } from '$app/environment';
-  import type { Theme } from '$lib/types';
+  import '$styles/components/header.scss';
 
   export let theme: Theme;
 
@@ -33,7 +34,3 @@
     </label>
   </div>
 </header>
-
-<style lang="scss">
-  @import '$styles/utility/header.scss';
-</style>

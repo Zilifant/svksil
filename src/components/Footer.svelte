@@ -2,6 +2,7 @@
 <script lang="ts">
   // import socials from '../../content/socials.json';
   import { bio } from '$lib/constants';
+  import '$styles/components/footer.scss';
 
   export let page = bio;
   export let quote: any, version: any, socials: any;
@@ -60,7 +61,3 @@
     </p>
   </div>
 </footer>
-
-<style lang="scss">
-  @import '$styles/utility/footer.scss';
-</style>

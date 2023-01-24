@@ -1,8 +1,10 @@
 <!-- Writing -->
 <script lang="ts">
+  import '$styles/pages/writing.scss';
   // import SVGCanvas from '$components/SVGCanvas.svelte';
 
   export let writing;
+
   const stories = writing.stories; // Placeholder
 </script>
 
@@ -91,7 +93,3 @@
     <p class="p2">Ping ping ping</p>
   </section>
 </div>
-
-<style lang="scss">
-  @import '$styles/pages/writing.scss';
-</style>

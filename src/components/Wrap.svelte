@@ -4,6 +4,7 @@ from right or left, depending on the pages' relative positions in the navbar.
 -->
 <script lang="ts">
   import { fly, fade } from 'svelte/transition';
+  import '$styles/components/wrap.scss';
 
   export let animation: string;
 
@@ -36,7 +37,3 @@ from right or left, depending on the pages' relative positions in the navbar.
     <slot />
   </div>
 {/if}
-
-<style lang="scss">
-  @import '$styles/utility/wrap.scss';
-</style>

@@ -3,6 +3,7 @@ Displayed in main content section while waiting for page data to load from conte
 -->
 <script lang="ts">
   import { fade } from 'svelte/transition';
+  import '$styles/components/loading.scss';
 
   export let loaded: boolean;
 
@@ -31,7 +32,3 @@ Displayed in main content section while waiting for page data to load from conte
     <div />
   </div>
 </div>
-
-<style lang="scss">
-  @import '$styles/utility/loading.scss';
-</style>

@@ -1,5 +1,7 @@
 <!-- Bio -->
 <script lang="ts">
+  import '$styles/pages/bio.scss';
+
   export let bio: any, theme: string;
   $: suffix = theme === 'dark' ? '-alt' : '';
 </script>
@@ -34,7 +36,3 @@
     {/each}
   </section>
 </div>
-
-<style lang="scss">
-  @import '$styles/pages/bio.scss';
-</style>

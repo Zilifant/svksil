@@ -1,5 +1,6 @@
 <!-- Tooltip -->
 <script lang="ts">
+  import '$styles/components/tooltip.scss';
   export let cls: string, side: string;
 </script>
 
@@ -9,7 +10,3 @@
     <slot name="tipContent" />
   </div>
 </div>
-
-<style lang="scss">
-  @import '$styles/utility/tooltip.scss';
-</style>

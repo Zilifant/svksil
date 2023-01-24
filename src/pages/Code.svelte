@@ -1,6 +1,7 @@
 <!-- Code -->
 <script lang="ts">
   import Tooltip from '$components/Tooltip.svelte';
+  import '$styles/pages/code.scss';
 
   export let code: any;
 
@@ -186,7 +187,3 @@
     </section>
   {/each}
 </div>
-
-<style lang="scss">
-  @import '$styles/pages/code.scss';
-</style>

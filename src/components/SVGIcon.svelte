@@ -1,5 +1,7 @@
 <!-- SVG Icons -->
 <script lang="ts">
+  import '$styles/components/svgicon.scss';
+
   export let ico: string, cls: string;
 
   const svgData = {
@@ -97,7 +99,3 @@
 <div class={`svg-wrap ${cls || ''}`.trim()}>
   {@html svg[ico]}
 </div>
-
-<style lang="scss">
-  @import '$styles/utility/svgicon.scss';
-</style>

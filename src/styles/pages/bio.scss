@@ -10,22 +10,30 @@
   & > img {
     width: 100%;
     display: block;
-  };
+  }
 }
 
 @media (max-width: 800px) {
   // hide headshot
-  .content-left-bio { display: none; };
-  .content-right-bio { width: 100%; };
+  .content-left-bio {
+    display: none;
+  }
+  .content-right-bio {
+    width: 100%;
+  }
 }
 
-.content-30-left { width: 30%; }
-.content-30-left > * { margin-right: 1rem; }
+.content-30-left {
+  width: 30%;
+}
+.content-30-left > * {
+  margin-right: 1rem;
+}
 .content-70-right {
   width: 70%;
   @media (max-width: 800px) {
     width: 100%;
-  };
+  }
 }
 
 .content-right-bio {
@@ -50,6 +58,25 @@
     & img {
       height: 65px;
       width: 144px;
-    };
-  };
+    }
+  }
+}
+
+.large-text p,
+.large-text p em {
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+}
+
+.content-70-right > * {
+  margin-left: 1rem;
+}
+
+@media (max-width: 800px) {
+  .content-70-right > * {
+    margin-left: 0;
+  }
+  .content-right-bio :not(:first-child) {
+    margin-top: 1rem;
+  }
 }

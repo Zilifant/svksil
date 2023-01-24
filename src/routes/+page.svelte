@@ -14,7 +14,6 @@
   import Code from '$pages/Code.svelte';
   import { version, bio, res, code, writ, dark } from '$lib/constants';
   import { randFrom, getInitialPageId, rmPreloadCls } from '$lib/utilities';
-  import '$styles/global.css';
   import '$styles/variables.scss';
   import '$styles/mixins.scss';
   import '$styles/global.scss';

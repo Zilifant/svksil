@@ -3,6 +3,7 @@
   import type { PageId, Quote, Animation } from '$lib/types';
   import { pages } from '$lib/constants';
   import { setFlyDirection, rmPreloadCls, randFrom } from '$lib/utilities';
+  import '$styles/components/navbar.scss';
 
   export let page: PageId, quote: Quote, quotes: Quote[], animation: Animation;
 
@@ -62,7 +63,3 @@
     </div>
   </div>
 </nav>
-
-<style lang="scss">
-  @import '$styles/utility/navbar.scss';
-</style>
