@@ -1,6 +1,6 @@
 <!-- App -->
 <script lang="ts">
-  import type { Theme, PageId, Animation } from '$lib/types';
+  import type { Theme, PageId, Animation, Quote } from '$lib/types';
   import type { PageData } from './$types';
   import { browser } from '$app/environment';
   import Wrap from '$components/Wrap.svelte';
@@ -13,23 +13,25 @@
   import Writing from '$pages/Writing.svelte';
   import Code from '$pages/Code.svelte';
   import { version, bio, res, code, writ, dark } from '$lib/constants';
-  import { randFrom, getInitialPageId } from '$lib/utilities';
+  import { sample, getInitialPageId } from '$lib/utilities';
   import '$styles/variables.scss';
   import '$styles/mixins.scss';
   import '$styles/global.scss';
 
   export let data: PageData;
 
+  let quotes: Quote[];
+  let quote: Quote;
+  let page: PageId = getInitialPageId();
+  let theme: Theme = browser ? localStorage.getItem('theme') : dark;
+  let animation: Animation = 'fade';
+
   $: pageData = (page: PageId | null) => (!!page ? page : bio);
   $: themeData = (theme: Theme) => (!!theme ? theme : dark);
   $: ({ content } = data);
   $: quotes = content.quotes.quotes;
-  $: quote = randFrom(quotes);
+  $: quote = sample(quotes);
   $: loaded = !!content ? true : false;
-
-  let page: PageId = getInitialPageId();
-  let theme: Theme = browser ? localStorage.getItem('theme') : dark;
-  let animation: Animation = 'fade';
 </script>
 
 <main

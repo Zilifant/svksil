@@ -1,29 +1,27 @@
 // Utilities
 
-import { pageIds } from '$lib/constants';
+import type { PageId } from '$lib/types';
+import { pageIds, pages } from '$lib/constants';
 import { browser } from '$app/environment';
 
 //------------//
 //Random Quote//
 //------------//
 
-export const randFrom = (arr: any[]) =>
-  arr[Math.floor(Math.random() * arr.length)];
+export function sample<T>(array: T[]): T {
+  return array[Math.floor(Math.random() * array.length)];
+}
 
 //----------------------------//
 //Fly Direction on Page Switch//
 //----------------------------//
 
-export function setFlyDirection(fromPg: string, toPg: string) {
-  // Create reference object from array of page ids.
-  const pageOrderRef = pageIds.reduce((obj: any, val: string, idx) => {
-    obj[val] = idx;
-    return obj;
-  }, {});
+// Compare relative 'position' of pages to determine fly direction.
+export function setFlyDirection(fromPgId: PageId, toPgId: PageId) {
+  const fromPgPos: number = pages.find((pg) => pg.id === fromPgId)?.pos || 0;
+  const toPgPos: number = pages.find((pg) => pg.id === toPgId)?.pos || 1;
 
-  // Use reference object to compare relative 'position' of pages to
-  // determine fly direction.
-  return pageOrderRef[fromPg] > pageOrderRef[toPg] ? 'flyRight' : 'flyLeft';
+  return fromPgPos > toPgPos ? 'flyRight' : 'flyLeft';
 }
 
 //---------------------//

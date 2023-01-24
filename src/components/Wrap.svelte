@@ -3,10 +3,11 @@ When switching pages, previous page's content fades out while new page's content
 from right or left, depending on the pages' relative positions in the navbar.
 -->
 <script lang="ts">
+  import type { Animation } from '$lib/types';
   import { fly, fade } from 'svelte/transition';
   import '$styles/components/wrap.scss';
 
-  export let animation: string;
+  export let animation: Animation;
 
   const flyDistance = 3000;
   const flyVector = animation === 'flyLeft' ? flyDistance : -flyDistance;
