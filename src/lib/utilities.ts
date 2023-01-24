@@ -31,9 +31,8 @@ export function setFlyDirection(fromPg: number, toPg: number) {
 //---------------------//
 
 // Check if URL includes a hash associated with a specific page.
-// If so, return that page id,
-// otherwise, return the first page in `pageIds` array
-// (the default/landing page).
+// If so, return that page id, otherwise, return the first page in
+// `pageIds` array (the default/landing page).
 export function getInitialPageId() {
   // console.log('browser', browser);
   if (!browser) return pageIds[0]; //!!!
@@ -50,8 +49,8 @@ export function getInitialPageId() {
 
 // Remove `preload` CSS class from all elements after 1 second.
 // The `preload` class disables animations.
-// TODO: Legacy code from vanilla site; check if needed,
-// then remove or refactor.
+// TODO: Legacy code from vanilla site; check if needed, then remove
+// or refactor.
 export function rmPreloadCls({ firstLoad = false }) {
   if (!browser) return; //!!!
 
