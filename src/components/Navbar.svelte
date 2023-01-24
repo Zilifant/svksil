@@ -2,7 +2,7 @@
 <script lang="ts">
   import type { PageId, Quote, Animation } from '$lib/types';
   import { pages } from '$lib/constants';
-  import { setFlyDirection, rmPreloadCls, randFrom } from '$lib/utilities';
+  import { setFlyDirection, randFrom } from '$lib/utilities';
   import '$styles/components/navbar.scss';
 
   export let page: PageId, quote: Quote, quotes: Quote[], animation: Animation;
@@ -23,7 +23,7 @@
     animation = setFlyDirection(prevPage, page);
     quote = randFrom(quotes);
 
-    rmPreloadCls({ firstLoad: false });
+    // rmPreloadCls({ firstLoad: false });
 
     // If viewing dropNav, minimize it.
     if (document.documentElement.clientWidth <= 600) toggleDropNav();

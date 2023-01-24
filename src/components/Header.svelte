@@ -27,9 +27,9 @@
         checked={theme === light}
         on:change={(e) => switchTheme(e)}
       />
-      <div class="th-switch-slider preload">
-        <div class="eclipse-animation moon preload" />
-        <div class="eclipse-animation earth preload" />
+      <div class="th-switch-slider">
+        <div class="eclipse-animation moon" />
+        <div class="eclipse-animation earth" />
       </div>
     </label>
   </div>

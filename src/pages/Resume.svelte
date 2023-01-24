@@ -54,7 +54,7 @@
     <ul>
       {#each res.endorsements as { name, title, quote }}
         <li class="endorsement">
-          <div class="svg-wrap endorsement-icon preload">
+          <div class="svg-wrap endorsement-icon">
             <svg
               class="svg-quote"
               viewBox="0 0 100 71"
@@ -120,7 +120,7 @@
           <li class="x-wrapper exp">
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <div class="x-btn" type="button" on:click|preventDefault={expand}>
-              <div class="svg-wrap x-btn-icon-wrap preload">
+              <div class="svg-wrap x-btn-icon-wrap">
                 <svg
                   class="svg-x-btn"
                   viewBox="0 0 75 75"

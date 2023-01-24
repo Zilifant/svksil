@@ -43,30 +43,6 @@ export function getInitialPageId() {
   return pageIds[0];
 }
 
-//--------------------//
-//Remove Preload Class//
-//--------------------//
-
-// Remove `preload` CSS class from all elements after 1 second.
-// The `preload` class disables animations.
-// TODO: Legacy code from vanilla site; check if needed, then remove
-// or refactor.
-export function rmPreloadCls({ firstLoad = false }) {
-  if (!browser) return; //!!!
-
-  function remove() {
-    setTimeout(() => {
-      const targetNodes = document.querySelectorAll('.preload');
-      for (let i = 0; i < targetNodes.length; i++) {
-        targetNodes[i].classList.remove('preload');
-      }
-      console.log('removePreloadClass');
-    }, 1000);
-  }
-
-  firstLoad ? document.addEventListener('DOMContentLoaded', remove) : remove();
-}
-
 //----//
 //Misc//
 //----//

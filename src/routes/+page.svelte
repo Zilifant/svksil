@@ -13,14 +13,12 @@
   import Writing from '$pages/Writing.svelte';
   import Code from '$pages/Code.svelte';
   import { version, bio, res, code, writ, dark } from '$lib/constants';
-  import { randFrom, getInitialPageId, rmPreloadCls } from '$lib/utilities';
+  import { randFrom, getInitialPageId } from '$lib/utilities';
   import '$styles/variables.scss';
   import '$styles/mixins.scss';
   import '$styles/global.scss';
 
   export let data: PageData;
-
-  rmPreloadCls({ firstLoad: true });
 
   $: pageData = (page: PageId | null) => (!!page ? page : bio);
   $: themeData = (theme: Theme) => (!!theme ? theme : dark);
