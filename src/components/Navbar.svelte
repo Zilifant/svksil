@@ -1,11 +1,12 @@
 <!-- Navbar -->
 <script lang="ts">
+  import type { PageId, Quote, Animation } from '$lib/types';
   import { pages } from '$lib/constants';
   import { setFlyDirection, rmPreloadCls, randFrom } from '$lib/utilities';
 
-  export let page: any, quote: any, quotes: any, animation: any;
+  export let page: PageId, quote: Quote, quotes: Quote[], animation: Animation;
 
-  let prevPage: any;
+  let prevPage: PageId;
   let dropNavState = 'hidden';
 
   $: isCurrentPage = (pg: any) => (pg === page ? 'current' : '');

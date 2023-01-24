@@ -7,14 +7,14 @@ import { browser } from '$app/environment';
 //Random Quote//
 //------------//
 
-export const randFrom: any = (arr = []) =>
+export const randFrom = (arr: any[]) =>
   arr[Math.floor(Math.random() * arr.length)];
 
 //----------------------------//
 //Fly Direction on Page Switch//
 //----------------------------//
 
-export function setFlyDirection(fromPg: number, toPg: number) {
+export function setFlyDirection(fromPg: string, toPg: string) {
   // Create reference object from array of page ids.
   const pageOrderRef = pageIds.reduce((obj: any, val: string, idx) => {
     obj[val] = idx;
