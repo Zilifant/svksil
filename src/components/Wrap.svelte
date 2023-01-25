@@ -3,14 +3,12 @@ When switching pages, previous page's content fades out while new page's content
 from right or left, depending on the pages' relative positions in the navbar.
 -->
 <script lang="ts">
-  import type { Animation } from '$lib/types';
+  import { animation } from '$lib/store';
   import { fly, fade } from 'svelte/transition';
   import '$styles/components/wrap.scss';
 
-  export let animation: Animation;
-
   const flyDistance = 3000;
-  const flyVector = animation === 'flyLeft' ? flyDistance : -flyDistance;
+  const flyVector = $animation === 'flyLeft' ? flyDistance : -flyDistance;
   const flyInDelay = 0;
   const flyInDuration = 500;
 
@@ -21,7 +19,7 @@ from right or left, depending on the pages' relative positions in the navbar.
 
 <!-- Wrapper -->
 
-{#if animation === 'fade'}
+{#if $animation === 'fade'}
   <div
     class="transition-wrapper"
     in:fade={{ delay: fadeInDelay, duration: fadeInDuration }}

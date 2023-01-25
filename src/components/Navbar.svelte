@@ -1,11 +1,12 @@
 <!-- Navbar -->
 <script lang="ts">
-  import type { PageId, Quote, Animation, DropNavState } from '$lib/types';
+  import type { PageId, Quote, DropNavState } from '$lib/types';
+  import { animation } from '$lib/store';
   import { pages } from '$lib/constants';
   import { setFlyDirection, sample } from '$lib/utilities';
   import '$styles/components/navbar.scss';
 
-  export let page: PageId, quote: Quote, quotes: Quote[], animation: Animation;
+  export let page: PageId, quote: Quote, quotes: Quote[];
 
   let prevPage: PageId;
   let dropNavState: DropNavState = 'hidden';
@@ -14,16 +15,16 @@
   $: isPrevPage = (pg: PageId) => (pg === prevPage ? 'prev' : 'not-prev');
 
   function switchPage(newPage: any) {
-    // If link to current page triggered, do nothing.
+    // If link to current page triggered, do nothing
     if (newPage === page) return;
 
-    // Update state.
+    // Update state
     prevPage = page;
     page = newPage;
-    animation = setFlyDirection(prevPage, page);
+    animation.set(setFlyDirection(prevPage, page));
     quote = sample(quotes);
 
-    // If viewing dropNav, minimize it.
+    // If viewing dropNav, minimize it
     if (document.documentElement.clientWidth <= 600) toggleDropNav();
   }
 
