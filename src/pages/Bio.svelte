@@ -1,8 +1,11 @@
 <!-- Bio -->
 <script lang="ts">
+  import type { Theme } from '$lib/types';
   import '$styles/pages/bio.scss';
 
-  export let bio: any, theme: string;
+  export let bio: any;
+  export let theme: Theme;
+
   $: suffix = theme === 'dark' ? '-alt' : '';
 </script>
 
