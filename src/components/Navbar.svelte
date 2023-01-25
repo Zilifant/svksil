@@ -37,7 +37,7 @@
   {#each pages as { id }}
     <a
       class={`main-nav-item mni-${id} ${isPrevPage(id)} ${isCurrentPage(id)}`}
-      href={`#${id}`}
+      href={`/${id}`}
       on:click={() => switchPage(id)}>{id}</a
     >
   {/each}
@@ -54,7 +54,7 @@
       {#each pages as { id }}
         <a
           class={`drop-nav-item ${isPrevPage(id)} ${isCurrentPage(id)}`}
-          href={`#${id}`}
+          href={`/${id}`}
           on:click={() => switchPage(id)}><div>{id}</div></a
         >
       {/each}

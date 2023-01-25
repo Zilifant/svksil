@@ -1,6 +1,6 @@
 // root
 
-import type { PageServerLoad } from './$types';
+import type { LayoutServerLoad } from './$types';
 import { JSIO_KEY, PORTFOLIO_BIN_ID } from '$env/static/private';
 
 const url = `https://api.jsonbin.io/v3/b/${PORTFOLIO_BIN_ID}/latest`;
@@ -20,4 +20,4 @@ export const load = (async ({ fetch, setHeaders }) => {
   }
 
   return { record: json.record };
-}) satisfies PageServerLoad;
+}) satisfies LayoutServerLoad;
