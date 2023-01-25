@@ -9,12 +9,15 @@ const opts = {
     'X-Master-Key': JSIO_KEY.replaceAll('a', '$'),
   },
 };
+const cacheLifetime = 0;
 
 export const load = (async ({ fetch, setHeaders }) => {
   const response = await fetch(url, opts);
   const json = await response.json();
 
-  setHeaders({ 'Cache-Control': 'max-age=60000' });
+  if (cacheLifetime) {
+    setHeaders({ 'Cache-Control': `max-age=${cacheLifetime}` });
+  }
 
   return { content: json.record };
 }) satisfies PageServerLoad;
