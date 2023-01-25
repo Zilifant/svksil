@@ -17,3 +17,20 @@ export type Page = {
   color: string;
   pos: number;
 };
+
+export type BioContent = any;
+export type ResumeContent = any;
+export type CodeContent = any;
+export type WritingContent = any;
+export type QuotesContent = any;
+export type SocialsContent = any;
+
+export type AllContent = {
+  id: 'web-all-content';
+  bio: BioContent;
+  resume: ResumeContent;
+  code: CodeContent;
+  writing: WritingContent;
+  quotes: QuotesContent;
+  socials: SocialsContent;
+};
