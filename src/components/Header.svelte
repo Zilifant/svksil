@@ -1,6 +1,7 @@
 <!-- Header -->
 <script lang="ts">
   import type { Theme } from '$lib/types';
+  import { isDarkMode } from '$lib/store';
   import { light, dark } from '$lib/constants';
   import { applySafariNavFix } from '$lib/utilities';
   import { browser } from '$app/environment';
@@ -13,6 +14,7 @@
 
     theme = e?.target?.checked ? light : dark;
     localStorage.setItem('theme', theme);
+    isDarkMode.set(theme === dark);
     applySafariNavFix();
   }
 </script>

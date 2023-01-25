@@ -11,7 +11,7 @@
   import Resume from '$pages/Resume.svelte';
   import Writing from '$pages/Writing.svelte';
   import Code from '$pages/Code.svelte';
-  import { content } from '$lib/store';
+  import { content, isDarkMode } from '$lib/store';
   import { version, res, code, writ, dark } from '$lib/constants';
   import { sample, getInitialPageId } from '$lib/utilities';
   import '$styles/variables.scss';
@@ -28,6 +28,7 @@
 
   $: ({ record } = data);
   $: content.set(record);
+  $: isDarkMode.set(theme === dark);
   $: quotes = record.quotes.quotes;
   $: quote = sample(quotes);
   $: socials = record.socials;
@@ -54,7 +55,7 @@
         </Wrap>
       {:else}
         <Wrap {animation}>
-          <Bio {theme} />
+          <Bio />
         </Wrap>
       {/if}
     </div>
