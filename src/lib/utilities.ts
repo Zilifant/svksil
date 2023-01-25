@@ -1,6 +1,6 @@
 // Utilities
 
-import type { PageId } from '$lib/types';
+import type { PageId, Animation } from '$lib/types';
 import { pageIds, pages } from '$lib/constants';
 import { browser } from '$app/environment';
 
@@ -17,7 +17,7 @@ export function sample<T>(array: T[]): T {
 //----------------------------//
 
 // Compare relative 'position' of pages to determine fly direction.
-export function setFlyDirection(fromPgId: PageId, toPgId: PageId) {
+export function setFlyDirection(fromPgId: PageId, toPgId: PageId): Animation {
   const fromPgPos: number = pages.find((pg) => pg.id === fromPgId)?.pos || 0;
   const toPgPos: number = pages.find((pg) => pg.id === toPgId)?.pos || 1;
 
@@ -31,7 +31,7 @@ export function setFlyDirection(fromPgId: PageId, toPgId: PageId) {
 // Check if URL includes a hash associated with a specific page.
 // If so, return that page id, otherwise, return the first page in
 // `pageIds` array (the default/landing page).
-export function getInitialPageId() {
+export function getInitialPageId(): PageId {
   // console.log('browser', browser);
   if (!browser) return pageIds[0]; //!!!
 
