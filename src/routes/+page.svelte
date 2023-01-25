@@ -4,7 +4,6 @@
   import type { PageData } from './$types';
   import { browser } from '$app/environment';
   import Wrap from '$components/Wrap.svelte';
-  import Loading from '$components/Loading.svelte';
   import Header from '$components/Header.svelte';
   import Navbar from '$components/Navbar.svelte';
   import Footer from '$components/Footer.svelte';
@@ -12,7 +11,8 @@
   import Resume from '$pages/Resume.svelte';
   import Writing from '$pages/Writing.svelte';
   import Code from '$pages/Code.svelte';
-  import { version, bio, res, code, writ, dark } from '$lib/constants';
+  import { content } from '$lib/store';
+  import { version, res, code, writ, dark } from '$lib/constants';
   import { sample, getInitialPageId } from '$lib/utilities';
   import '$styles/variables.scss';
   import '$styles/mixins.scss';
@@ -26,46 +26,39 @@
   let theme: Theme = browser ? localStorage.getItem('theme') : dark;
   let animation: Animation = 'fade';
 
-  $: pageData = (page: PageId | null) => (!!page ? page : bio);
-  $: themeData = (theme: Theme) => (!!theme ? theme : dark);
-  $: ({ content } = data);
-  $: quotes = content.quotes.quotes;
+  $: ({ record } = data);
+  $: content.set(record);
+  $: quotes = record.quotes.quotes;
   $: quote = sample(quotes);
-  $: loaded = !!content ? true : false;
+  $: socials = record.socials;
 </script>
 
-<main
-  class="main-wrapper"
-  data-page={pageData(page)}
-  data-theme={themeData(theme)}
->
+<main class="main-wrapper" data-page={page} data-theme={theme}>
   <Header bind:theme />
 
   <Navbar bind:page bind:quote bind:animation {quotes} />
 
   <div class="content-wrapper">
     <div class="transition-grid">
-      {#if !loaded}
-        <Loading {loaded} />
-      {:else if page === res}
+      {#if page === res}
         <Wrap {animation}>
-          <Resume res={content.resume} />
+          <Resume />
         </Wrap>
       {:else if page === writ}
         <Wrap {animation}>
-          <Writing writing={content.writing} />
+          <Writing />
         </Wrap>
       {:else if page === code}
         <Wrap {animation}>
-          <Code code={content.code} />
+          <Code />
         </Wrap>
       {:else}
         <Wrap {animation}>
-          <Bio bio={content.bio} theme={themeData(theme)} />
+          <Bio {theme} />
         </Wrap>
       {/if}
     </div>
   </div>
 
-  <Footer {page} {quote} {version} socials={content?.socials} />
+  <Footer {page} {quote} {version} {socials} />
 </main>

@@ -1,9 +1,12 @@
 <!-- Resume -->
 <script lang="ts">
+  import type { ResumeContent } from '$lib/types';
+  import { content } from '$lib/store';
   import '$styles/pages/resume.scss';
 
-  export let res: any;
   let highlightedCat = 'coding';
+  let res: ResumeContent;
+  $: res = $content?.resume;
 
   // Alphabetize skills.
   $: skills = res?.skills.skills.sort((a: any, b: any) => {
@@ -119,7 +122,7 @@
         {#if exp.id !== 'webdev'}
           <li class="x-wrapper exp">
             <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <div class="x-btn" type="button" on:click|preventDefault={expand}>
+            <div class="x-btn" on:click|preventDefault={expand}>
               <div class="svg-wrap x-btn-icon-wrap">
                 <svg
                   class="svg-x-btn"

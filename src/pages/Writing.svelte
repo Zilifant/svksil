@@ -1,11 +1,12 @@
 <!-- Writing -->
 <script lang="ts">
-  import '$styles/pages/writing.scss';
+  import type { WritingContent } from '$lib/types';
+  import { content } from '$lib/store';
   // import SVGCanvas from '$components/SVGCanvas.svelte';
+  import '$styles/pages/writing.scss';
 
-  export let writing;
-
-  const stories = writing.stories; // Placeholder
+  let writing: WritingContent;
+  $: writing = $content?.writing;
 </script>
 
 <!-- prettier-ignore -->

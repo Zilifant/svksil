@@ -19,5 +19,5 @@ export const load = (async ({ fetch, setHeaders }) => {
     setHeaders({ 'Cache-Control': `max-age=${cacheLifetime}` });
   }
 
-  return { content: json.record };
+  return { record: json.record };
 }) satisfies PageServerLoad;

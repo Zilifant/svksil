@@ -1,9 +1,12 @@
 <!-- Code -->
 <script lang="ts">
+  import type { CodeContent } from '$lib/types';
+  import { content } from '$lib/store';
   import Tooltip from '$components/Tooltip.svelte';
   import '$styles/pages/code.scss';
 
-  export let code: any;
+  let code: CodeContent;
+  $: code = $content?.code;
 
   const svg = {
     plus: `<svg

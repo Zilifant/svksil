@@ -1,11 +1,16 @@
 <!-- Bio -->
 <script lang="ts">
-  import type { Theme } from '$lib/types';
+  import type { Theme, BioContent } from '$lib/types';
+  import { dev } from '$app/environment';
+  import { content } from '$lib/store';
   import '$styles/pages/bio.scss';
 
-  export let bio: any;
   export let theme: Theme;
 
+  let bio: BioContent;
+  $: bio = $content?.bio;
+
+  $: prefix = dev ? '-dev' : '';
   $: suffix = theme === 'dark' ? '-alt' : '';
 </script>
 
@@ -15,7 +20,7 @@
       <img
         class="switchable-img"
         id="headshot"
-        src={`src/assets/images/headshot${suffix}.png`}
+        src={`src/assets/images/headshot${prefix}${suffix}.png`}
         title="Witness me!"
         alt="Headshot: Scott Silsbe, Cool Guy"
       />
