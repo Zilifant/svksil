@@ -22,7 +22,7 @@ export function setFlyDirection(fromPgId: PageId, toPgId: PageId): Animation {
 
 // Set Color Theme //
 
-export function setTheme(): Theme {
+export function setInitialTheme(): Theme {
   if (!browser) return dark;
   const theme = localStorage.getItem('theme');
   return theme && [light, dark].includes(theme) ? theme : dark;
@@ -40,7 +40,7 @@ export function setInitialPageId(routeId: string | null): PageId {
 // Misc //
 
 // TODO: Check if this is still needed with current version of Safari.
-export function applySafariNavFix() {
+export function applySafariNavFix(): void {
   if (!browser) return;
   const prevPage = document.getElementsByClassName('prev');
   if (prevPage[0]) prevPage[0].classList.replace('prev', 'not-prev');
