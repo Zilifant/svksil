@@ -1,8 +1,6 @@
 <!-- sandbox -->
 <script lang="ts">
   import { onMount } from 'svelte';
-  import '$styles/reset.css';
-  import '$styles/colors.css';
 
   let canvas: HTMLCanvasElement;
 
@@ -62,8 +60,8 @@
     width: 100%;
     height: 100%;
     background-color: rgb(255, 255, 255);
-    -webkit-mask: url('$lib/assets/images/closed-system-title.svg') 50% 50%
+    -webkit-mask: url('$assets/images/closed-system-title.svg') 50% 50%
       no-repeat;
-    mask: url('$lib/assets/images/closed-system-title.svg') 50% 50% no-repeat;
+    mask: url('$assets/images/closed-system-title.svg') 50% 50% no-repeat;
   }
 </style>

@@ -46,8 +46,7 @@
     /* width: 100%;
     height: 100%; */
     background-color: rgb(255, 255, 255);
-    -webkit-mask: url($lib/assets/images/closed-system-title.svg) 50% 50%
-      no-repeat;
-    mask: url($lib/assets/images/closed-system-title.svg) 50% 50% no-repeat;
+    -webkit-mask: url($assets/images/closed-system-title.svg) 50% 50% no-repeat;
+    mask: url($assets/images/closed-system-title.svg) 50% 50% no-repeat;
   }
 </style>

@@ -31,6 +31,6 @@
   visible
 </label>
 
-{#if visible}
+<!-- {#if visible}
   <p transition:typewriter>The quick brown fox jumps over the lazy dog</p>
-{/if}
+{/if} -->
