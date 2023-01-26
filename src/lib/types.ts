@@ -10,7 +10,7 @@ export type Quote = {
   url: string;
 };
 
-export type PageId = string;
+export type PageId = string | null;
 
 export type Page = {
   id: PageId;

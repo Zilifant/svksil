@@ -6,22 +6,22 @@
   import { setFlyDirection, sample } from '$lib/utilities';
   import '$styles/components/navbar.scss';
 
-  export let page: PageId, quote: Quote, quotes: Quote[];
+  export let pageId: PageId, quote: Quote, quotes: Quote[];
 
-  let prevPage: PageId;
+  let prevPageId: PageId;
   let dropNavState: DropNavState = 'hidden';
 
-  $: isCurrentPage = (pg: PageId) => (pg === page ? 'current' : '');
-  $: isPrevPage = (pg: PageId) => (pg === prevPage ? 'prev' : 'not-prev');
+  $: isCurrentPage = (pg: PageId) => (pg === pageId ? 'current' : '');
+  $: isPrevPage = (pg: PageId) => (pg === prevPageId ? 'prev' : 'not-prev');
 
-  function switchPage(newPage: any) {
+  function switchPage(newPageId: PageId) {
     // If link to current page triggered, do nothing
-    if (newPage === page) return;
+    if (newPageId === pageId) return;
 
     // Update state
-    prevPage = page;
-    page = newPage;
-    animation.set(setFlyDirection(prevPage, page));
+    prevPageId = pageId;
+    pageId = newPageId;
+    animation.set(setFlyDirection(prevPageId, pageId));
     quote = sample(quotes);
 
     // If viewing dropNav, minimize it

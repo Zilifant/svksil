@@ -1,7 +1,7 @@
 // Utilities
 
 import type { PageId, Animation } from '$lib/types';
-import { pageIds, pages } from '$lib/constants';
+import { bio, pageIds, pages } from '$lib/constants';
 import { browser } from '$app/environment';
 
 //------------//
@@ -28,17 +28,11 @@ export function setFlyDirection(fromPgId: PageId, toPgId: PageId): Animation {
 //Identify Initial Page//
 //---------------------//
 
-// Check if URL includes a hash associated with a specific page.
-// If so, return that page id, otherwise, return the first page in
-// `pageIds` array (the default/landing page).
-export function getInitialPageId(): PageId {
-  // console.log('browser', browser);
-  if (!browser) return pageIds[0]; //!!!
-
-  const targetPg = window.location.hash.substring(1);
-  const isViablePg = pageIds.includes(targetPg);
-  if (isViablePg) return targetPg;
-  return pageIds[0];
+export function setInitialPageId(routeId: string | null): PageId {
+  if (!routeId) return bio;
+  const id = routeId.slice(1);
+  if (pageIds.includes(id)) return id;
+  return bio;
 }
 
 //----//
@@ -47,7 +41,7 @@ export function getInitialPageId(): PageId {
 
 // TODO: Check if this is still needed with current version of Safari.
 export function applySafariNavFix() {
-  if (!browser) return; //!!!
+  if (!browser) return;
 
   const prevPage = document.getElementsByClassName('prev');
   if (prevPage[0]) prevPage[0].classList.replace('prev', 'not-prev');

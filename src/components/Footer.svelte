@@ -1,14 +1,16 @@
 <!-- Footer -->
 <script lang="ts">
-  // import socials from '../../content/socials.json';
+  import type { PageId, Quote, SocialsContent } from '$lib/types';
   import { bio } from '$lib/constants';
   import '$styles/components/footer.scss';
 
-  export let page = bio;
-  export let quote: any, version: any, socials: any;
+  export let pageId: PageId = bio;
+  export let quote: Quote;
+  export let socials: SocialsContent;
+  export let version: string;
 </script>
 
-<footer class={`foot ${page}`}>
+<footer class={`foot ${pageId}`}>
   <div class="footer-grid">
     <p class="foot-item foot-item-left" id="foot-quote-display">
       <a href={quote?.url || ''} target="_blank" rel="noopener noreferrer">
