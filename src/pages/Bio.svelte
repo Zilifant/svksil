@@ -2,14 +2,15 @@
 <script lang="ts">
   import type { BioContent } from '$lib/types';
   import { dev } from '$app/environment';
-  import { content, isDarkMode } from '$lib/store';
+  import { content, theme } from '$lib/store';
+  import { dark } from '$lib/constants';
   import '$styles/pages/bio.scss';
 
   let bio: BioContent;
   $: bio = $content?.bio;
 
   $: prefix = dev ? '-dev' : '';
-  $: suffix = $isDarkMode ? '-alt' : '';
+  $: suffix = $theme === dark ? '-alt' : '';
 </script>
 
 <div class={'page-wrapper bio'}>

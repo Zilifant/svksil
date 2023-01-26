@@ -6,9 +6,9 @@
   import Header from '$components/Header.svelte';
   import Navbar from '$components/Navbar.svelte';
   import Footer from '$components/Footer.svelte';
-  import { content, isDarkMode } from '$lib/store';
-  import { version, dark } from '$lib/constants';
-  import { sample, setTheme, setInitialPageId } from '$lib/utilities';
+  import { content, theme } from '$lib/store';
+  import { version } from '$lib/constants';
+  import { sample, setInitialTheme, setInitialPageId } from '$lib/utilities';
   import '$styles/variables.scss';
   import '$styles/mixins.scss';
   import '$styles/global.scss';
@@ -18,18 +18,19 @@
   let quotes: Quote[];
   let quote: Quote;
   let pageId: PageId = setInitialPageId($page?.route?.id);
-  let theme: Theme = setTheme();
+
+  const initialTheme: Theme = setInitialTheme();
 
   $: ({ record } = data);
   $: content.set(record);
-  $: isDarkMode.set(theme === dark);
+  $: theme.set(initialTheme);
   $: quotes = record.quotes.quotes;
   $: quote = sample(quotes);
   $: socials = record.socials;
 </script>
 
-<main class="main-wrapper" data-page={pageId} data-theme={theme}>
-  <Header bind:theme />
+<main class="main-wrapper" data-page={pageId} data-theme={$theme}>
+  <Header />
 
   <Navbar bind:pageId bind:quote {quotes} />
 

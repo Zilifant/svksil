@@ -1,20 +1,19 @@
 <!-- Header -->
 <script lang="ts">
   import type { Theme } from '$lib/types';
-  import { isDarkMode } from '$lib/store';
+  import { theme } from '$lib/store';
   import { light, dark } from '$lib/constants';
   import { applySafariNavFix } from '$lib/utilities';
   import { browser } from '$app/environment';
   import '$styles/components/header.scss';
 
-  export let theme: Theme;
-
-  function switchTheme(e: any) {
+  function switchTheme(e: any): void {
     if (!browser) return;
 
-    theme = e?.target?.checked ? light : dark;
-    localStorage.setItem('theme', theme);
-    isDarkMode.set(theme === dark);
+    const newTheme: Theme = e?.target?.checked ? light : dark;
+    theme.set(newTheme);
+    localStorage.setItem('theme', newTheme);
+
     applySafariNavFix();
   }
 </script>
@@ -26,7 +25,7 @@
       <input
         class="theme-switch-checkbox"
         type="checkbox"
-        checked={theme === light}
+        checked={$theme === light}
         on:change={(e) => switchTheme(e)}
       />
       <div class="th-switch-slider">
