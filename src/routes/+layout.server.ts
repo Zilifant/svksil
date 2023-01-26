@@ -9,7 +9,7 @@ const opts = {
     'X-Master-Key': JSIO_KEY.replaceAll('a', '$'),
   },
 };
-const cacheLifetime = 0;
+const cacheLifetime = 60000 * 60; // 1 hour
 
 export const load = (async ({ fetch, setHeaders }) => {
   const response = await fetch(url, opts);
