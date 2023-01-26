@@ -1,6 +1,6 @@
 // types
 
-export type Theme = string | null;
+export type Theme = string;
 export type Animation = 'fade' | 'flyLeft' | 'flyRight';
 export type DropNavState = 'hidden' | 'visible';
 

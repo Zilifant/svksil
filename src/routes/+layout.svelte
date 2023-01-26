@@ -3,13 +3,12 @@
   import type { Theme, PageId, Quote } from '$lib/types';
   import type { LayoutData } from './$types';
   import { page } from '$app/stores';
-  import { browser } from '$app/environment';
   import Header from '$components/Header.svelte';
   import Navbar from '$components/Navbar.svelte';
   import Footer from '$components/Footer.svelte';
   import { content, isDarkMode } from '$lib/store';
   import { version, dark } from '$lib/constants';
-  import { sample, setInitialPageId } from '$lib/utilities';
+  import { sample, setTheme, setInitialPageId } from '$lib/utilities';
   import '$styles/variables.scss';
   import '$styles/mixins.scss';
   import '$styles/global.scss';
@@ -19,7 +18,7 @@
   let quotes: Quote[];
   let quote: Quote;
   let pageId: PageId = setInitialPageId($page?.route?.id);
-  let theme: Theme = browser ? localStorage.getItem('theme') : dark;
+  let theme: Theme = setTheme();
 
   $: ({ record } = data);
   $: content.set(record);

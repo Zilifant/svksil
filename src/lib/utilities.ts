@@ -1,20 +1,16 @@
 // Utilities
 
-import type { PageId, Animation } from '$lib/types';
-import { bio, pageIds, pages } from '$lib/constants';
+import type { PageId, Animation, Theme } from '$lib/types';
+import { bio, pageIds, pages, light, dark } from '$lib/constants';
 import { browser } from '$app/environment';
 
-//------------//
-//Random Quote//
-//------------//
+// Random Quote //
 
 export function sample<T>(array: T[]): T {
   return array[Math.floor(Math.random() * array.length)];
 }
 
-//----------------------------//
-//Fly Direction on Page Switch//
-//----------------------------//
+// Fly Direction on Page Switch //
 
 // Compare relative 'position' of pages to determine fly direction.
 export function setFlyDirection(fromPgId: PageId, toPgId: PageId): Animation {
@@ -24,9 +20,15 @@ export function setFlyDirection(fromPgId: PageId, toPgId: PageId): Animation {
   return fromPgPos > toPgPos ? 'flyRight' : 'flyLeft';
 }
 
-//---------------------//
-//Identify Initial Page//
-//---------------------//
+// Set Color Theme //
+
+export function setTheme(): Theme {
+  if (!browser) return dark;
+  const theme = localStorage.getItem('theme');
+  return theme && [light, dark].includes(theme) ? theme : dark;
+}
+
+// Identify Initial Page //
 
 export function setInitialPageId(routeId: string | null): PageId {
   if (!routeId) return bio;
@@ -35,14 +37,11 @@ export function setInitialPageId(routeId: string | null): PageId {
   return bio;
 }
 
-//----//
-//Misc//
-//----//
+// Misc //
 
 // TODO: Check if this is still needed with current version of Safari.
 export function applySafariNavFix() {
   if (!browser) return;
-
   const prevPage = document.getElementsByClassName('prev');
   if (prevPage[0]) prevPage[0].classList.replace('prev', 'not-prev');
 }
