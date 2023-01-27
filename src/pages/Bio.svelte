@@ -13,8 +13,8 @@
   $: suffix = $theme === dark ? '-alt' : '';
 </script>
 
-<div class={'page-wrapper bio'}>
-  <div class="content content-30-left content-left-bio">
+<div class="page-wrapper bio">
+  <div class="content content-left">
     <div class="headshot-wrapper">
       <img
         class="switchable-img"
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <section class="content content-70-right content-right-bio large-text">
+  <section class="content content-right large-text">
     {@html bio.introHTML}
   </section>
 
