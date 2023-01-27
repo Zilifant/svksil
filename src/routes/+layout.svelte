@@ -3,6 +3,7 @@
   import type { Theme, PageId, Quote } from '$lib/types';
   import type { LayoutData } from './$types';
   import { page } from '$app/stores';
+  import { browser } from '$app/environment';
   import Header from '$components/Header.svelte';
   import Navbar from '$components/Navbar.svelte';
   import Footer from '$components/Footer.svelte';
@@ -29,16 +30,18 @@
   $: socials = record.socials;
 </script>
 
-<main class="main-wrapper" data-page={pageId} data-theme={$theme}>
-  <Header />
+{#if browser}
+  <main class="main-wrapper" data-page={pageId} data-theme={$theme}>
+    <Header />
 
-  <Navbar bind:pageId bind:quote {quotes} />
+    <Navbar bind:pageId bind:quote {quotes} />
 
-  <div class="content-wrapper">
-    <div class="transition-grid">
-      <slot />
+    <div class="content-wrapper">
+      <div class="transition-grid">
+        <slot />
+      </div>
     </div>
-  </div>
 
-  <Footer {pageId} {quote} {version} {socials} />
-</main>
+    <Footer {pageId} {quote} {version} {socials} />
+  </main>
+{/if}
