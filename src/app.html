@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- <script defer>
+    const pref = localStorage.theme ?? 'system';
+    const prefersLight = pref === 'light';
+    const matchString = '(prefers-color-scheme: light)';
+    const systemPrefersLight = window.matchMedia(matchString).matches;
+
+    const theme =
+      prefersLight || (pref === 'system' && systemPrefersLight)
+        ? 'light'
+        : 'dark';
+
+    document.documentElement.setAttribute('data-theme', theme);
+  </script> -->
+
   <head>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
