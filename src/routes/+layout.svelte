@@ -22,12 +22,12 @@
 
   const initialTheme: Theme = setInitialTheme();
 
-  $: ({ record } = data);
-  $: content.set(record);
+  $: ({ jsioRecord } = data);
+  $: content.set(jsioRecord);
   $: theme.set(initialTheme);
-  $: quotes = record.quotes.quotes;
+  $: quotes = jsioRecord.quotes.quotes;
   $: quote = sample(quotes);
-  $: socials = record.socials;
+  $: socials = jsioRecord.socials;
 </script>
 
 {#if browser}

@@ -1,6 +1,7 @@
 // Utilities
 
 import type { PageId, Animation, Theme } from '$lib/types';
+import { marked } from 'marked';
 import { bio, pageIds, pages, light, dark } from '$lib/constants';
 import { browser } from '$app/environment';
 
@@ -35,6 +36,17 @@ export function setInitialPageId(routeId: string | null): PageId {
   const id = routeId.slice(1);
   if (pageIds.includes(id)) return id;
   return bio;
+}
+
+// Convert Markdown to HTML //
+
+export function parseMarkdown(text: string): string {
+  if (!text) return '';
+  const array: string[] = text?.split('\n');
+  const html: string = array.reduce((prev, curr) => {
+    return prev + marked.parse(curr);
+  }, '');
+  return html;
 }
 
 // Misc //
