@@ -36,7 +36,7 @@
 
     <Navbar bind:pageId bind:quote {quotes} />
 
-    <div class="content-wrapper">
+    <div class="transition-grid-wrapper">
       <div class="transition-grid">
         <slot />
       </div>

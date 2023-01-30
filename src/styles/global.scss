@@ -59,14 +59,14 @@ main {
   background-color: var(--bgcolor);
 }
 
-.content-wrapper,
+.transition-grid-wrapper,
 .page-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.content-wrapper {
+.transition-grid-wrapper {
   display: flex;
   flex: auto;
   padding-top: 3rem;
@@ -82,7 +82,7 @@ main {
   margin: 0 1.5rem;
 }
 
-.content-wrapper,
+.transition-grid-wrapper,
 .side-right,
 .side-left {
   background: var(--content-bg);

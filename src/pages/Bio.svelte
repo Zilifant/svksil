@@ -9,27 +9,30 @@
   let bio: BioContent;
   $: bio = $content?.bio;
 
-  $: prefix = dev ? '-dev' : '';
+  const summaryHTML = `<p>Hello, I'm Scott.</p><p>I design, produce, and run large-scale live gaming events. Or rather, I did. Then 2020 happened. &#x1F610;</p><p>While I continue to explore opportunities in the events space, my focus is now full-stack web development.</p>`;
+  const partnersSectionTitle = " Who I've worked with...";
+
   $: suffix = $theme === dark ? '-alt' : '';
 </script>
 
 <div class="page-wrapper bio">
-  <div class="content content-left">
+  <section class="intro-content-grid">
+    <div class="intro-text-wrapper large-text">
+      <!-- {@html bio.introHTML} -->
+      {@html summaryHTML}
+    </div>
     <div class="headshot-wrapper">
       <img
         class="switchable-img"
         id="headshot"
-        src={`src/assets/images/headshot${prefix}${suffix}.png`}
+        src={`src/assets/images/headshot.png`}
         title="Witness me!"
         alt="Headshot: Scott Silsbe, Cool Guy"
       />
     </div>
-  </div>
-
-  <section class="content content-right large-text">
-    {@html bio.introHTML}
   </section>
 
+  <h2 class="partner-section-title large-text">{partnersSectionTitle}</h2>
   <section class="partner-logo-grid">
     {#each bio.partners as { id, alt }}
       <div class="partner-logo-wrapper">
