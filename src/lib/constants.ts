@@ -9,10 +9,10 @@ export const light = 'light';
 
 // prettier-ignore
 export const pages: Page[] = [
-  { id: 'bio',     color: 'pink',   pos: 1 },
-  { id: 'resume',  color: 'blue',   pos: 2 },
-  { id: 'code',    color: 'green',  pos: 3 },
-  { id: 'writing', color: 'orange', pos: 4 },
+  { id: 'bio',     href: '/',        color: 'pink',   pos: 1 },
+  { id: 'resume',  href: '/resume',  color: 'blue',   pos: 2 },
+  { id: 'code',    href: '/code',    color: 'green',  pos: 3 },
+  { id: 'writing', href: '/writing', color: 'orange', pos: 4 },
 ];
 
 export const bio = 'bio';

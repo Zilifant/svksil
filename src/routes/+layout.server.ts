@@ -19,5 +19,5 @@ export const load = (async ({ fetch, setHeaders }) => {
     setHeaders({ 'Cache-Control': `max-age=${cacheLifetime}` });
   }
 
-  return { record: json.record };
+  return { jsioRecord: json.record };
 }) satisfies LayoutServerLoad;

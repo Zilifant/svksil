@@ -35,10 +35,10 @@
 </script>
 
 <nav class="main-nav">
-  {#each pages as { id }}
+  {#each pages as { id, href }}
     <a
       class={`main-nav-item mni-${id} ${isPrevPage(id)} ${isCurrentPage(id)}`}
-      href={`/${id}`}
+      {href}
       on:click={() => switchPage(id)}>{id}</a
     >
   {/each}
@@ -52,10 +52,10 @@
       <div class="drop-nav-title">Scott Silsbe</div>
     </button>
     <div class={`drop-nav-items ${dropNavState}`}>
-      {#each pages as { id }}
+      {#each pages as { id, href }}
         <a
           class={`drop-nav-item ${isPrevPage(id)} ${isCurrentPage(id)}`}
-          href={`/${id}`}
+          {href}
           on:click={() => switchPage(id)}><div>{id}</div></a
         >
       {/each}
