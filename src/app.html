@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!-- <script defer>
-    const pref = localStorage.theme ?? 'system';
-    const prefersLight = pref === 'light';
-    const matchString = '(prefers-color-scheme: light)';
-    const systemPrefersLight = window.matchMedia(matchString).matches;
+  <script defer>
+    function initThemeCookie() {
+      const hasThemeCookie = document.cookie
+        .split(';')
+        .find((ck) => ck.trim().startsWith('theme='));
 
-    const theme =
-      prefersLight || (pref === 'system' && systemPrefersLight)
-        ? 'light'
-        : 'dark';
+      // if already created, do nothing (cookie will be used to apply theme during SSR)
+      if (hasThemeCookie) return;
 
-    document.documentElement.setAttribute('data-theme', theme);
-  </script> -->
+      // create new cookie based on system preference
+      const matchString = '(prefers-color-scheme: light)';
+      const systemPrefersLight = window.matchMedia(matchString).matches;
+      const theme = systemPrefersLight ? 'light' : 'dark';
+      const cookieMaxAge = 60 * 60 * 24 * 30; // 30 days
+      document.cookie = `theme=${theme}; max-age=${cookieMaxAge}`;
+    }
+    initThemeCookie();
+  </script>
 
   <head>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
