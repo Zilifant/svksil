@@ -7,12 +7,11 @@
   import '$styles/pages/bio.scss';
 
   export let contentfulData: ContentfulData;
-  $: introHTML = parseMarkdown(contentfulData?.items[0]?.fields?.introHtml);
+  $: introHTML = parseMarkdown(contentfulData?.items[0]?.fields?.introMd);
+  $: partnersHeader = contentfulData?.items[0]?.fields?.partnersHeader;
 
   let bio: BioContent;
   $: bio = $content?.bio;
-
-  const partnersSectionTitle = "Who I've worked with...";
 
   $: suffix = $theme === dark ? '-alt' : '';
 </script>
@@ -33,7 +32,7 @@
     </div>
   </section>
 
-  <h2 class="partner-section-title large-text">{partnersSectionTitle}</h2>
+  <h2 class="partner-section-title large-text">{partnersHeader}</h2>
   <section class="partner-logo-grid">
     {#each bio.partners as { id, alt }}
       <div class="partner-logo-wrapper">
