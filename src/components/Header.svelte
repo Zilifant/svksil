@@ -7,12 +7,14 @@
   import { browser } from '$app/environment';
   import '$styles/components/header.scss';
 
-  function switchTheme(e: any): void {
+  function switchTheme(event: Event): void {
     if (!browser) return;
 
     const cookieMaxAge = 60 * 60 * 24 * 30; // 30 days
 
-    const newTheme: Theme = e?.target?.checked ? light : dark;
+    const newTheme: Theme = (<HTMLInputElement>event.target).checked
+      ? light
+      : dark;
     theme.set(newTheme);
     document.cookie = `theme=${newTheme}; max-age=${cookieMaxAge}`;
 
@@ -28,7 +30,7 @@
         class="theme-switch-checkbox"
         type="checkbox"
         checked={$theme === light}
-        on:change={(e) => switchTheme(e)}
+        on:change={(event) => switchTheme(event)}
       />
       <div class="th-switch-slider">
         <div class="eclipse-animation moon" />
