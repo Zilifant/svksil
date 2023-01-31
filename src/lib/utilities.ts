@@ -1,8 +1,8 @@
 // Utilities
 
-import type { PageId, Animation, Theme } from '$lib/types';
+import type { PageId, Animation } from '$lib/types';
 import { marked } from 'marked';
-import { bio, pageIds, pages, light, dark } from '$lib/constants';
+import { bio, pageIds, pages } from '$lib/constants';
 import { browser } from '$app/environment';
 
 // Random Quote //
@@ -19,14 +19,6 @@ export function setFlyDirection(fromPgId: PageId, toPgId: PageId): Animation {
   const toPgPos: number = pages.find((pg) => pg.id === toPgId)?.pos || 1;
 
   return fromPgPos > toPgPos ? 'flyRight' : 'flyLeft';
-}
-
-// Set Color Theme //
-
-export function setInitialTheme(): Theme {
-  if (!browser) return dark;
-  const theme = localStorage.getItem('theme');
-  return theme && [light, dark].includes(theme) ? theme : dark;
 }
 
 // Identify Initial Page //

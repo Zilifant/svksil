@@ -10,9 +10,11 @@
   function switchTheme(e: any): void {
     if (!browser) return;
 
+    const cookieMaxAge = 60 * 60 * 24 * 30; // 30 days
+
     const newTheme: Theme = e?.target?.checked ? light : dark;
     theme.set(newTheme);
-    localStorage.setItem('theme', newTheme);
+    document.cookie = `theme=${newTheme}; max-age=${cookieMaxAge}`;
 
     applySafariNavFix();
   }
