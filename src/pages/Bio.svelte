@@ -1,6 +1,8 @@
 <!-- Bio -->
 <script lang="ts">
   import type { BioContent, ContentfulData } from '$lib/types';
+  import type { ImageIndex } from '$assets/images/index';
+  import { images } from '$assets/images/index';
   import { parseMarkdown } from '$lib/utilities';
   import { content, theme } from '$lib/store';
   import { dark } from '$lib/constants';
@@ -13,7 +15,12 @@
   let bio: BioContent;
   $: bio = $content?.bio;
 
-  $: suffix = $theme === dark ? '-alt' : '';
+  $: suffix = $theme === dark ? 'Alt' : '';
+
+  $: setImgSrc = (id: string) => {
+    const imgKey = `${id}${suffix}`;
+    return images[imgKey as keyof ImageIndex];
+  };
 </script>
 
 <div class="page-wrapper bio">
@@ -25,7 +32,7 @@
       <img
         class="switchable-img"
         id="headshot"
-        src={`src/assets/images/headshot.png`}
+        src={setImgSrc('headshot')}
         title="Witness me!"
         alt="Headshot: Scott Silsbe, Cool Guy"
       />
@@ -36,12 +43,7 @@
   <section class="partner-logo-grid">
     {#each bio.partners as { id, alt }}
       <div class="partner-logo-wrapper">
-        <img
-          class="switchable-img"
-          src={`src/assets/images/${id}${suffix}.png`}
-          {id}
-          {alt}
-        />
+        <img class="switchable-img" src={setImgSrc(id)} {id} {alt} />
       </div>
     {/each}
   </section>
