@@ -19,7 +19,15 @@ export type Page = {
   pos: number;
 };
 
-export type BioContent = any;
+export type Partner = {
+  id: string;
+  alt: string;
+};
+
+export type BioContent = {
+  partners: Partner[];
+};
+
 export type ResumeContent = any;
 export type CodeContent = any;
 export type WritingContent = any;
