@@ -17,9 +17,9 @@ export const load = (async ({ fetch, setHeaders, cookies }) => {
   const response = await fetch(url, opts);
   const json = await response.json();
 
-  // if (cacheLifetime) {
-  //   setHeaders({ 'Cache-Control': `max-age=${cacheLifetime}` });
-  // }
+  if (cacheLifetime) {
+    setHeaders({ 'Cache-Control': `max-age=${cacheLifetime}` });
+  }
 
   return {
     jsioRecord: json.record,
