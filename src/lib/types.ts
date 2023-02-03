@@ -19,6 +19,14 @@ export type Page = {
   pos: number;
 };
 
+export type ContentfulData = {
+  sys: any;
+  total: number;
+  skip: number;
+  limit: number;
+  items: any[];
+};
+
 export type Partner = {
   id: string;
   alt: string;
@@ -42,12 +50,5 @@ export type AllContent = {
   writing: WritingContent;
   quotes: QuotesContent;
   socials: SocialsContent;
-};
-
-export type ContentfulData = {
-  sys: any;
-  total: number;
-  skip: number;
-  limit: number;
-  items: any[];
+  contentfulData: ContentfulData;
 };

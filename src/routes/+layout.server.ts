@@ -1,28 +1,52 @@
 // root
 
 import type { LayoutServerLoad } from './$types';
-import { JSIO_KEY, PORTFOLIO_BIN_ID } from '$env/static/private';
+import { dev } from '$app/environment';
+import {
+  JSIO_KEY,
+  PORTFOLIO_BIN_ID,
+  SPACE_ID,
+  DELIVERY_TOKEN,
+} from '$env/static/private';
 
-const url = `https://api.jsonbin.io/v3/b/${PORTFOLIO_BIN_ID}/latest`;
-const opts = {
-  headers: {
-    'X-Master-Key': JSIO_KEY.replaceAll('a', '$'),
+const cacheLifetime = 60000 * 30; // 30 min
+
+const contentful = {
+  url: `https://cdn.contentful.com/spaces/${SPACE_ID}/entries`,
+  opts: {
+    headers: {
+      Authorization: `Bearer ${DELIVERY_TOKEN}`,
+    },
   },
 };
-const cacheLifetime = 60000 * 60; // 1 hour
+
+const jsonbin = {
+  url: `https://api.jsonbin.io/v3/b/${PORTFOLIO_BIN_ID}/latest`,
+  opts: {
+    headers: {
+      'X-Master-Key': JSIO_KEY.replaceAll('a', '$'),
+    },
+  },
+};
 
 export const load = (async ({ fetch, setHeaders, cookies }) => {
   const themeCookie = cookies.get('theme');
 
-  const response = await fetch(url, opts);
-  const json = await response.json();
+  if (dev) console.log(`fetching from contentful...`);
+  const contentfulResponse = await fetch(contentful.url, contentful.opts);
+  const contentfulJson = await contentfulResponse.json();
+
+  if (dev) console.log(`fetching from jsonbin...`);
+  const jsonbinResponse = await fetch(jsonbin.url, jsonbin.opts);
+  const jsonBinJson = await jsonbinResponse.json();
 
   if (cacheLifetime) {
     setHeaders({ 'Cache-Control': `max-age=${cacheLifetime}` });
   }
 
   return {
-    jsioRecord: json.record,
+    contentfulData: contentfulJson,
+    jsioRecord: jsonBinJson.record,
     themeCookie,
   };
 }) satisfies LayoutServerLoad;

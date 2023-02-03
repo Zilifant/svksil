@@ -18,8 +18,8 @@
   let quote: Quote;
   let pageId: PageId = setInitialPageId($page?.route?.id);
 
-  $: ({ jsioRecord, themeCookie } = data);
-  $: content.set(jsioRecord);
+  $: ({ contentfulData, jsioRecord, themeCookie } = data);
+  $: content.set({ ...jsioRecord, contentfulData });
   $: theme.set(themeCookie || dark);
   $: quotes = jsioRecord.quotes.quotes;
   $: quote = sample(quotes);

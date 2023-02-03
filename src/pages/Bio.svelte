@@ -1,6 +1,6 @@
 <!-- Bio -->
 <script lang="ts">
-  import type { BioContent, ContentfulData } from '$lib/types';
+  import type { BioContent } from '$lib/types';
   import type { ImageIndex } from '$assets/images/index';
   import { images } from '$assets/images/index';
   import { parseMarkdown } from '$lib/utilities';
@@ -8,9 +8,11 @@
   import { dark } from '$lib/constants';
   import '$styles/pages/bio.scss';
 
-  export let contentfulData: ContentfulData;
-  $: introHTML = parseMarkdown(contentfulData?.items[0]?.fields?.introMd);
-  $: partnersHeader = contentfulData?.items[0]?.fields?.partnersHeader;
+  const matchFID = (item: any) => item?.fields?.fid === 'bio page';
+
+  $: bioData = $content?.contentfulData?.items?.find((item) => matchFID(item));
+  $: introHTML = parseMarkdown(bioData?.fields?.introMd);
+  $: partnersHeader = bioData?.fields?.partnersHeader;
 
   let bio: BioContent;
   $: bio = $content?.bio;
