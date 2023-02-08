@@ -32,13 +32,15 @@ const jsonbin = {
 export const load = (async ({ fetch, setHeaders, cookies }) => {
   const themeCookie = cookies.get('theme');
 
-  if (dev) console.log(`fetching from contentful...`);
+  if (dev) console.time('fetching from contentful...');
   const contentfulResponse = await fetch(contentful.url, contentful.opts);
   const contentfulJson = await contentfulResponse.json();
+  if (dev) console.timeEnd('fetching from contentful...');
 
-  if (dev) console.log(`fetching from jsonbin...`);
+  if (dev) console.time('fetching from jsonbin...');
   const jsonbinResponse = await fetch(jsonbin.url, jsonbin.opts);
   const jsonBinJson = await jsonbinResponse.json();
+  if (dev) console.timeEnd('fetching from jsonbin...');
 
   if (cacheLifetime) {
     setHeaders({ 'Cache-Control': `max-age=${cacheLifetime}` });
