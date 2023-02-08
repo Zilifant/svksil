@@ -12,8 +12,8 @@
 
 .code-project {
   padding: 1.25rem 1rem;
-  background-color: var(--res-item-bg);
-  border: var(--x-btn-border);
+  background: var(--res-item-bg);
+  box-shadow: var(--boxShadow);
   @include colorfade();
   @include font-adjust();
 
@@ -21,8 +21,7 @@
     margin-top: 1rem;
   }
 
-  & .code-project-title > :not(:first-child),
-  & .code-project-links > :not(:first-child) {
+  & .code-project-title > :not(:first-child) {
     margin-left: 0.5rem;
   }
 
@@ -35,10 +34,10 @@
     margin-top: 0.5rem;
   }
 
-  & .code-project-links {
-    display: flex;
-    align-items: center;
-  }
+  // & .code-project-links {
+  // display: flex;
+  // align-items: center;
+  // }
 
   & .code-project-sec-title {
     margin-top: 1.5rem;
@@ -47,68 +46,78 @@
   & .code-project-divider {
     margin-top: 1.5rem;
     @include colorfade();
-    background-color: var(--code-project-divider);
+    background: var(--code-project-divider);
   }
 }
 
+$link-fg: var(--cyan5);
+
 .url-pseudo-btn {
   display: flex;
-  padding: 0.5rem 1rem;
   align-items: center;
   min-width: max-content;
   width: max-content;
   text-decoration: none;
-  color: var(--white);
-  background-color: var(--btn-bg);
-  @include font-adjust();
+
   $t: var(--time);
   // prettier-ignore
   transition:
     color $t,
-    background-color $t,
+    background $t,
     border-color $t,
     transform $t;
 
-  & p {
-    font-size: 1.25rem;
+  & span {
     position: relative;
-    color: var(--btn-fg);
+    @include font-adjust();
     @include colorfade();
+
+    &.displayUrl {
+      color: $link-fg;
+      margin-left: 0.5rem;
+    }
   }
 
   &.spec:hover {
-    background-color: var(--gray5);
     cursor: default;
-  }
-
-  &.url:hover {
-    transform: translateY(-5px);
-    background-color: var(--btn-bg-hover);
-
-    & p {
-      color: var(--btn-fg-hover);
+    & > span {
+      color: var(--blug4);
     }
   }
 }
 
-.svg-wrap.flex {
-  display: flex;
+a.url-pseudo-btn > span {
+  position: relative;
+}
+
+a.url-pseudo-btn > span.displayUrl::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: $link-fg;
+  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a.url-pseudo-btn:hover > span.displayUrl::before {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
 }
 
 .url-pseudo-btn .svg-icon {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  stroke-linejoin: round;
-  stroke-miterlimit: 2;
-  margin: 0;
+  fill: $link-fg;
   margin-right: 0.5rem;
-  fill: var(--btn-fg);
   height: 20px;
   width: 20px;
   // prettier-ignore
   transition:
     color var(--time),
-    background-color var(--time),
+    background var(--time),
     border-color var(--time),
     fill var(--time);
 }
