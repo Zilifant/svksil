@@ -1,7 +1,8 @@
 // Tooltip
 
 .ttip-parent {
-  position:relative;
+  position: relative;
+  width: max-content;
 }
 
 .ttip-parent .ttip {
@@ -25,12 +26,12 @@
 
 .ttip.left {
   right: 100%;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }
 
 .ttip.right {
   left: 100%;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
 }
 
 .ttip.top,
@@ -40,11 +41,11 @@
 }
 
 .ttip.top {
-  bottom: calc(100% + .5rem);
+  bottom: calc(100% + 0.5rem);
 }
 
 .ttip.bottom {
-  top: calc(100% + .5rem);
+  top: calc(100% + 0.5rem);
 }
 
 .ttip-parent:hover .ttip {
