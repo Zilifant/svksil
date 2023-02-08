@@ -10,9 +10,10 @@
       if (hasThemeCookie) return;
 
       // create new cookie based on system preference
-      const matchString = '(prefers-color-scheme: light)';
-      const systemPrefersLight = window.matchMedia(matchString).matches;
-      const theme = systemPrefersLight ? 'light' : 'dark';
+      // const matchString = '(prefers-color-scheme: light)';
+      // const systemPrefersLight = window.matchMedia(matchString).matches;
+      // const theme = systemPrefersLight ? 'light' : 'dark';
+      const theme = 'dark';
       const cookieMaxAge = 60 * 60 * 24 * 30; // 30 days
       document.cookie = `theme=${theme}; max-age=${cookieMaxAge}`;
     }
