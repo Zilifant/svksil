@@ -5,7 +5,8 @@
 @keyframes swapBgBio {
   from {
     background-size: 100% 300%;
-    background-image: linear-gradient(to bottom,
+    background-image: linear-gradient(
+      to bottom,
       var(--accent-bio) 33%,
       var(--nav-bg-this-page) 33% 67%,
       var(--nav-bg) 67%
@@ -13,7 +14,8 @@
   }
   to {
     background-size: 100% 200%;
-    background-image: linear-gradient(to bottom,
+    background-image: linear-gradient(
+      to bottom,
       var(--accent-bio) 50%,
       var(--nav-bg) 50%
     );
@@ -23,7 +25,8 @@
 @keyframes swapBgRes {
   from {
     background-size: 100% 300%;
-    background-image: linear-gradient(to bottom,
+    background-image: linear-gradient(
+      to bottom,
       var(--accent-res) 33%,
       var(--nav-bg-this-page) 33% 67%,
       var(--nav-bg) 67%
@@ -31,7 +34,8 @@
   }
   to {
     background-size: 100% 200%;
-    background-image: linear-gradient(to bottom,
+    background-image: linear-gradient(
+      to bottom,
       var(--accent-res) 50%,
       var(--nav-bg) 50%
     );
@@ -41,7 +45,8 @@
 @keyframes swapBgWrit {
   from {
     background-size: 100% 300%;
-    background-image: linear-gradient(to bottom,
+    background-image: linear-gradient(
+      to bottom,
       var(--accent-writ) 33%,
       var(--nav-bg-this-page) 33% 67%,
       var(--nav-bg) 67%
@@ -49,7 +54,8 @@
   }
   to {
     background-size: 100% 200%;
-    background-image: linear-gradient(to bottom,
+    background-image: linear-gradient(
+      to bottom,
       var(--accent-writ) 50%,
       var(--nav-bg) 50%
     );
@@ -59,7 +65,8 @@
 @keyframes swapBgCode {
   from {
     background-size: 100% 300%;
-    background-image: linear-gradient(to bottom,
+    background-image: linear-gradient(
+      to bottom,
       var(--accent-code) 33%,
       var(--nav-bg-this-page) 33% 67%,
       var(--nav-bg) 67%
@@ -67,7 +74,8 @@
   }
   to {
     background-size: 100% 200%;
-    background-image: linear-gradient(to bottom,
+    background-image: linear-gradient(
+      to bottom,
       var(--accent-code) 50%,
       var(--nav-bg) 50%
     );
@@ -76,13 +84,15 @@
 
 // hide mobile navigation by default
 .drop-nav-btn,
-.drop-nav-items { display: none; }
+.drop-nav-items {
+  display: none;
+}
 
 .main-nav-item,
 .drop-nav-btn > div,
 .drop-nav-item > div {
   text-transform: uppercase;
-  letter-spacing: .1rem;
+  letter-spacing: 0.1rem;
 }
 
 .main-nav {
@@ -91,7 +101,8 @@
   justify-content: center;
   align-items: center;
   background: var(--nav-bg);
-  border-bottom: var(--bdr1) solid var(--nav-border);
+  border-bottom: var(--headFootBorder);
+  box-shadow: var(--headBoxShadow);
 }
 
 .main-nav-item {
@@ -102,19 +113,27 @@
   font-size: 1.25rem;
   color: var(--nav-text);
   font-weight: var(--theme-weight-adjust-title-text);
-  &.mni-bio { width: 56px; };
-  &.mni-resume { width: 108px; };
-  &.mni-writing { width: 109px; };
-  &.mni-code { width: 78px; };
+  &.mni-bio {
+    width: 56px;
+  }
+  &.mni-resume {
+    width: 108px;
+  }
+  &.mni-writing {
+    width: 109px;
+  }
+  &.mni-code {
+    width: 78px;
+  }
 }
 
 .main-nav-item {
   background-position: bottom;
   background-size: 100% 200%;
-  -webkit-transition: color .2s, background-position .2s ease-in-out;
-     -moz-transition: color .2s, background-position .2s ease-in-out;
-       -o-transition: color .2s, background-position .2s ease-in-out;
-          transition: color .2s, background-position .2s ease-in-out;
+  -webkit-transition: color 0.2s, background-position 0.2s ease-in-out;
+  -moz-transition: color 0.2s, background-position 0.2s ease-in-out;
+  -o-transition: color 0.2s, background-position 0.2s ease-in-out;
+  transition: color 0.2s, background-position 0.2s ease-in-out;
 }
 
 .main-nav-item:hover {
@@ -124,25 +143,29 @@
 }
 
 .mni-bio.not-prev {
-  background-image: linear-gradient(to bottom,
+  background-image: linear-gradient(
+    to bottom,
     var(--accent-bio) 50%,
     var(--nav-bg) 50%
   );
 }
 .mni-resume.not-prev {
-  background-image: linear-gradient(to bottom,
+  background-image: linear-gradient(
+    to bottom,
     var(--accent-res) 50%,
     var(--nav-bg) 50%
   );
 }
 .mni-writing.not-prev {
-  background-image: linear-gradient(to bottom,
+  background-image: linear-gradient(
+    to bottom,
     var(--accent-writ) 50%,
     var(--nav-bg) 50%
   );
 }
 .mni-code.not-prev {
-  background-image: linear-gradient(to bottom,
+  background-image: linear-gradient(
+    to bottom,
     var(--accent-code) 50%,
     var(--nav-bg) 50%
   );
@@ -151,65 +174,70 @@
 .main-nav-item.prev {
   &.mni-bio {
     animation: swapBgBio 0s;
-    animation-delay: .2s;
+    animation-delay: 0.2s;
     animation-fill-mode: forwards;
     background-size: 100% 300%;
-    background-image: linear-gradient(to bottom,
+    background-image: linear-gradient(
+      to bottom,
       var(--accent-bio) 33%,
       var(--nav-bg-this-page) 33% 67%,
       var(--nav-bg) 67%
     );
-  };
+  }
   &.mni-resume {
     animation: swapBgRes 0s;
-    animation-delay: .2s;
+    animation-delay: 0.2s;
     animation-fill-mode: forwards;
     background-size: 100% 300%;
-    background-image: linear-gradient(to bottom,
+    background-image: linear-gradient(
+      to bottom,
       var(--accent-res) 33%,
       var(--nav-bg-this-page) 33% 67%,
       var(--nav-bg) 67%
     );
-  };
+  }
   &.mni-writing {
     animation: swapBgWrit 0s;
-    animation-delay: .2s;
+    animation-delay: 0.2s;
     animation-fill-mode: forwards;
     background-size: 100% 300%;
-    background-image: linear-gradient(to bottom,
+    background-image: linear-gradient(
+      to bottom,
       var(--accent-writ) 33%,
       var(--nav-bg-this-page) 33% 67%,
       var(--nav-bg) 67%
     );
-  };
+  }
   &.mni-code {
     animation: swapBgCode 0s;
-    animation-delay: .2s;
+    animation-delay: 0.2s;
     animation-fill-mode: forwards;
     background-size: 100% 300%;
-    background-image: linear-gradient(to bottom,
+    background-image: linear-gradient(
+      to bottom,
       var(--accent-code) 33%,
       var(--nav-bg-this-page) 33% 67%,
       var(--nav-bg) 67%
     );
-  };
+  }
   &:hover {
     background-position: top;
-  };
+  }
 }
 
 .main-nav-item.current {
   cursor: default;
   background-position: center;
   background-size: 100% 300%;
-  background-image: linear-gradient(to bottom,
+  background-image: linear-gradient(
+    to bottom,
     var(--accent) 33%,
     var(--nav-bg-this-page) 33% 67%,
     var(--nav-bg) 67%
   );
   &:hover {
     background-position: top;
-  };
+  }
 }
 
 // hide default nav and show mobile nav
@@ -221,15 +249,19 @@
     align-items: center;
   }
 
-  .main-nav-item { display: none; }
+  .main-nav-item {
+    display: none;
+  }
 
-  .drop-nav { width: 100%; }
+  .drop-nav {
+    width: 100%;
+  }
 
   .drop-nav-btn {
     display: block;
     position: relative;
     width: 100%;
-    padding: .75rem 1.5rem;
+    padding: 0.75rem 1.5rem;
     border: none;
     z-index: 3;
     background: var(--drop-nav-btn-bg);
@@ -248,8 +280,10 @@
       width: 100%;
       border-radius: var(--rad);
       background: var(--drop-nav-btn-text);
-      &:nth-child(2) { margin: 4px 0; };
-    };
+      &:nth-child(2) {
+        margin: 4px 0;
+      }
+    }
   }
 
   .drop-nav-title {
@@ -263,17 +297,17 @@
     position: absolute;
     width: 100%;
     z-index: 2;
-    -webkit-transition: top .4s;
-       -moz-transition: top .4s;
-         -o-transition: top .4s;
-            transition: top .4s;
+    -webkit-transition: top 0.4s;
+    -moz-transition: top 0.4s;
+    -o-transition: top 0.4s;
+    transition: top 0.4s;
     &.hidden {
       top: -192px;
-    };
+    }
     &.visible {
       top: 48px;
       border-bottom: var(--x-btn-border);
-    };
+    }
   }
 
   .drop-nav-item {
@@ -282,14 +316,14 @@
     background: var(--nav-bg);
     &.current {
       background: var(--nav-bg-this-page);
-    };
+    }
     & > div {
       display: block;
-      padding: .75rem 1.5rem;
+      padding: 0.75rem 1.5rem;
       text-decoration: none;
       font-size: 1.25rem;
       color: var(--nav-text);
       font-weight: var(--theme-weight-adjust-title-text);
-    };
+    }
   }
 }
