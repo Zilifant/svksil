@@ -4,15 +4,15 @@
 
 .large-text,
 .large-text * {
-  font-size: 1.5rem;
-  line-height: 2.25rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 
-  &.intro-text-wrapper * {
-    @media (max-width: 800px) {
-      font-size: 20px;
-      line-height: 2rem;
-    }
-  }
+  // &.intro-text-wrapper * {
+  //   @media (max-width: 800px) {
+  //     font-size: 20px;
+  //     line-height: 2rem;
+  //   }
+  // }
 }
 
 $headshotWidth: 200px;
@@ -20,17 +20,11 @@ $headshotWidth: 200px;
 .intro-content-grid {
   display: grid;
   grid-template-columns: 1fr $headshotWidth;
-  gap: 1rem;
+  gap: 1.5rem;
 
-  // height: $headshotWidth * 2;
+  margin-top: 20px;
   padding-left: 1rem;
-  border: var(--x-btn-border);
-
-  // border-top-left-radius: calc($headshotWidth / 2);
-  // border-bottom-left-radius: calc($headshotWidth / 2);
-
-  background: var(--res-item-bg);
-
+  @include contentCard();
   @include colorfade();
 
   @media (max-width: 650px) {
@@ -41,33 +35,10 @@ $headshotWidth: 200px;
 
     height: max-content;
     padding: 0;
-    border-radius: 0;
 
     background: none;
     border: none;
-  }
-}
-
-.headshot-wrapper {
-  // height: $headshotWidth;
-  object-fit: contain;
-  overflow: hidden;
-  // border-radius: 50%;
-  // aspect-ratio: 1 / 1;
-  margin: 10px;
-  border: var(--x-btn-border);
-
-  @include colorfade();
-
-  & > img {
-    width: 100%;
-    display: block;
-  }
-
-  @media (max-width: 650px) {
-    height: $headshotWidth;
-    border-radius: 50%;
-    aspect-ratio: 1 / 1;
+    box-shadow: none;
   }
 }
 
@@ -85,21 +56,29 @@ $headshotWidth: 200px;
   }
 }
 
-// @media (max-width: 800px) {
-//   .content-left {
-//     display: none;
-//   }
+.headshot-wrapper {
+  object-fit: contain;
+  overflow: hidden;
+  // height: $headshotWidth;
+  // border-radius: 50%;
+  // aspect-ratio: 1 / 1;
+  margin: -20px 0;
+  border: var(--headshotBorder);
+  @include contentCard();
+  @include colorfade();
 
-//   .content-right {
-//     width: 100%;
-//     & > * {
-//       margin-left: 0;
-//     }
-//     & > :not(:first-child) {
-//       margin-top: 0.5rem;
-//     }
-//   }
-// }
+  & > img {
+    width: 100%;
+    display: block;
+  }
+
+  @media (max-width: 650px) {
+    height: $headshotWidth;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    margin: 10px;
+  }
+}
 
 .partner-section-title {
   font-style: italic;
@@ -109,7 +88,7 @@ $headshotWidth: 200px;
 .partner-logo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-  gap: 1rem;
+  gap: 1.5rem;
   width: 100%;
   justify-items: stretch;
   margin-top: 3rem;
@@ -121,9 +100,11 @@ $headshotWidth: 200px;
     flex-direction: column;
 
     padding: 1rem;
-    background-color: var(--res-item-bg);
-    border: var(--x-btn-border);
+    box-shadow: var(--boxShadow);
+    border-radius: var(--rad);
+    @include contentCard();
     @include colorfade();
+    background: var(--partner-bg);
 
     & > img {
       height: 65px;
