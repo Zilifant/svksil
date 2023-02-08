@@ -100,7 +100,7 @@ $headshotWidth: 200px;
     flex-direction: column;
 
     padding: 1rem;
-    box-shadow: var(--boxShadow);
+    box-shadow: var(--shadow);
     border-radius: var(--rad);
     @include contentCard();
     @include colorfade();

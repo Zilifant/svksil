@@ -144,8 +144,6 @@
   margin: -0.25rem 0 1.25rem calc(-0.5rem + 1px);
 }
 
-$highlightColor: var(--blug8);
-
 /* prettier-ignore */
 .skill-btn {
   flex-grow: 1;
@@ -155,21 +153,28 @@ $highlightColor: var(--blug8);
   padding: 0.5rem;
   border: var(--bdr1) solid rgba(255, 255, 255, 0.222);
   background: var(--res-item-bg);
-  box-shadow: var(--boxShadowBold);
+  box-shadow: var(--shadow-bold);
 
   $t: var(--time);
-  transition: color $t, background $t, border-color $t, transform $t, padding $t;
+  transition:
+    color $t,
+    background $t,
+    border-color $t,
+    transform $t,
+    padding $t;
 
-  & p {
-    color: var(--white);
+  & > p {
     position: relative;
     @include font-adjust();
     @include colorfade();
   }
 
   &.highlight {
-    background: $highlightColor;
-    border-color: $highlightColor;
+    background: var(--skill-bg-highlight);
+    border-color: var(--skill-bg-highlight);
+    & > p {
+      color: var(--white);
+    }
   }
 
   // &.biz      { background: var(--accent-res);    }
@@ -208,7 +213,7 @@ $highlightColor: var(--blug8);
   flex-wrap: wrap;
 
   & .skill {
-    opacity: 0.5;
+    opacity: var(--skill-opacity);
     margin: 0.25rem;
     padding: 0.5rem 1rem;
     border-radius: 22px;
@@ -225,8 +230,8 @@ $highlightColor: var(--blug8);
     &.highlight {
       opacity: 1;
       color: var(--white);
-      background: $highlightColor;
-      box-shadow: var(--boxShadow);
+      background: var(--skill-bg-highlight);
+      box-shadow: var(--shadow);
     }
     // &.biz { background: var(--accent-res); }
     // &.coding { background: var(--accent-bio); }
@@ -239,20 +244,16 @@ $highlightColor: var(--blug8);
 .exp {
   border: var(--bdr1) solid rgba(255, 255, 255, 0.222);
   border-radius: var(--rad);
-  box-shadow: var(--boxShadowBold);
+  box-shadow: var(--shadow-bold);
   transition: border-color var(--time), border-radius var(--time);
+
   &:not(:first-child) {
     margin-top: 1rem;
   }
+
   &:hover {
     border-color: var(--accent-hover);
     border-radius: var(--rad2);
-
-    & .x-btn-icon-wrap {
-      $col: $highlightColor;
-      background-color: $col;
-      border-color: var(--accent-hover);
-    }
   }
 }
 
@@ -294,8 +295,8 @@ $highlightColor: var(--blug8);
   @include square(1.5rem);
   border-radius: 50%;
   padding: 5px;
-  // background: var(--accent);
-  box-shadow: var(--boxShadow);
+  background: var(--x-btn-icon-bg);
+  box-shadow: var(--shadow);
   border: 1px solid rgba(255, 255, 255, 0.333);
 
   transition:
@@ -303,6 +304,11 @@ $highlightColor: var(--blug8);
     color var(--time),
     background var(--time),
     border-color var(--time);
+  
+  .exp:hover & {
+    background-color: var(--skill-bg-highlight);
+    border-color: var(--skill-bg-highlight);
+  }
 
   & .svg-x-btn {
     height: 100%;
@@ -312,10 +318,12 @@ $highlightColor: var(--blug8);
     stroke-linejoin: round;
     stroke-miterlimit: 2;
     margin: 0;
-    fill: var(--text);
-    transition: fill var(--time), transform 0.5s ease-in-out;
     fill: var(--white);
+    transition:
+      fill var(--time),
+      transform 0.5s ease-in-out;
   }
+
   .rotated & .svg-x-btn {
     transform: rotate(135deg);
   }

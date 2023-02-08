@@ -245,6 +245,7 @@
   --shadow: rgba(0, 0, 0, 0.03);
   --shadow2: rgba(0, 0, 0, 0.1);
 
+  --boxShadowLight: 0 2px 4px rgba(0, 0, 0, 0.035);
   --boxShadow: 0 2px 4px rgba(0, 0, 0, 0.07);
   --boxShadowBold:
     0 4px 8px rgba(0, 0, 0, 0.14),
@@ -256,9 +257,29 @@
   --headshotBorder: 1px solid rgba(255, 255, 255, 0.1);
   --headFootBorder: 1px solid rgba(255, 255, 255, 0.333);
 
-  --partnerBgGradient: linear-gradient(
+  // --contentBgLight: linear-gradient(
+  //   -20deg, #fdfbfb 0%, #ebedee 100%
+  //   );
+  // --contentBgLight: linear-gradient(
+  //   -20deg, #e6e9f0 0%, #eef1f5 100%
+  //   );
+  --contentBgLight: var(--newg1);
+  --contentCardBgLight: var(--colg0);
+  --partnerBgLight: var(--colg0);
+  --shadowLight: var(--boxShadow);
+  --shadowBoldLight: var(--boxShadow);
+
+  --contentBgDark: linear-gradient(
+    -20deg, #2b5876 0%, #4e4376 100%
+    );
+  --contentCardBgDark: linear-gradient(
+    -20deg, #8e92ac4e 0%, #878bad2a 100%
+    );
+  --partnerBgDark: linear-gradient(
     -20deg, #f2f3fcd9 0%, #f1f2fff5 100%
-  );
+    );
+  --shadowDark: var(--boxShadow);
+  --shadowBoldDark: var(--boxShadowBold);
 }
 
 main[data-theme='light'] {
@@ -283,7 +304,7 @@ main[data-theme='light'] {
   --text-alt-bright: var(--indi5);
   --text-alt-title: var(--trug9);
   --text-hover: var(--trug6);
-  --content-bg: var(--newg1);
+  --content-bg: var(--contentBgLight);
   --header-text: var(--colg2);
   --header-bg: var(--black);
   --nav-text: var(--trug9);
@@ -302,11 +323,12 @@ main[data-theme='light'] {
   --form-bg-focus: var(--colg1);
   --form-text: var(--gray8);
   --form-text-placeholder: var(--colg5);
-  --partner-logo-bg: var(--colg1);
   --horz-bar: var(--colg3);
-  --res-item-bg: var(--white);
-  --skill-bg: var(--white);
-  --partner-bg: var(--partnerBgGradient);
+  --res-item-bg: var(--contentCardBgLight);
+  --partner-bg: var(--partnerBgLight);
+  --skill-opacity: 1;
+  --skill-bg-highlight: var(--blug8);
+  --x-btn-icon-bg: var(--skill-bg-highlight);
   --x-btn-bg: var(--white);
   --x-btn-bg-hover: var(--white);
   --x-content-bg: var(--white);
@@ -317,6 +339,8 @@ main[data-theme='light'] {
   --x-btn-icon-border-fix: var(--x-btn-bg);
   --code-project-divider: var(--horz-bar);
   --dark-shadow: var(--gray9);
+  --shadow: var(--shadowLight);
+  --shadow-bold: var(--shadowBoldLight);
   --btn-fg: var(--white);
   --btn-fg-hover: var(--white);
   --btn-bg: var(--accent-res);
@@ -347,13 +371,12 @@ main[data-theme='dark'] {
   --text-alt-bright: var(--libl3);
   --text-alt-title: var(--colg2);
   --text-hover: var(--colg1);
-  --content-bg: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+  --content-bg: var(--contentBgDark);
   --header-text: var(--colg2);
   --header-bg: var(--black);
   --nav-text: var(--colg2);
   --nav-bg: var(--chlg9);
   --nav-bg-this-page: var(--chlg6);
-  // --nav-bg-this-page: rgba(255, 255, 255, 0.333);
   --nav-border: var(--chlg6);
   --drop-nav-btn-text: var(--colg2);
   --drop-nav-btn-bg: var(--black);
@@ -367,11 +390,12 @@ main[data-theme='dark'] {
   --form-bg-focus: var(--chlg9);
   --form-text: var(--colg4);
   --form-text-placeholder: var(--colg5);
-  --partner-logo-bg: var(--chlg8);
   --horz-bar: var(--chlg1);
-  --res-item-bg: linear-gradient(-20deg, #8e92ac4e 0%, #878bad2a 100%);
-  --skill-bg: #8e92ac45;
-  --partner-bg: var(--partnerBgGradient);
+  --res-item-bg: var(--contentCardBgDark);
+  --partner-bg: var(--partnerBgDark);
+  --skill-opacity: 0.5;
+  --skill-bg-highlight: var(--blug8);
+  --x-btn-icon-bg: none;
   --x-btn-bg: var(--chlg9);
   --x-btn-bg-hover: var(--x-btn-bg);
   --x-content-bg: var(--x-btn-bg);
@@ -382,6 +406,8 @@ main[data-theme='dark'] {
   --x-btn-icon-border-fix: var(--x-btn-bg);
   --code-project-divider: var(--chlg6);
   --dark-shadow: var(--black);
+  --shadow: var(--shadowDark);
+  --shadow-bold: var(--shadowBoldDark);
   --btn-fg: var(--text);
   --btn-fg-hover: var(--white);
   --btn-bg: var(--accent-res);
