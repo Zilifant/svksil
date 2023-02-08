@@ -86,3 +86,9 @@
   letter-spacing: .02rem;
   font-weight: var(--theme-weight-adjust-text);
 }
+
+@mixin contentCard() {
+  border-radius: var(--rad);
+  background: var(--res-item-bg);
+  box-shadow: var(--boxShadow);
+}
