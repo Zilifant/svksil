@@ -101,7 +101,7 @@
     <div class="skill-btns">
       {#each res.skills.categories as { id, displayName }}
         <button
-          class={`btn skill-btn ${id}`}
+          class={`btn skill-btn ${id} ${skillColor([id])}`}
           on:click={() => (highlightedCat = id)}
         >
           <p>{displayName}</p>
