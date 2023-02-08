@@ -27,6 +27,16 @@ export type ContentfulData = {
   items: any[];
 };
 
+export type MasterJSON = {
+  id: 'web-all-content';
+  bio: BioContent;
+  code: CodeContent;
+  resume: ResumeContent;
+  writing: WritingContent;
+  quotes: QuotesContent;
+  socials: SocialsContent;
+};
+
 export type Partner = {
   id: string;
   alt: string;
@@ -37,9 +47,16 @@ export type BioContent = {
 };
 
 export type ResumeContent = any;
+
 export type CodeContent = any;
+
 export type WritingContent = any;
-export type QuotesContent = any;
+
+export type QuotesContent = {
+  id: 'quotes';
+  type: 'footer';
+  quotes: Quote[];
+};
 export type SocialsContent = any;
 
 export type AllContent = {
@@ -51,4 +68,14 @@ export type AllContent = {
   quotes: QuotesContent;
   socials: SocialsContent;
   contentfulData: ContentfulData;
+  contentfulJSON: MasterJSON;
+};
+
+export type SVGsHTML = {
+  plus: string;
+  quote: string;
+  github: string;
+  npm: string;
+  mhk: string;
+  slogo: string;
 };
