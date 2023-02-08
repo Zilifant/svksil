@@ -17,7 +17,7 @@
   let bio: BioContent;
   $: bio = $content?.bio;
 
-  $: suffix = $theme === dark ? 'Alt' : '';
+  $: suffix = $theme === dark ? '' : '';
 
   $: setImgSrc = (id: string) => {
     const imgKey = `${id}${suffix}`;
