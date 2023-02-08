@@ -241,8 +241,10 @@
   --bdr1: 1px;
   --bdr3: 3px;
   --time: 0.5s;
+
   --shadow: rgba(0, 0, 0, 0.03);
   --shadow2: rgba(0, 0, 0, 0.1);
+
   --boxShadow: 0 2px 4px rgba(0, 0, 0, 0.07);
   --boxShadowBold:
     0 4px 8px rgba(0, 0, 0, 0.14),
@@ -250,8 +252,10 @@
   --headBoxShadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   --footBoxShadow: 0 -2px 4px rgba(0, 0, 0, 0.2);
   --insetBoxShadow: inset 0 2px 4px rgba(0, 0, 0, 0.07);
-  --headshotBorder: var(--bdr1) solid rgba(255, 255, 255, 0.1);
-  --headFootBorder: var(--bdr1) solid rgba(255, 255, 255, 0.333);
+
+  --headshotBorder: 1px solid rgba(255, 255, 255, 0.1);
+  --headFootBorder: 1px solid rgba(255, 255, 255, 0.333);
+
   --partnerBgGradient: linear-gradient(
     -20deg, #f2f3fcd9 0%, #f1f2fff5 100%
   );
@@ -343,7 +347,6 @@ main[data-theme='dark'] {
   --text-alt-bright: var(--libl3);
   --text-alt-title: var(--colg2);
   --text-hover: var(--colg1);
-  // --content-bg: var(--chlg7);
   --content-bg: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
   --header-text: var(--colg2);
   --header-bg: var(--black);
@@ -366,8 +369,6 @@ main[data-theme='dark'] {
   --form-text-placeholder: var(--colg5);
   --partner-logo-bg: var(--chlg8);
   --horz-bar: var(--chlg1);
-  // --res-item-bg: var(--chlg8t);
-  // --res-item-bg: linear-gradient(-20deg, #1e1f2580 0%, #23242d50 100%);
   --res-item-bg: linear-gradient(-20deg, #8e92ac4e 0%, #878bad2a 100%);
   --skill-bg: #8e92ac45;
   --partner-bg: var(--partnerBgGradient);
