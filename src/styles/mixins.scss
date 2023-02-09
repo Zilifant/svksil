@@ -92,3 +92,26 @@
   background: var(--res-item-bg);
   box-shadow: var(--shadow);
 }
+
+@mixin animatedUnderline($col: var(--text-anchor)) {
+  position: relative;
+  text-decoration: none;
+  color: $col;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: $col;
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  &:hover:before {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+}
