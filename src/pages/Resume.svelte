@@ -6,7 +6,7 @@
 
   let highlightedCat = 'coding';
   let res: ResumeContent;
-  $: res = $content?.resume;
+  $: res = $content?.contentfulJSON.resume;
 
   // Alphabetize skills.
   $: skills = res?.skills.skills.sort((a: any, b: any) => {
