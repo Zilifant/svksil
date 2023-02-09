@@ -50,8 +50,6 @@
   }
 }
 
-$link-fg: var(--cyan5);
-
 .url-pseudo-btn {
   display: flex;
   align-items: center;
@@ -73,7 +71,7 @@ $link-fg: var(--cyan5);
     @include colorfade();
 
     &.displayUrl {
-      color: $link-fg;
+      color: var(--text-anchor);
       margin-left: 0.5rem;
     }
   }
@@ -97,7 +95,7 @@ a.url-pseudo-btn > span.displayUrl::before {
   right: 0;
   width: 0;
   height: 2px;
-  background-color: $link-fg;
+  background-color: var(--text-anchor);
   transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -110,7 +108,7 @@ a.url-pseudo-btn > span.displayUrl::before {
 }
 
 .url-pseudo-btn .svg-icon {
-  fill: $link-fg;
+  fill: var(--text-anchor);
   margin-right: 0.5rem;
   height: 20px;
   width: 20px;
