@@ -148,7 +148,8 @@
               <ul class="x-content-ul">
                 {#each exp.bullets as { lead, text }}
                   <li class="x-content-li">
-                    <span class="lead">{lead}</span><br />{text}
+                    <p class="lead">{lead}</p>
+                    <p class="details">{text}</p>
                   </li>
                 {/each}
               </ul>

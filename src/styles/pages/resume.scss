@@ -88,7 +88,8 @@
   }
   & .endorse-person {
     @include colorfade();
-    color: var(--text-alt-faded);
+    // color: var(--text-alt-faded);
+    opacity: 0.6;
     font-weight: var(--theme-weight-adjust-title-text);
     margin-top: 0.5rem;
   }
@@ -346,7 +347,8 @@
   font-size: 1rem;
   text-align: end;
   font-weight: var(--theme-weight-adjust-title-text);
-  color: var(--text-alt-faded);
+  // color: var(--text-alt-faded);
+  opacity: 0.6;
 }
 
 .exp-summary {
@@ -391,12 +393,13 @@
 }
 
 .x-content-li {
-  color: var(--x-content-li);
+  @include font-adjust();
+
   &:not(:first-child) {
-    margin-top: 0.25rem;
+    margin-top: 1rem;
   }
-  .lead {
-    @include font-adjust();
-    font-weight: bold;
+
+  & > .details {
+    opacity: 0.65;
   }
 }
