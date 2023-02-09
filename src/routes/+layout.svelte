@@ -35,6 +35,8 @@
 </script>
 
 <main class="main-wrapper" data-page={pageId} data-theme={$theme}>
+  <div class="fixed-bg" />
+
   <Header />
 
   <Navbar bind:pageId bind:quote {quotes} />

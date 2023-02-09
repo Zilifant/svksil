@@ -5,7 +5,6 @@ from right or left, depending on the pages' relative positions in the navbar.
 <script lang="ts">
   import { animation } from '$lib/store';
   import { fly, fade } from 'svelte/transition';
-  import '$styles/components/wrap.scss';
 
   const flyDistance = 3000;
   const flyVector = $animation === 'flyLeft' ? flyDistance : -flyDistance;
