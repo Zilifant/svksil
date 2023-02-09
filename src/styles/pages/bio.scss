@@ -6,13 +6,6 @@
 .large-text * {
   font-size: 1.25rem;
   line-height: 1.75rem;
-
-  // &.intro-text-wrapper * {
-  //   @media (max-width: 800px) {
-  //     font-size: 20px;
-  //     line-height: 2rem;
-  //   }
-  // }
 }
 
 $headshotWidth: 200px;
@@ -49,11 +42,22 @@ $headshotWidth: 200px;
     margin-bottom: 0.5rem;
   }
 
+  @media (max-width: 800px) and (min-width: 650px) {
+    & * {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+  }
+
   @media (max-width: 650px) {
     order: 1;
     text-align: center;
     max-width: 450px;
   }
+}
+
+.intro-text-wrapper a {
+  @include animatedUnderline();
 }
 
 .headshot-wrapper {
