@@ -1,6 +1,6 @@
 ### My portfolio / personal website.
 
-A server side rendered site built with TypeScript, Svelte, SvelteKit, and SCSS. Hosted on Vercel. Originally built in vanilla JS, then rebuilt as an SPA in Svelte, and then converted to TypeScript and SvelteKit.
+A server side rendered site built with TypeScript, Svelte, SvelteKit, and SCSS. Hosted on Vercel. Originally built in vanilla JS; then rebuilt as an SPA in Svelte; and finally converted to TypeScript and SvelteKit.
 
 ### Somewhat notable features:
 
