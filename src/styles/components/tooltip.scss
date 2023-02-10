@@ -8,14 +8,11 @@
 .ttip-parent .ttip {
   z-index: 4;
   background-color: var(--bg);
-  border-radius: 3px;
-  border: 2px solid var(--chlg6);
-  // width: max-content;
-  // max-width: 500px;
+  border-radius: 10px;
   display: none;
-  // padding: 1rem;
   position: absolute;
   line-height: 0;
+  overflow: hidden;
 }
 
 .ttip.left,
@@ -36,8 +33,8 @@
 
 .ttip.top,
 .ttip.bottom {
-  left: 50%;
-  transform: translate(-50%, 0);
+  left: 0;
+  // transform: translate(-25%, 0);
 }
 
 .ttip.top {
@@ -54,4 +51,10 @@
 
 .ttip :not(:first-child) {
   margin-top: 1rem;
+}
+
+.ttip > iframe {
+  max-width: 80vw;
+  height: auto;
+  aspect-ratio: 16 / 9;
 }
