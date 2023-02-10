@@ -44,14 +44,14 @@
     <p class="headline-text">{res.intro.headline.general}</p>
   </section>
 
-  <section class="content res-achievements">
+  <!-- <section class="content res-achievements">
     <h2 class="res-sec-title">At A Glance</h2>
     <ul>
       {#each res.intro.achievements.general as item}
         <li class="achievement">{item}</li>
       {/each}
     </ul>
-  </section>
+  </section> -->
 
   <section class="content res-endorsements">
     <ul>
