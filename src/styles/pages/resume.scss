@@ -14,6 +14,11 @@
   }
 }
 
+.res-headline {
+  margin-bottom: 2rem;
+  padding-right: 3rem;
+}
+
 .res-sec-title {
   @include colorfade();
   margin: 1rem 0 1rem 2px;
@@ -159,7 +164,7 @@
   $t: var(--time);
   transition:
     color $t,
-    background $t,
+    background-color $t,
     border-color $t,
     transform $t,
     padding $t;
@@ -222,7 +227,6 @@
     /* prettier-ignore */
     transition:
       color $t,
-      background $t,
       background-color $t,
       border-color $t,
       opacity $t,
@@ -303,7 +307,7 @@
   transition:
     transform 0.5s ease-in-out,
     color var(--time),
-    background var(--time),
+    background-color var(--time),
     border-color var(--time);
   
   .exp:hover & {
