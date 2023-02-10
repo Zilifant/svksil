@@ -61,7 +61,7 @@
   // prettier-ignore
   transition:
     color $t,
-    background $t,
+    background-color $t,
     border-color $t,
     transform $t;
 
@@ -115,7 +115,7 @@ a.url-pseudo-btn > span.displayUrl::before {
   // prettier-ignore
   transition:
     color var(--time),
-    background var(--time),
+    background-color var(--time),
     border-color var(--time),
     fill var(--time);
 }
