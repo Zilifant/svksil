@@ -114,24 +114,16 @@
 }
 
 .edu {
-  @include res-list-item();
+  margin-left: 2px;
   width: max-content;
   & * {
     @include colorfade();
-  }
-  & h3 {
-    font-size: 1.25rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
   }
   & p {
     display: inline-block;
     &:not(:last-child) {
       margin-right: 1.5rem;
     }
-  }
-  & p:not(:first-child) {
-    margin-top: 0.5rem;
   }
   & span {
     @include font-adjust();

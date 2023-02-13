@@ -90,8 +90,8 @@
   </section>
 
   <section class="content res-edu">
+    <h2 class="res-sec-title">Education</h2>
     <div class="edu">
-      <h3>Education</h3>
       {#each res.education as { degreeShort, subject, nameLong, gradYear }}
         <p>
           <span class="degree">{degreeShort} </span><span class="subject"
