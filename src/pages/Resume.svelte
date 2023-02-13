@@ -1,12 +1,19 @@
 <!-- Resume -->
 <script lang="ts">
-  import type { ResumeContent } from '$lib/types';
+  import type { Endorsement, ResumeContent } from '$lib/types';
   import { content } from '$lib/store';
+  import { getItemsByContentType, parseMarkdown } from '$lib/utilities';
   import '$styles/pages/resume.scss';
 
   let highlightedCat = 'coding';
   let res: ResumeContent;
   $: res = $content?.contentfulJSON.resume;
+
+  let endorsements: Endorsement[];
+  $: endorsements = getItemsByContentType(
+    'endorsement',
+    $content?.contentfulData,
+  );
 
   // Alphabetize skills.
   $: skills = res?.skills.skills.sort((a: any, b: any) => {
@@ -55,7 +62,7 @@
 
   <section class="content res-endorsements">
     <ul>
-      {#each res.endorsements as { name, title, quote }}
+      {#each endorsements as { name, title, quote }}
         <li class="endorsement">
           <div class="svg-wrap endorsement-icon">
             <svg
@@ -74,7 +81,7 @@
             </svg>
           </div>
           <div class="endorsement-text">
-            <p class="endorse-quote">{quote}</p>
+            <div class="endorse-quote">{@html parseMarkdown(quote)}</div>
             <p class="endorse-person">{name}<br />{title}</p>
           </div>
         </li>

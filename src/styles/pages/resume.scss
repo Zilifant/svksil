@@ -28,17 +28,12 @@
 }
 
 .res-achievements ul,
-.res-endorsements ul,
 .res-interests ul {
   @include colorfade();
   display: flex;
   @media (max-width: 700px) {
     display: block;
   }
-}
-
-.res-endorsements ul {
-  flex-wrap: wrap;
 }
 
 @mixin res-list-item($dis: 'block') {
@@ -66,13 +61,32 @@
   @include res-list-item('inline');
 }
 
+/* prettier-ignore */
+.res-endorsements ul {
+  & > :nth-child(1) { grid-area: one };
+  & > :nth-child(2) { grid-area: two };
+  & > :nth-child(3) { grid-area: thr };
+  & > :nth-child(4) { grid-area: for };
+  & > :nth-child(5) { grid-area: fiv };
+}
+
+/* prettier-ignore */
+.res-endorsements ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "two two"
+    "one one"
+    "for fiv"
+    "thr thr";
+  gap: 1rem;
+}
+
 .endorsement {
-  @include res-list-item('inline');
-  flex: 1 0 33%;
-  &:last-child {
-    margin-left: 0;
-    margin-top: 1rem;
-  }
+  @include contentCard();
+  @include colorfade();
+  display: inline-flex;
+  padding: 1rem;
   & .endorsement-icon .svg-quote {
     @include colorfade();
     fill-rule: evenodd;
@@ -87,16 +101,15 @@
     width: 24px;
     fill: var(--accent);
   }
-  & .endorse-quote {
+  & .endorse-quote > p {
     @include colorfade();
-    font-style: italic;
+    margin-bottom: 0.5rem;
   }
   & .endorse-person {
     @include colorfade();
-    // color: var(--text-alt-faded);
     opacity: 0.6;
+    font-style: italic;
     font-weight: var(--theme-weight-adjust-title-text);
-    margin-top: 0.5rem;
   }
 }
 
@@ -135,9 +148,14 @@
 
 @media (max-width: 700px) {
   .achievement,
-  .endorsement,
   .interest {
     @include res-list-item();
+  }
+  .res-endorsements ul {
+    display: block;
+    & > li:not(:first-child) {
+      margin-top: 1rem;
+    }
   }
   .edu {
     width: 100%;
