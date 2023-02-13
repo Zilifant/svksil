@@ -7,7 +7,7 @@
     list-style: none;
   }
   & > :not(:first-child) {
-    margin-top: 1rem;
+    margin-top: 3rem;
   }
   & > section {
     width: 100%;
@@ -15,13 +15,12 @@
 }
 
 .res-headline {
-  margin-bottom: 2rem;
   padding-right: 3rem;
 }
 
 .res-sec-title {
   @include colorfade();
-  margin: 1rem 0 1rem 2px;
+  margin: 0 0 1rem 2px;
   font-size: 1.5rem;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
