@@ -46,7 +46,44 @@ export type BioContent = {
   partners: Partner[];
 };
 
-export type ResumeContent = any;
+export type ResumeIntro = {
+  headline: { general: string };
+};
+
+export type Endorsement = {
+  name: string;
+  title: string;
+  quote: string;
+  order: number;
+};
+
+export type School = {
+  degreeShort: string;
+  subject: string;
+  nameLong: string;
+  gradYear: number;
+};
+
+export type Skills = {
+  categories: any[];
+  skills: any[];
+};
+
+export type Experience = any;
+
+export type Interests = {
+  shortForm: string[];
+  longForm: string[];
+};
+
+export type ResumeContent = {
+  intro: ResumeIntro;
+  endorsements: Endorsement[];
+  education: School[];
+  skills: Skills;
+  experience: Experience[];
+  interests: Interests;
+};
 
 export type CodeContent = any;
 
