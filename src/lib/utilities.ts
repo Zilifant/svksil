@@ -1,6 +1,6 @@
 // Utilities
 
-import type { PageId, Animation } from '$lib/types';
+import type { PageId, Animation, ContentfulData } from '$lib/types';
 import { marked } from 'marked';
 import { bio, pageIds, pages } from '$lib/constants';
 import { browser } from '$app/environment';
@@ -39,6 +39,25 @@ export function parseMarkdown(text: string): string {
     return prev + marked.parse(curr);
   }, '');
   return html;
+}
+
+export function getContentfulField(
+  fid: string,
+  fieldName: string,
+  data: ContentfulData,
+) {
+  const item = data?.items?.find((item) => item?.fields?.fid === fid);
+  return item?.fields?.[fieldName];
+}
+
+export function getItemsByContentType(
+  contentType: string,
+  data: ContentfulData,
+) {
+  const items = data?.items?.filter(
+    (item) => item?.sys?.contentType?.sys?.id === contentType,
+  );
+  return items.reduce((prev, curr) => [...prev, curr.fields], []);
 }
 
 // Misc //
