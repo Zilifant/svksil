@@ -7,7 +7,7 @@
   import Footer from '$components/Footer.svelte';
   import { content, theme } from '$lib/store';
   import { version, dark } from '$lib/constants';
-  import { sample, setInitialPageId } from '$lib/utilities';
+  import { sample, setInitialPageId, getContentfulField } from '$lib/utilities';
   import '$styles/variables.scss';
   import '$styles/mixins.scss';
   import '$styles/global.scss';
@@ -18,15 +18,12 @@
   let quote: Quote;
   let pageId: PageId = setInitialPageId($page?.route?.id);
 
-  const getMasterJSON = (data: ContentfulData) => {
-    const item = data?.items?.find(
-      (item: any) => item?.fields?.fid === 'content master json',
-    );
-    return item?.fields?.webAllContent;
-  };
-
   $: ({ contentfulData, jsioRecord, themeCookie } = data);
-  $: contentfulJSON = getMasterJSON(contentfulData);
+  $: contentfulJSON = getContentfulField(
+    'content master json',
+    'webAllContent',
+    contentfulData,
+  );
   $: content.set({ ...jsioRecord, contentfulData, contentfulJSON });
   $: theme.set(themeCookie || dark);
   $: quotes = jsioRecord.quotes.quotes;
