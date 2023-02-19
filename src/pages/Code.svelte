@@ -2,11 +2,24 @@
 <script lang="ts">
   import type { CodeContent } from '$lib/types';
   import { content } from '$lib/store';
+  import { dev } from '$app/environment';
+  import { getItemField, getItemById, getImageSeries } from '$lib/utilities';
+  import HeroCarousel from '$components/HeroCarousel.svelte';
   import Tooltip from '$components/Tooltip.svelte';
   import '$styles/pages/code.scss';
 
   let code: CodeContent;
   $: code = $content?.contentfulJSON?.code;
+
+  $: icon = getItemField('icon', null, $content?.contentfulData);
+  $: iconImgSeries = getItemById(
+    icon?.imageSeries?.sys?.id,
+    $content?.contentfulData,
+  );
+  $: iconImgData = getImageSeries(
+    iconImgSeries?.fields?.images,
+    $content?.contentfulData,
+  );
 </script>
 
 <div class="page-wrapper code">
@@ -14,10 +27,21 @@
     <p class="headline-text">{code.summary}</p>
   </section>
 
+  {#if dev}
+    <section class="code-project no-padding">
+      <HeroCarousel images={iconImgData} />
+    </section>
+  {/if}
+
   {#each code.projects as project}
     <section class="code-project">
       {#if project.type === 'multi-section'}
         <h3>{project.title}</h3>
+        <!-- <img
+          class="hero-img"
+          src={getHeroImageUrl(project.id, $content?.contentfulData)}
+          alt={project.title}
+        /> -->
 
         <div class="code-project-description">
           {#each project.description.split('\n') as line}
@@ -72,6 +96,11 @@
         {/each}
       {:else}
         <h3>{project.title}</h3>
+        <!-- <img
+          class="hero-img"
+          src={getHeroImageUrl(project.id, $content?.contentfulData)}
+          alt={project.title}
+        /> -->
 
         <div class="code-project-description">
           {#each project.description.split('\n') as line}
