@@ -238,6 +238,8 @@
 :root {
   --rad: 3px;
   --rad2: 6px;
+  --rad3: 12px;
+  --rad4: 20px;
   --bdr1: 1px;
   --bdr3: 3px;
   --time: 0.5s;
@@ -256,6 +258,11 @@
 
   --headshotBorder: 1px solid rgba(255, 255, 255, 0.1);
   --headFootBorder: 1px solid rgba(255, 255, 255, 0.333);
+
+  --dualBoxShadow:
+    inset 0 2px 10px rgba(0, 0, 0, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.14),
+    0 -2px 4px rgba(0, 0, 0, 0.07);
 
   // --contentBgLight: linear-gradient(
   //   -20deg, #fdfbfb 0%, #ebedee 100%

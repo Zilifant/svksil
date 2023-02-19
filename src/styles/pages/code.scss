@@ -30,6 +30,10 @@
     align-items: center;
   }
 
+  & .hero-img {
+    width: 100%;
+  }
+
   & .code-project-description > p:not(:first-child) {
     margin-top: 0.5rem;
   }

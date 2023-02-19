@@ -1,0 +1,286 @@
+// Mixins and Variables
+
+@import './colors.scss';
+
+$rad: 0;
+$rad3: 3px;
+$rad6: 6px;
+$mar: 0.5rem;
+$gap: 0.5rem;
+$bdr: 1px;
+$bdr2: 2px;
+$bdr3: 3px;
+$time: .2s;
+
+// Infomodals
+
+$ifm-mar: 1.5rem;
+$out-mar: 28px; // 2rem
+
+// Player
+
+$pt: 8%;
+$dpt: 5%;
+
+@mixin shadow() {
+  box-shadow:
+  rgba(0, 0, 0, 0.03) 0px 1px 2px 0px,
+  rgba(0, 0, 0, 0.03) 0px 2px 6px 2px,
+  rgba(0, 0, 0, 0.03) 0px -1px 2px 0px,
+  rgba(0, 0, 0, 0.03) 0px -2px 6px 2px;
+}
+
+@mixin colorfade($t: $time) {
+  transition:
+    color $t,
+    background-color $t,
+    border-color $t,
+    fill $t;
+}
+
+@mixin square($size: max-content) {
+  height: $size;
+  width: $size;
+}
+
+@mixin circle($size: 10px) {
+  height: $size;
+  width: $size;
+  border-radius: 50%;
+}
+
+@mixin float-btn-txt($bg: $bg4, $fg: $cyan5, $rd: $rad3) {
+  background-color: $bg;
+  border-radius: $rd;
+  color: $fg;
+  & p {
+    color: $fg;
+  };
+  & svg {
+    fill: $fg;
+    @include colorfade();
+  };
+  @include shadow();
+  @include colorfade();
+  &:not(:disabled):not(:active):hover {
+    color: lighten($fg, 20%);
+    & svg {
+      fill: lighten($fg, 20%);
+    };
+    background-color: lighten($bg, 4%);
+  };
+  &:not(:disabled):active {
+    color: darken($fg, 20%);
+    & svg {
+      fill: darken($fg, 20%);
+    };
+    background-color: darken($bg, 10%);
+  };
+}
+
+@mixin float-btn-toggle($c-on: $ready, $c-off: $redd5, $size: 1.5rem) {
+  background-color: $c-off;
+  border-radius: 50%;
+  @include square($size);
+  @include shadow();
+  transition: all $time;
+  &:not(:disabled):not(:active):hover {
+    background-color: lighten($c-off, 4%);
+  }
+  &:not(:disabled):active {
+    background-color: darken($c-off, 1%)
+  }
+  &.on {
+    background-color: $c-on;
+    &:not(:disabled):not(:active):hover {
+      background-color: lighten($c-on, 4%);
+    }
+    &:not(:disabled):active {
+      background-color: darken($c-on, 1%)
+    }
+  }
+}
+
+@mixin flat-btn-txt($bg: $bg4, $fg: $cyan5) {
+  background-color: $bg;
+  padding: 1px 6px;
+  border: 1px solid $bg3;
+  border-radius: $rad3;
+  text-transform: uppercase;
+  color: $fg;
+  transition: all $time;
+  &:not(:disabled):not(:active):hover {
+    color: lighten($fg, 20%);
+    background-color: lighten($bg, 12%);
+    border-color: lighten($bg, 12%);
+  }
+  &:not(:disabled):active {
+    color: lighten($fg, 10%);
+    background-color: lighten($bg, 5%);
+    border-color: lighten($bg, 5%);
+  }
+}
+
+@mixin gradient-btn-txt($col: $cyan5) {
+  background: linear-gradient(
+    0deg,
+    darken($col, 25%) 0%,
+    darken($col, 35%) 100%
+  );
+  padding: 1px 6px;
+  border: 1px solid $col;
+  border-radius: $rad3;
+  text-transform: uppercase;
+  color: lighten($col, 50%);
+  transition: all $time;
+  &:not(:disabled):not(:active):hover {
+    // color: lighten($fg3, 20%);
+    color: lighten($col, 55%);
+    border-color: lighten($col, 12%);
+  };
+}
+
+@mixin nobg-btn-svg($fg: $cyan5) {
+  background-color: inherit;
+  & svg {
+    @include colorfade();
+    fill: $fg;
+    &:hover {
+      fill: lighten($fg, 20%);
+    }
+    &:active {
+      fill: darken($fg, 10%);
+    }
+  }
+}
+
+@mixin close-btn($size: 20px, $pad: 4px) {
+  $col: $red;
+  background-color: $col;
+  border-radius: 50%;
+  padding: $pad;
+  @include square($size);
+  @include colorfade();
+  @include shadow();
+
+  & svg {
+    @include colorfade();
+    transform: rotate(45deg);
+    fill: $col;
+  };
+
+  &:not(:disabled):not(:active):hover {
+    & svg {
+      fill: $darkest;
+    };
+  };
+
+  &:not(:disabled):active {
+    background-color: transparentize($col, .3);
+    & svg {
+      fill: $darkest;
+    };
+  };
+}
+
+// new button styles
+
+@mixin flat-btn-solid(
+  $fg,
+  $bg,
+  $fg-dis: $dark,
+  $bg-dis: $darker,
+  $fg-sel: $white,
+  $bg-sel: $pink
+) {
+  color: $fg;
+  background-color: $bg;
+
+  border: none;
+  border-radius: $rad3;
+
+  @include shadow();
+  @include colorfade();
+  // transition: all $time;
+
+  & > p, & > svg {
+    fill: $fg;
+    color: $fg;
+    @include colorfade();
+  };
+
+  &:disabled {
+    cursor: auto;
+    color: $fg-dis;
+    background-color: $bg-dis;
+
+    & > p, & > svg {
+      fill: $fg-dis;
+      color: $fg-dis;
+    };
+  };
+
+  &.selected {
+    color: $fg-sel;
+    background-color: $bg-sel;
+
+    & > p, & > svg {
+      fill: $fg-sel;
+      color: $fg-sel;
+    };
+  };
+
+  // &:not(:disabled):not(:active):hover {
+
+  // };
+
+  // &:not(:disabled):active {
+
+  // };
+}
+
+@mixin flat-btn-outline(
+  $fg,
+  $bg,
+  $bd,
+  $fg-dis: $darker,
+  $bg-dis: $darkest,
+  $bd-dis: $dark
+) {
+  color: $fg;
+  & > p { color: $fg; transition: all $time; };
+  background-color: $bg;
+  border: $bdr2 solid $bd;
+  border-radius: $rad3;
+  padding: 1px 6px;
+  transition: all $time;
+
+  &:disabled {
+    cursor: auto;
+    color: $fg-dis;
+    & > p { color: $fg-dis; };
+    background-color: $bg-dis;
+    border-color: $bd-dis;
+  };
+
+  &:not(:disabled):not(:active):hover {
+    color: $light;
+    & > p { color: $light; transition: all $time; };
+    background-color: $bd;
+    border-color: $bd;
+  };
+}
+
+@mixin svg-nobg-btn($fg: $cyan-alt, $hv: $pink) {
+  background-color: inherit;
+  @include colorfade();
+
+  & svg {
+    fill: $fg;
+    @include colorfade();
+
+    &:hover {
+      fill: $hv;
+    };
+  };
+}
