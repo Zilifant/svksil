@@ -1,0 +1,43 @@
+// image gallery
+
+@import '../mixins.scss';
+
+$padding: 2rem;
+
+/* prettier-ignore */
+ul.img-gallery {
+  list-style: none;
+  display: grid;
+  gap: $padding;
+  padding: 0 $padding;
+
+  grid-template-columns: repeat(12, 1fr);
+
+  // width: 80%;
+
+  & > li {
+    grid-column: span 3;
+    &.small  { grid-column: span 1; }
+    &.medium { grid-column: span 6; }
+    &.large  { grid-column: 1 / span 12; }
+
+    // &.expedition { grid-column: span 3; }
+
+    & > img {
+      display: block;
+      width: 100%;
+
+      // background: var(--res-item-bg);
+      box-shadow: var(--boxShadowBold);
+      // border-radius: 20px;
+    }
+  }
+}
+
+li.expedition > img {
+  border-radius: 20px !important;
+}
+
+li.battle > img {
+  border-radius: 20px !important;
+}
