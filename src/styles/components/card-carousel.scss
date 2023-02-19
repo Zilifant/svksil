@@ -1,0 +1,116 @@
+// card carousel
+
+@import '../mixins.scss';
+
+.card-carousel-wrapper,
+.card-carousel-wrapper * {
+  $t: 0.5s;
+  transition: transform $t, width $t, height $t, margin $t;
+}
+
+.card-carousel-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  --width: 1400px;
+  width: var(--width);
+
+  & ul {
+    display: grid;
+    place-items: center;
+
+    list-style: none;
+    overflow: hidden;
+
+    width: calc(var(--width) - 400px);
+
+    background: var(--res-item-bg);
+    border: var(--headshotBorder);
+    border-radius: var(--rad3);
+    box-shadow: var(--dualBoxShadow);
+  }
+
+  /* prettier-ignore */
+  & li {
+    grid-area: 1 / 1;
+    position: relative;
+    width: calc(var(--width) / 5);
+    padding: 1.5rem 1rem;
+
+    &.far-behind { transform: translateX(-300%); }
+    &.two-behind { transform: translateX(-200%); }
+    &.one-behind { transform: translateX(-100%); }
+    &.current    { transform: translateX(0);     }
+    &.one-ahead  { transform: translateX(100%);  }
+    &.two-ahead  { transform: translateX(200%);  }
+    &.far-ahead  { transform: translateX(300%);  }
+  }
+
+  & img {
+    display: block;
+    width: 100%;
+    box-shadow: var(--boxShadowBold);
+    border-radius: 12px;
+  }
+
+  & .controls-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+    & button {
+      padding: 0.5rem;
+      margin: 1rem 0.25rem;
+      width: 80px;
+    }
+  }
+}
+
+/* prettier-ignore */
+.standard-button {
+  flex-grow: 1;
+  border-radius: 24px;
+  min-width: max-content;
+  margin: 0.25rem 0 0.25rem 0.5rem;
+  padding: 0.5rem;
+  border: var(--bdr1) solid rgba(255, 255, 255, 0.222);
+  background: var(--res-item-bg);
+  box-shadow: var(--shadow-bold);
+
+  $t: var(--time);
+  transition:
+    color $t,
+    background-color $t,
+    border-color $t,
+    opacity $t,
+    transform $t,
+    padding $t;
+
+  & > p {
+    position: relative;
+    @include font-adjust();
+    @include colorfade();
+  }
+
+  &.highlight {
+    background: var(--skill-bg-highlight);
+    border-color: var(--skill-bg-highlight);
+    & > p {
+      color: var(--white);
+    }
+  }
+
+  &:hover:not(.highlight):not(:disabled) {
+    border-color: var(--accent-hover);
+  }
+
+  &:disabled:not(.no-disabled-styling) {
+    opacity: 0.5;
+    cursor: default;
+  }
+}

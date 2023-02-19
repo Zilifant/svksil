@@ -1,0 +1,56 @@
+// hero carousel
+
+@import '../mixins.scss';
+
+.hero-carousel-wrapper,
+.hero-carousel-wrapper * {
+  $t: 0.5s;
+  transition: transform $t, width $t, height $t, margin $t;
+}
+
+.hero-carousel-wrapper {
+  position: relative;
+
+  --width: 800px;
+  width: var(--width);
+
+  &.large {
+    --width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+}
+
+.hero-carousel-wrapper ul {
+  list-style: none;
+  overflow: hidden;
+  display: grid;
+}
+
+.hero-carousel-wrapper li {
+  grid-area: 1 / 1;
+  position: relative;
+}
+
+/* prettier-ignore */
+.hero-carousel-wrapper li {
+  &.behind  { transform: translateY(-100%); }
+  &.current { transform: translateY(0);     }
+  &.ahead   { transform: translateY(100%);  }
+}
+
+.hero-carousel-wrapper img {
+  display: block;
+  width: 100%;
+}
+
+.hero-carousel-wrapper .controls-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.hero-carousel-wrapper .controls-wrapper button {
+  padding: 0.5rem 0;
+  margin: 0.25rem;
+}
