@@ -21,10 +21,19 @@ export type Page = {
 
 export type ContentfulData = {
   sys: any;
-  total: number;
-  skip: number;
-  limit: number;
   items: any[];
+  includes: any;
+  total: number;
+  limit: number;
+  skip: number;
+};
+
+export type AssetRef = CfItem;
+
+export type CfItem = {
+  fields: any;
+  metadata: any;
+  sys: any;
 };
 
 export type MasterJSON = {
@@ -116,3 +125,14 @@ export type SVGsHTML = {
   mhk: string;
   slogo: string;
 };
+
+export type ImageData = {
+  url: string;
+  title: string;
+  alt: string;
+  order?: string | number;
+  description?: string;
+  tags?: string[];
+};
+
+export type AssetData = any;
