@@ -15,3 +15,5 @@ yarn.lock
 # Ignore other stuff
 global.scss
 mixins.scss
+/src/components/Carousel/carousel.scss
+/src/components/Carousel/mixins.scss
