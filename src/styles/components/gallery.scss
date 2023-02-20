@@ -27,6 +27,7 @@ ul.img-gallery {
     &.large  { grid-column: 1 / span 12; }
 
     &.rec-sheet-v1 { grid-column: span 12; }
+    &.paradigm-hero { grid-column: span 12; }
 
     &.crisis-icons {
       grid-column: 2 / span 10;
@@ -66,4 +67,8 @@ li.future > img {
   border-radius: 20px !important;
   max-width: 800px;
   // place-self: center;
+}
+
+li.paradigm-hero > img {
+  border-radius: 10px !important;
 }
