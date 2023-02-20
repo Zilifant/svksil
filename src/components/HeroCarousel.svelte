@@ -5,6 +5,12 @@
   import StandardBtn from './StandardBtn.svelte';
   import '$styles/components/hero-carousel.scss';
 
+  import plus from '../assets/svgs/plus.svg';
+  import minus from '../assets/svgs/minus.svg';
+  import chevRight from '../assets/svgs/chevRight.svg';
+  import chevLeft from '../assets/svgs/chevLeft.svg';
+  import doubleChevUp from '../assets/svgs/doubleChevUp.svg';
+
   export let images: ImageData[];
 
   let currentIdx = 0;
@@ -37,6 +43,11 @@
     currentIdx--;
   }
 
+  function backToStart() {
+    currentIdx = 0;
+    prevIdx = -1;
+  }
+
   const growOrShrink = () => (isLarge = !isLarge);
 
   $: wrapperClasses = classNames({
@@ -56,20 +67,30 @@
   <div class="controls-wrapper">
     <StandardBtn
       classes={`${allDisabled ? 'no-disabled-styling' : ''}`}
+      onClick={backToStart}
+      isDisabled={allDisabled || backDisabled}
+    >
+      <img src={doubleChevUp} alt="back to top" />
+    </StandardBtn>
+
+    <StandardBtn
+      classes={`${allDisabled ? 'no-disabled-styling' : ''}`}
       onClick={back}
       isDisabled={allDisabled || backDisabled}
     >
-      Back
+      <img class="chev prev" src={chevLeft} alt="previous" />
     </StandardBtn>
-    <StandardBtn onClick={growOrShrink}>
-      {isLarge ? 'Shrink' : 'Grow'}
-    </StandardBtn>
+
     <StandardBtn
       classes={`${allDisabled ? 'no-disabled-styling' : ''}`}
       onClick={forward}
       isDisabled={allDisabled || forwardDisabled}
     >
-      Forward
+      <img class="chev next" src={chevRight} alt="next" />
+    </StandardBtn>
+
+    <StandardBtn onClick={growOrShrink}>
+      <img src={isLarge ? minus : plus} alt={isLarge ? 'shrink' : 'grow'} />
     </StandardBtn>
   </div>
 </div>

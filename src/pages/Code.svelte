@@ -11,7 +11,7 @@
   let code: CodeContent;
   $: code = $content?.contentfulJSON?.code;
 
-  $: icon = getItemField('icon', null, $content?.contentfulData);
+  $: icon = getItemField('mhk', null, $content?.contentfulData);
   $: iconImgSeries = getItemById(
     icon?.imageSeries?.sys?.id,
     $content?.contentfulData,
@@ -27,22 +27,11 @@
     <p class="headline-text">{code.summary}</p>
   </section>
 
-  {#if dev}
-    <section class="code-project no-padding">
-      <HeroCarousel images={iconImgData} />
-    </section>
-  {/if}
-
   {#each code.projects as project}
     <section class="code-project">
       {#if project.type === 'multi-section'}
+        <HeroCarousel images={iconImgData} />
         <h3>{project.title}</h3>
-        <!-- <img
-          class="hero-img"
-          src={getHeroImageUrl(project.id, $content?.contentfulData)}
-          alt={project.title}
-        /> -->
-
         <div class="code-project-description">
           {#each project.description.split('\n') as line}
             <p>{line}</p>

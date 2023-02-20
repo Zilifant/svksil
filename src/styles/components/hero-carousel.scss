@@ -5,18 +5,28 @@
 .hero-carousel-wrapper,
 .hero-carousel-wrapper * {
   $t: 0.5s;
-  transition: transform $t, width $t, height $t, margin $t;
+  transition: transform $t, width $t, height $t, margin $t, border-radius $t;
 }
 
 .hero-carousel-wrapper {
   position: relative;
+  margin-left: -2rem;
 
-  --width: 800px;
+  --width: calc(800px + 2rem);
   width: var(--width);
 
   &.large {
     --width: 100vw;
     margin-left: calc(-50vw + 50%);
+    margin-bottom: calc(-30px + 0.5rem);
+
+    & ul {
+      border-radius: 0;
+    }
+
+    & .controls-wrapper {
+      transform: translateY(-150%);
+    }
   }
 }
 
@@ -24,6 +34,8 @@
   list-style: none;
   overflow: hidden;
   display: grid;
+  box-shadow: var(--boxShadowBold);
+  border-radius: var(--rad2);
 }
 
 .hero-carousel-wrapper li {
@@ -50,7 +62,28 @@
   flex-direction: row;
 }
 
+$buttonSize: 40px;
+$buttonPadding: 10px;
+
 .hero-carousel-wrapper .controls-wrapper button {
-  padding: 0.5rem 0;
-  margin: 0.25rem;
+  height: $buttonSize;
+  width: $buttonSize;
+  border-radius: 50%;
+  margin: 0.5rem 0.25rem 0 0.25rem;
+  padding: $buttonPadding;
+
+  & > img {
+    display: block;
+    height: 100%;
+
+    &.chev {
+      padding: 1px;
+      &.prev {
+        transform: translateX(-1px);
+      }
+      &.next {
+        transform: translateX(1px);
+      }
+    }
+  }
 }
