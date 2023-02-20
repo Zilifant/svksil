@@ -5,15 +5,16 @@
 
   export let images: ImageData[];
 
-  $: setClassesFromTags = (tags: string[] | undefined) => {
-    if (!tags) return '';
-    return tags.toString().replaceAll(',', ' ');
+  $: setClassesFromMeta = (title: string, tags: string[] | undefined) => {
+    const ttl = title.replaceAll(' ', '-') || '';
+    if (!tags) return ttl;
+    return `${ttl} ${tags.toString().replaceAll(',', ' ')}`;
   };
 </script>
 
 <ul class="img-gallery">
   {#each images as { url, title, alt, tags }}
-    <li class={setClassesFromTags(tags)}>
+    <li class={setClassesFromMeta(title, tags)}>
       <img src={url} {title} {alt} />
     </li>
   {/each}
