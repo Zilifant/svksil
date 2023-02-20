@@ -1,8 +1,9 @@
 <!-- hero carousel -->
 <script lang="ts">
   import type { ImageData } from '$lib/types';
-  import '$styles/components/hero-carousel.scss';
+  import classNames from 'classnames';
   import StandardBtn from './StandardBtn.svelte';
+  import '$styles/components/hero-carousel.scss';
 
   export let images: ImageData[];
 
@@ -37,9 +38,14 @@
   }
 
   const growOrShrink = () => (isLarge = !isLarge);
+
+  $: wrapperClasses = classNames({
+    'hero-carousel-wrapper': true,
+    large: isLarge,
+  });
 </script>
 
-<div class={`hero-carousel-wrapper ${isLarge ? 'large' : ''}`}>
+<div class={wrapperClasses}>
   <ul>
     {#each images as { url, title, alt }, index}
       <li class={setImgClass(index)}>
