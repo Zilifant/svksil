@@ -19,6 +19,8 @@
   --width: 1400px;
   width: var(--width);
 
+  margin-bottom: 2rem;
+
   & ul {
     display: grid;
     place-items: center;
@@ -57,16 +59,42 @@
     border-radius: 12px;
   }
 
-  & .controls-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+  // & .controls-wrapper {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   flex-direction: row;
 
-    & button {
-      padding: 0.5rem;
-      margin: 1rem 0.25rem;
-      width: 80px;
+  //   & button {
+  //     padding: 0.5rem;
+  //     margin: 1rem 0.25rem;
+  //     width: 80px;
+  //   }
+  // }
+}
+
+$buttonSize: 40px;
+$buttonPadding: 10px;
+
+.card-carousel-wrapper .controls-wrapper button {
+  height: $buttonSize;
+  width: $buttonSize;
+  border-radius: 50%;
+  margin: 0.5rem 0.25rem 0 0.25rem;
+  padding: $buttonPadding;
+
+  & > img {
+    display: block;
+    height: 100%;
+
+    &.chev {
+      padding: 1px;
+      &.prev {
+        transform: translateX(-1px);
+      }
+      &.next {
+        transform: translateX(1px);
+      }
     }
   }
 }

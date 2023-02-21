@@ -13,6 +13,8 @@ ul.img-gallery {
 
   grid-template-columns: repeat(12, 1fr);
 
+  margin-bottom: $padding;
+
   // width: 80%;
 
   & > li {

@@ -2,6 +2,8 @@
 <script lang="ts">
   import type { ImageData } from '$lib/types';
   import StandardBtn from '$components/StandardBtn.svelte';
+  import chevRight from '../assets/svgs/chevRight.svg';
+  import chevLeft from '../assets/svgs/chevLeft.svg';
   import '$styles/components/card-carousel.scss';
 
   export let images: ImageData[];
@@ -55,14 +57,14 @@
       onClick={back}
       isDisabled={allDisabled || backDisabled}
     >
-      Back
+      <img class="chev prev" src={chevLeft} alt="previous" />
     </StandardBtn>
     <StandardBtn
       classes={`${allDisabled ? 'no-disabled-styling' : ''}`}
       onClick={forward}
       isDisabled={allDisabled || forwardDisabled}
     >
-      Forward
+      <img class="chev next" src={chevRight} alt="next" />
     </StandardBtn>
   </div>
 </div>
