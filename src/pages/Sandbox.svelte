@@ -54,7 +54,7 @@
 </div>
 
 <style lang="scss">
-  div.sandbox-wrapper {
+  div.sandbox {
     display: flex;
     align-items: center;
     justify-content: center;
