@@ -13,8 +13,6 @@ ul.img-gallery {
 
   grid-template-columns: repeat(12, 1fr);
 
-  margin-bottom: $padding;
-
   & > li {
     display: flex;
     align-items: center;
@@ -66,7 +64,6 @@ li.rec-sheet-v1 > img,
 li.future > img {
   border-radius: 20px !important;
   max-width: 800px;
-  // place-self: center;
 }
 
 li.paradigm-hero > img {
