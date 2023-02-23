@@ -30,10 +30,6 @@
     display: block;
   }
 
-  img.paper {
-    @include paperShadow();
-  }
-
   div.big-img-wrapper {
     &.full-width {
       width: 100vw;
