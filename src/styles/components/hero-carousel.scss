@@ -2,6 +2,15 @@
 
 @import '../mixins.scss';
 
+.hero-carousel-section-wrapper {
+  width: 100%;
+  padding: 1rem;
+  background: var(--res-item-bg);
+  border: var(--headshotBorder);
+  border-radius: var(--rad3);
+  box-shadow: var(--dualBoxShadow);
+}
+
 .hero-carousel-wrapper,
 .hero-carousel-wrapper * {
   $t: 0.5s;
@@ -15,20 +24,13 @@
   --width: calc(800px + 2rem);
   width: var(--width);
 
-  margin-bottom: 2rem;
-
   &.large {
     --width: 100vw;
     margin-left: calc(-50vw + 50%);
-    // margin-bottom: calc(-30px + 0.5rem);
 
     & ul {
       border-radius: 0;
     }
-
-    // & .controls-wrapper {
-    //   transform: translateY(-150%);
-    // }
   }
 }
 
@@ -71,12 +73,13 @@ $buttonPadding: 10px;
   height: $buttonSize;
   width: $buttonSize;
   border-radius: 50%;
-  margin: 0.5rem 0.25rem 0 0.25rem;
+  margin: 1rem 0.25rem 0 0.25rem;
   padding: $buttonPadding;
 
   & > img {
     display: block;
     height: 100%;
+    width: 100%;
 
     &.chev {
       padding: 1px;

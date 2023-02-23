@@ -50,27 +50,14 @@
     &.one-ahead  { transform: translateX(100%);  }
     &.two-ahead  { transform: translateX(200%);  }
     &.far-ahead  { transform: translateX(300%);  }
+
+    & img {
+      display: block;
+      width: 100%;
+      box-shadow: var(--boxShadowBold);
+      border-radius: 12px;
+    }
   }
-
-  & img {
-    display: block;
-    width: 100%;
-    box-shadow: var(--boxShadowBold);
-    border-radius: 12px;
-  }
-
-  // & .controls-wrapper {
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   flex-direction: row;
-
-  //   & button {
-  //     padding: 0.5rem;
-  //     margin: 1rem 0.25rem;
-  //     width: 80px;
-  //   }
-  // }
 }
 
 $buttonSize: 40px;
@@ -80,12 +67,13 @@ $buttonPadding: 10px;
   height: $buttonSize;
   width: $buttonSize;
   border-radius: 50%;
-  margin: 0.5rem 0.25rem 0 0.25rem;
+  margin: 1rem 0.25rem 0 0.25rem;
   padding: $buttonPadding;
 
   & > img {
     display: block;
     height: 100%;
+    width: 100%;
 
     &.chev {
       padding: 1px;
@@ -100,45 +88,45 @@ $buttonPadding: 10px;
 }
 
 /* prettier-ignore */
-.standard-button {
-  flex-grow: 1;
-  border-radius: 24px;
-  min-width: max-content;
-  margin: 0.25rem 0 0.25rem 0.5rem;
-  padding: 0.5rem;
-  border: var(--bdr1) solid rgba(255, 255, 255, 0.222);
-  background: var(--res-item-bg);
-  box-shadow: var(--shadow-bold);
+// .standard-button {
+//   flex-grow: 1;
+//   border-radius: 24px;
+//   min-width: max-content;
+//   margin: 0.25rem 0 0.25rem 0.5rem;
+//   padding: 0.5rem;
+//   border: var(--bdr1) solid rgba(255, 255, 255, 0.222);
+//   background: var(--res-item-bg);
+//   box-shadow: var(--shadow-bold);
 
-  $t: var(--time);
-  transition:
-    color $t,
-    background-color $t,
-    border-color $t,
-    opacity $t,
-    transform $t,
-    padding $t;
+//   $t: var(--time);
+//   transition:
+//     color $t,
+//     background-color $t,
+//     border-color $t,
+//     opacity $t,
+//     transform $t,
+//     padding $t;
 
-  & > p {
-    position: relative;
-    @include font-adjust();
-    @include colorfade();
-  }
+//   & > p {
+//     position: relative;
+//     @include font-adjust();
+//     @include colorfade();
+//   }
 
-  &.highlight {
-    background: var(--skill-bg-highlight);
-    border-color: var(--skill-bg-highlight);
-    & > p {
-      color: var(--white);
-    }
-  }
+//   &.highlight {
+//     background: var(--skill-bg-highlight);
+//     border-color: var(--skill-bg-highlight);
+//     & > p {
+//       color: var(--white);
+//     }
+//   }
 
-  &:hover:not(.highlight):not(:disabled) {
-    border-color: var(--accent-hover);
-  }
+//   &:hover:not(.highlight):not(:disabled) {
+//     border-color: var(--accent-hover);
+//   }
 
-  &:disabled:not(.no-disabled-styling) {
-    opacity: 0.5;
-    cursor: default;
-  }
-}
+//   &:disabled:not(.no-disabled-styling) {
+//     opacity: 0.5;
+//     cursor: default;
+//   }
+// }
