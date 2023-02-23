@@ -99,8 +99,14 @@ export function getImageSeries(imageSeries: any[], data: ContentfulData) {
 
 export function getParsedImageSeriesData(fid: string, data: ContentfulData) {
   const series = getAssetSeries(fid, 'images', data);
-  // console.log(series);
   return series.map((imgData) => parseImageData(imgData));
+}
+
+export function filterParsedImageSeriesData(
+  series: any,
+  filterArray: string[],
+) {
+  return series.filter((img: any) => filterArray.includes(img.title));
 }
 
 function parseImageData(data: CfItem): ImageData {
@@ -148,11 +154,3 @@ export function getItemsByContentType(
   );
   return items.reduce((prev, curr) => [...prev, curr.fields], []);
 }
-
-// export function getHeroImageUrl(projectId: string, data: ContentfulData) {
-//   const id = getItemField(projectId, 'heroImage', data)?.sys?.id;
-//   const asset = data?.includes?.Asset?.find(
-//     (asset: ContentfulAsset) => asset?.sys?.id === id,
-//   );
-//   return 'https:' + asset?.fields?.file?.url;
-// }
