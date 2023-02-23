@@ -1,8 +1,17 @@
 // design page
 
+@import '../mixins.scss';
+
 .page-wrapper.design {
   & > :not(:first-child) {
     margin-top: 3rem;
+  }
+
+  & > section.content > p {
+    text-align: center;
+    &:nth-child(2) {
+      font-style: italic;
+    }
   }
 }
 

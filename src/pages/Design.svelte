@@ -10,16 +10,19 @@
   import HeroCarousel from '$components/HeroCarousel.svelte';
   import CardCarousel from '$components/CardCarousel.svelte';
   import Gallery from '$components/Gallery.svelte';
+  import BigImg from '$components/BigImg.svelte';
 
   import '$styles/pages/design.scss';
 
-  const otherImages = [
-    'Future Tense One Sheet for web',
-    'helios-map-padded',
-    'paradigm-hero',
-  ];
+  const otherImages = ['Future Tense One Sheet for web', 'helios-map-padded'];
+  const placeholderText =
+    '<p class="headline-text">Some my past graphic design work.</p><p class="headline-text">This page is a work in progress.</p>';
 
   $: conData = $content.contentfulData;
+
+  $: crisisPdfs = getAssetSeries('crisis pdfs', 'documents', conData);
+  $: crisisPdfUrl = crisisPdfs.map((pdf) => 'https:' + pdf.fields.file.url)[0];
+
   $: allImages = getParsedImageSeriesData('graphic design', conData);
   $: bsCards = getParsedImageSeriesData('battlespace cards', conData);
   $: cuCards = getParsedImageSeriesData('crisis cards', conData);
@@ -27,21 +30,28 @@
   $: exCards = getParsedImageSeriesData('expedition carousel cards', conData);
   $: bbpPosters = getParsedImageSeriesData('bbp posters', conData);
   $: miscImgs = filterParsedImageSeriesData(allImages, otherImages);
-  $: crisisPdfs = getAssetSeries('crisis pdfs', 'documents', conData);
-  $: crisisPdfUrl = crisisPdfs.map((pdf) => 'https:' + pdf.fields.file.url)[0];
   $: ftOneSheet = miscImgs[0];
   $: heliosMap = miscImgs[1];
-  $: paradigmHero = miscImgs[2];
 </script>
 
 <div class="page-wrapper design">
+  <section class="content">
+    {@html placeholderText}
+  </section>
   <Gallery images={[ftOneSheet]} />
-  <Gallery images={[heliosMap]} />
+  <BigImg image={heliosMap} wrap={false} classes="full-width" />
   <HeroCarousel images={bbpPosters} wrap={true} />
+  <div class="embed-wrapper">
+    <embed class="crisis-rules" src={crisisPdfUrl} type="application/pdf" />
+  </div>
+  <ul>
+    {#each cuMaps as map}
+      <li style={'margin-bottom: 5px'}>
+        <BigImg image={map} wrap={true} classes="full-width" />
+      </li>
+    {/each}
+  </ul>
   <CardCarousel images={exCards} />
-  <embed class="crisis-rules" src={crisisPdfUrl} type="application/pdf" />
-  <Gallery images={[paradigmHero]} />
-  <Gallery images={cuMaps} />
   <CardCarousel images={bsCards} />
   <CardCarousel images={cuCards} />
 </div>
