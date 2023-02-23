@@ -12,6 +12,8 @@
   import doubleChevUp from '../assets/svgs/doubleChevUp.svg';
 
   export let images: ImageData[];
+  export let title: string | null = null;
+  export let wrap: boolean = false;
 
   let currentIdx = 0;
   let prevIdx = -1;
@@ -56,41 +58,90 @@
   });
 </script>
 
-<div class={wrapperClasses}>
-  <ul>
-    {#each images as { url, title, alt }, index}
-      <li class={setImgClass(index)}>
-        <img src={url} {title} {alt} />
-      </li>
-    {/each}
-  </ul>
-  <div class="controls-wrapper">
-    <StandardBtn
-      classes={`${allDisabled ? 'no-disabled-styling' : ''}`}
-      onClick={backToStart}
-      isDisabled={allDisabled || backDisabled}
-    >
-      <img src={doubleChevUp} alt="back to top" />
-    </StandardBtn>
+{#if wrap}
+  <section class="hero-carousel-section-wrapper">
+    {#if title}
+      <h3 class="hero-carousel-title">{title}</h3>
+    {/if}
+    <div class={wrapperClasses}>
+      <ul>
+        {#each images as { url, title, alt }, index}
+          <li class={setImgClass(index)}>
+            <img src={url} {title} {alt} />
+          </li>
+        {/each}
+      </ul>
+      <div class="controls-wrapper">
+        <StandardBtn
+          classes={`${allDisabled ? 'no-disabled-styling' : ''}`}
+          onClick={backToStart}
+          isDisabled={allDisabled || backDisabled}
+        >
+          <img src={doubleChevUp} alt="back to top" />
+        </StandardBtn>
 
-    <StandardBtn
-      classes={`${allDisabled ? 'no-disabled-styling' : ''}`}
-      onClick={back}
-      isDisabled={allDisabled || backDisabled}
-    >
-      <img class="chev prev" src={chevLeft} alt="previous" />
-    </StandardBtn>
+        <StandardBtn
+          classes={`${allDisabled ? 'no-disabled-styling' : ''}`}
+          onClick={back}
+          isDisabled={allDisabled || backDisabled}
+        >
+          <img class="chev prev" src={chevLeft} alt="previous" />
+        </StandardBtn>
 
-    <StandardBtn
-      classes={`${allDisabled ? 'no-disabled-styling' : ''}`}
-      onClick={forward}
-      isDisabled={allDisabled || forwardDisabled}
-    >
-      <img class="chev next" src={chevRight} alt="next" />
-    </StandardBtn>
+        <StandardBtn
+          classes={`${allDisabled ? 'no-disabled-styling' : ''}`}
+          onClick={forward}
+          isDisabled={allDisabled || forwardDisabled}
+        >
+          <img class="chev next" src={chevRight} alt="next" />
+        </StandardBtn>
 
-    <StandardBtn onClick={growOrShrink}>
-      <img src={isLarge ? minus : plus} alt={isLarge ? 'shrink' : 'grow'} />
-    </StandardBtn>
+        <StandardBtn onClick={growOrShrink}>
+          <img src={isLarge ? minus : plus} alt={isLarge ? 'shrink' : 'grow'} />
+        </StandardBtn>
+      </div>
+    </div>
+  </section>
+{:else}
+  <div class={wrapperClasses}>
+    {#if title}
+      <h3 class="hero-carousel-title">{title}</h3>
+    {/if}
+    <ul>
+      {#each images as { url, title, alt }, index}
+        <li class={setImgClass(index)}>
+          <img src={url} {title} {alt} />
+        </li>
+      {/each}
+    </ul>
+    <div class="controls-wrapper">
+      <StandardBtn
+        classes={`${allDisabled ? 'no-disabled-styling' : ''}`}
+        onClick={backToStart}
+        isDisabled={allDisabled || backDisabled}
+      >
+        <img src={doubleChevUp} alt="back to top" />
+      </StandardBtn>
+
+      <StandardBtn
+        classes={`${allDisabled ? 'no-disabled-styling' : ''}`}
+        onClick={back}
+        isDisabled={allDisabled || backDisabled}
+      >
+        <img class="chev prev" src={chevLeft} alt="previous" />
+      </StandardBtn>
+
+      <StandardBtn
+        classes={`${allDisabled ? 'no-disabled-styling' : ''}`}
+        onClick={forward}
+        isDisabled={allDisabled || forwardDisabled}
+      >
+        <img class="chev next" src={chevRight} alt="next" />
+      </StandardBtn>
+
+      <StandardBtn onClick={growOrShrink}>
+        <img src={isLarge ? minus : plus} alt={isLarge ? 'shrink' : 'grow'} />
+      </StandardBtn>
+    </div>
   </div>
-</div>
+{/if}
