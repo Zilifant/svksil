@@ -1,70 +1,87 @@
 <!-- Sandbox -->
 <script lang="ts">
-  import Gallery from '$components/Gallery.svelte';
   import { content } from '$lib/store';
   import {
-    getImageSeries,
-    getItemField,
-    getAssetSeries,
     getParsedImageSeriesData,
+    filterParsedImageSeriesData,
   } from '$lib/utilities';
-  import HeroCarousel from '$components/HeroCarousel.svelte';
-  import CardCarousel from '$components/CardCarousel.svelte';
-  // import FlipForm from '$components/sandbox/FlipForm.svelte';
 
-  const otherImages = [
-    'Future Tense One Sheet for web',
-    'helios-map-padded',
-    'paradigm-hero',
+  import Gallery from '$components/Gallery.svelte';
+  import BigImg from '$components/BigImg.svelte';
+
+  import Blackhole from '$components/svgs/Blackhole.svelte';
+  import Circle1 from '$components/svgs/Circle1.svelte';
+  import Circle2 from '$components/svgs/Circle2.svelte';
+  import Circle3 from '$components/svgs/Circle3.svelte';
+  import Circle4 from '$components/svgs/Circle4.svelte';
+  import Circle5 from '$components/svgs/Circle5.svelte';
+  import Circle6 from '$components/svgs/Circle6.svelte';
+  import Circle7 from '$components/svgs/Circle7.svelte';
+  import Ornate from '$components/svgs/Ornate.svelte';
+  import Ornate2 from '$components/svgs/Ornate2.svelte';
+  import Ornatehalf from '$components/svgs/Ornatehalf.svelte';
+  import Scepter1 from '$components/svgs/Scepter1.svelte';
+  import Scepter2 from '$components/svgs/Scepter2.svelte';
+  import Twisties from '$components/svgs/Twisties.svelte';
+  import Twistybar from '$components/svgs/Twistybar.svelte';
+  import Wizardcat from '$components/svgs/Wizardcat.svelte';
+
+  import '$styles/pages/sandbox.scss';
+
+  const svgs = [
+    'Blackhole',
+    'Circle1',
+    'Circle2',
+    'Circle3',
+    'Circle4',
+    'Circle5',
+    'Circle6',
+    'Circle7',
+    'Ornate',
+    'Ornate2',
+    'Ornatehalf',
+    'Scepter1',
+    'Scepter2',
+    'Twisties',
+    'Twistybar',
+    'Wizardcat',
   ];
 
-  function filterParsedImageSeriesData(series: any, filterArray: string[]) {
-    return series.filter((img: any) => filterArray.includes(img.title));
-  }
-
   $: conData = $content.contentfulData;
-  $: crisisPdfSeries = getAssetSeries('crisis pdfs', 'documents', conData);
-  $: crisisRulesPdfUrl = crisisPdfSeries.map(
-    (pdf) => 'https:' + pdf.fields.file.url,
-  )[0];
   $: allImages = getParsedImageSeriesData('graphic design', conData);
-  $: bsCards = getParsedImageSeriesData('battlespace cards', conData);
-  $: cuCards = getParsedImageSeriesData('crisis cards', conData);
   $: cuMaps = getParsedImageSeriesData('crisis maps', conData);
-  $: bbpPosters = getParsedImageSeriesData('bbp posters', conData);
-  $: miscImgs = filterParsedImageSeriesData(allImages, otherImages);
-  $: exCards = getParsedImageSeriesData('expedition carousel cards', conData);
-  $: ftOneSheet = miscImgs[0];
-  $: heliosMap = miscImgs[1];
-  $: paradigmHero = miscImgs[2];
+  $: miscImgs = filterParsedImageSeriesData(allImages, [
+    'helios-map-padded',
+    'paradigm-hero',
+  ]);
 </script>
 
-<!-- <div><FlipForm /></div> -->
-
-<div class="page-wrapper full-width sandbox">
-  <Gallery images={[ftOneSheet]} />
-  <Gallery images={[heliosMap]} />
-  <HeroCarousel images={bbpPosters} />
-  <CardCarousel images={exCards} />
-  <embed class="crisis-rules" src={crisisRulesPdfUrl} type="application/pdf" />
-  <Gallery images={[paradigmHero]} />
-  <Gallery images={cuMaps} />
-  <CardCarousel images={bsCards} />
-  <CardCarousel images={cuCards} />
+<div class="page-wrapper sandbox">
+  <BigImg image={miscImgs[0]} wrap={false} classes="paper" />
+  <BigImg image={miscImgs[1]} wrap={true} classes="full-width framed" />
+  <ul>
+    {#each cuMaps as map}
+      <li style={'margin-bottom: 5px'}>
+        <BigImg image={map} wrap={true} classes="full-width" />
+      </li>
+    {/each}
+  </ul>
+  <div class="svg-grid">
+    <Blackhole />
+    <Circle1 />
+    <Circle2 />
+    <Circle3 />
+    <Circle4 />
+    <Circle5 />
+    <Circle6 />
+    <Circle7 />
+    <Ornate />
+    <Ornate2 />
+    <Ornatehalf />
+    <Scepter1 />
+    <Scepter2 />
+    <Twisties />
+    <Twistybar />
+    <Wizardcat />
+  </div>
 </div>
-
-<style lang="scss">
-  div.sandbox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  embed.crisis-rules {
-    height: 1100px;
-    width: 850px;
-    margin-bottom: 2rem;
-  }
-</style>
