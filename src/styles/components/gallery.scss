@@ -15,8 +15,6 @@ ul.img-gallery {
 
   margin-bottom: $padding;
 
-  // width: 80%;
-
   & > li {
     display: flex;
     align-items: center;
@@ -52,7 +50,7 @@ ul.img-gallery {
   }
 }
 
-li li.helios > img {
+li.helios > img {
   border-radius: 20px !important;
 }
 
