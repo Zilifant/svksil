@@ -1,0 +1,25 @@
+// sandbox page
+
+.page-wrapper.sandbox {
+  & > :not(:first-child) {
+    margin-top: 2rem;
+  }
+}
+
+div.svg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+
+  $pad: 10px;
+  padding: $pad;
+  gap: $pad;
+
+  background: var(--res-item-bg);
+
+  svg {
+    & > * {
+      fill: rgba(255, 255, 255, 0.75);
+    }
+  }
+}
