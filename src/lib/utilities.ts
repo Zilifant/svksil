@@ -88,7 +88,7 @@ export function getAssetUrl(title: string, data: ContentfulData): string {
   return 'https:' + asset?.fields?.file?.url;
 }
 
-export function getImageSeries(imageSeries: any[], data: ContentfulData) {
+export function getImageSeries(imageSeries: AssetRef[], data: ContentfulData) {
   const images: ImageData[] = [];
   imageSeries.forEach((img) => {
     const imgData = getImage(img?.sys?.id, data);
@@ -103,10 +103,10 @@ export function getParsedImageSeriesData(fid: string, data: ContentfulData) {
 }
 
 export function filterParsedImageSeriesData(
-  series: any,
+  series: ImageData[],
   filterArray: string[],
 ) {
-  return series.filter((img: any) => filterArray.includes(img.title));
+  return series.filter((img: ImageData) => filterArray.includes(img.title));
 }
 
 function parseImageData(data: CfItem): ImageData {
@@ -116,7 +116,7 @@ function parseImageData(data: CfItem): ImageData {
     alt: data?.fields?.title,
     order: data?.fields?.order,
     description: data?.fields?.description,
-    tags: data?.metadata?.tags.map((tag: any) => tag.sys.id),
+    tags: data?.metadata?.tags.map((tag: CfItem) => tag.sys.id),
   };
 }
 
