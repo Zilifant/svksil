@@ -1,13 +1,20 @@
 <!-- Database -->
 <script lang="ts">
-  import { content } from '$lib/store';
-  import * as db from '$lib/database-utilities';
+  // import * as db from '$lib/database-utilities';
+  import List from '$components/ListApp/List.svelte';
   import '$styles/pages/database.scss';
 
-  db.run();
+  export let data: any;
 
-  $: conData = $content.contentfulData;
-  $: console.log(db, conData);
+  const list = {
+    uid: 'asdf',
+    name: 'mock list',
+    items: [],
+  };
+
+  $: list.items = data;
 </script>
 
-<div class="page-wrapper database">database</div>
+<div class="page-wrapper database">
+  <List {list} />
+</div>
