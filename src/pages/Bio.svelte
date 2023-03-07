@@ -1,8 +1,7 @@
 <!-- Bio -->
 <script lang="ts">
   import type { BioContent } from '$lib/types';
-  import type { ImageIndex } from '$assets/images/index';
-  import { images } from '$assets/images/index';
+  import { images, type ImageIndex } from '$assets/images/index';
   import { parseMarkdown } from '$lib/utilities';
   import { content, theme } from '$lib/store';
   import { dark } from '$lib/constants';
