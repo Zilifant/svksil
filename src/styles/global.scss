@@ -2,6 +2,36 @@
 
 @import './mixins.scss';
 
+// Fonts
+
+@font-face {
+  font-family: 'Iosevka Singular';
+  src: url(fonts/iosevka-singular-regular.ttf) format('ttf');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Iosevka Singular';
+  src: url(fonts/iosevka-singular-bold.ttf) format('ttf');
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Iosevka Singular';
+  src: url(fonts/iosevka-singular-italic.ttf) format('ttf');
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Iosevka Singular';
+  src: url(fonts/iosevka-singular-bolditalic.ttf) format('ttf');
+  font-style: italic;
+  font-weight: 600;
+}
+
 // Reset
 
 html, body {
@@ -27,7 +57,7 @@ main {
 }
 
 code {
-  font-family: 'Fira Code', monospace;
+  font-family: 'Iosevka Singular', 'Fira Code', monospace;
 }
 
 button {
