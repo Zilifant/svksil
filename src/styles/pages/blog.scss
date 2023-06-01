@@ -1,0 +1,70 @@
+// Blog
+
+@import '../mixins.scss';
+
+.page-wrapper.blog > :not(:first-child) {
+  margin-top: 1.5rem;
+}
+
+.page-wrapper.blog > section {
+  width: 100%;
+
+  &.headline > p {
+    text-align: center;
+    &:nth-child(3) {
+      font-style: italic;
+    }
+  }
+}
+
+.blog-post {
+  padding: 1.25rem 1rem;
+  background: var(--res-item-bg);
+  box-shadow: var(--boxShadow);
+  @include colorfade();
+  @include font-adjust();
+
+  ul.tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 1rem 0 1rem 0;
+
+    & > li {
+      padding: 3px 5px 3px 5px;
+      border-radius: var(--rad);
+      color: var(--white);
+      background: var(--res-item-bg);
+
+      &:not(:first-child) {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  div.content {
+    & > .blog-subsection {
+      margin-top: 2rem;
+    }
+
+    & p:not(:first-child) {
+      margin-top: 0.5rem;
+    }
+
+    & a {
+      @include animatedUnderline();
+    }
+
+    & ul {
+      & > li {
+        margin-top: 0.25rem;
+        margin-left: 0.75rem;
+        // list-style: inside disc;
+      }
+    }
+
+    // & img {
+    //   height: 400px;
+    // }
+  }
+}

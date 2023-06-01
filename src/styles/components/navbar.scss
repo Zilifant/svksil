@@ -62,6 +62,26 @@
   }
 }
 
+@keyframes swapBgBlog {
+  from {
+    background-size: 100% 300%;
+    background-image: linear-gradient(
+      to bottom,
+      var(--accent-blog) 33%,
+      var(--nav-bg-this-page) 33% 67%,
+      var(--nav-bg) 67%
+    );
+  }
+  to {
+    background-size: 100% 200%;
+    background-image: linear-gradient(
+      to bottom,
+      var(--accent-blog) 50%,
+      var(--nav-bg) 50%
+    );
+  }
+}
+
 @keyframes swapBgDesign {
   from {
     background-size: 100% 300%;
@@ -142,6 +162,9 @@
   &.mni-code {
     width: 78px;
   }
+  &.mni-blog {
+    width: 78px;
+  }
   &.mni-design {
     width: 104px;
   }
@@ -183,6 +206,13 @@
   background-image: linear-gradient(
     to bottom,
     var(--accent-code) 50%,
+    var(--nav-bg) 50%
+  );
+}
+.mni-blog.not-prev {
+  background-image: linear-gradient(
+    to bottom,
+    var(--accent-blog) 50%,
     var(--nav-bg) 50%
   );
 }
@@ -234,6 +264,18 @@
     background-image: linear-gradient(
       to bottom,
       var(--accent-code) 33%,
+      var(--nav-bg-this-page) 33% 67%,
+      var(--nav-bg) 67%
+    );
+  }
+  &.mni-blog {
+    animation: swapBgBlog 0s;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+    background-size: 100% 300%;
+    background-image: linear-gradient(
+      to bottom,
+      var(--accent-blog) 33%,
       var(--nav-bg-this-page) 33% 67%,
       var(--nav-bg) 67%
     );

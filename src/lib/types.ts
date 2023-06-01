@@ -1,5 +1,7 @@
 // types
 
+import type { Document } from '@contentful/rich-text-types';
+
 export type Theme = string;
 export type Animation = 'fade' | 'flyLeft' | 'flyRight';
 export type DropNavState = 'hidden' | 'visible';
@@ -98,6 +100,19 @@ export type CodeContent = any;
 
 export type WritingContent = any;
 
+export type BlogContent = {
+  posts: BlogPost[];
+  tags: string[];
+};
+
+export type BlogPost = {
+  title: string;
+  content: Document;
+  contentHTML: string;
+  tags: string[];
+  date: string;
+};
+
 export type QuotesContent = {
   id: 'quotes';
   type: 'footer';
@@ -111,6 +126,7 @@ export type AllContent = {
   resume: ResumeContent;
   code: CodeContent;
   writing: WritingContent;
+  blog?: BlogContent;
   quotes: QuotesContent;
   socials: SocialsContent;
   contentfulData: ContentfulData;
@@ -136,3 +152,11 @@ export type ImageData = {
 };
 
 export type AssetData = any;
+
+export type ContentType = 'html' | 'htmlCodeSnippet' | 'imageSeries';
+
+export type SubSectionData = {
+  contentType: ContentType;
+  html?: string;
+  imageSeries?: { uiComponent: string; data: ImageData[] };
+};

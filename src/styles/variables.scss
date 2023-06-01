@@ -214,7 +214,6 @@
   --colg7: rgba(55, 65, 81, 1);
   --colg8: rgba(31, 41, 55, 1);
   --colg9: rgba(17, 24, 39, 1);
-  --newg1: rgba(240, 243, 245, 1);
   --blug0: rgba(248, 250, 252, 1);
   --blug1: rgba(241, 245, 249, 1);
   --blug2: rgba(226, 232, 240, 1);
@@ -232,6 +231,33 @@
   --chlg8t: #1e1f2580;
   --chlg8: #1e1f25;
   --chlg9: #111216;
+  --newg0: rgba(240, 243, 245, 1);
+  --para0: #fdfdfe;
+  --para1: #eaecef;
+  --para2: #d7dae0;
+  --para3: #b0b7c3;
+  --para4: #8e99b1;
+  --para5: #575b72;
+  --para6: #535773;
+  --para7: #353e50;
+  --para8: #2e3440;
+  --para9: #252830;
+  --blue: #6699cc;
+  --brightBlue: #598def;
+  --cyan: #81b6bd;
+  --brightCyan: #55b2be;
+  --neonCyan: #8be9fd;
+  --darkGreen: #547a4f;
+  --green: #99c794;
+  --brightGreen: #74d39c;
+  --magenta: #c594c5;
+  --brightMagenta: #ff79c6;
+  --yellow: #e4bf7f;
+  --brightYellow: #efc259;
+  --orange: #e78853;
+  --brightOrange: #ff7b57;
+  --red: #ef7679;
+  --brightRed: #ef4444;
 }
 
 /* prettier-ignore */
@@ -299,6 +325,9 @@ main[data-theme='light'] {
   --accent-code: var(--emer5);
   --accent-code-hover: var(--emer4);
   --accent-code-hover-dark: var(--emer6);
+  --accent-blog: var(--rose5);
+  --accent-blog-hover: var(--rose4);
+  --accent-blog-hover-dark: var(--rose6);
   --accent-design: var(--purp5);
   --accent-design-hover: var(--purp4);
   --accent-design-hover-dark: var(--purp6);
@@ -367,6 +396,9 @@ main[data-theme='dark'] {
   --accent-code: var(--emer6);
   --accent-code-hover: var(--emer5);
   --accent-code-hover-dark: var(--emer7);
+  --accent-blog: var(--rose6);
+  --accent-blog-hover: var(--rose5);
+  --accent-blog-hover-dark: var(--rose7);
   --accent-design: var(--purp5);
   --accent-design-hover: var(--purp4);
   --accent-design-hover-dark: var(--purp6);
@@ -437,6 +469,10 @@ main[data-theme='light'][data-page='code'] {
   --accent: var(--emer5);
   --accent-hover: var(--emer4);
 }
+main[data-theme='light'][data-page='blog'] {
+  --accent: var(--rose5);
+  --accent-hover: var(--rose4);
+}
 main[data-theme='light'][data-page='design'] {
   --accent: var(--purp5);
   --accent-hover: var(--purp4);
@@ -457,6 +493,10 @@ main[data-theme='dark'][data-page='resume'] {
 main[data-theme='dark'][data-page='code'] {
   --accent: var(--emer6);
   --accent-hover: var(--emer5);
+}
+main[data-theme='dark'][data-page='blog'] {
+  --accent: var(--rose6);
+  --accent-hover: var(--rose5);
 }
 main[data-theme='dark'][data-page='design'] {
   --accent: var(--purp5);
