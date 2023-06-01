@@ -8,6 +8,7 @@ import type {
   AssetRef,
   AssetData,
   CfItem,
+  BlogPost,
 } from '$lib/types';
 import { marked } from 'marked';
 import { bio, pageIds, pages } from '$lib/constants';
@@ -141,8 +142,16 @@ export function getItemField(
   return item?.fields?.[fieldName];
 }
 
-export function getItemById(id: string, data: ContentfulData) {
+export function getItemById(id: string, data: ContentfulData): CfItem {
   return data?.items.find((itm) => itm?.sys?.id === id);
+}
+
+export function getItemBy(
+  key: string,
+  val: string,
+  data: ContentfulData,
+): CfItem {
+  return data?.items.find((itm) => itm?.sys[key] === val);
 }
 
 export function getItemsByContentType(
@@ -153,4 +162,17 @@ export function getItemsByContentType(
     (item) => item?.sys?.contentType?.sys?.id === contentType,
   );
   return items.reduce((prev, curr) => [...prev, curr.fields], []);
+}
+
+export function parseBlogPosts(data: ContentfulData): BlogPost[] {
+  const posts = getItemsByContentType('blogPost', data);
+  return posts.map((post: any) => ({
+    title: post.title,
+    content: post.content,
+    contentHTML: marked.parse(post.markdownContent),
+    tags: post.tags.map(
+      (tag: any) => getItemById(tag.sys.id, data).fields.name,
+    ),
+    date: post.date,
+  }));
 }
