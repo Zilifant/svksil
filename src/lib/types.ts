@@ -153,10 +153,11 @@ export type ImageData = {
 
 export type AssetData = any;
 
-export type ContentType = 'html' | 'htmlCodeSnippet' | 'imageSeries';
+export type ContentType = 'html' | 'htmlCodeSnippet' | 'imageSeries' | 'image';
 
 export type SubSectionData = {
   contentType: ContentType;
   html?: string;
+  image?: ImageData;
   imageSeries?: { uiComponent: string; data: ImageData[] };
 };

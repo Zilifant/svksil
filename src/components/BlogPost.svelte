@@ -1,11 +1,15 @@
 <!-- BlogPost -->
 <script lang="ts">
-  import type { BlogPost, SubSectionData } from '$lib/types';
+  import type { BlogPost, CfItem, SubSectionData, ImageData } from '$lib/types';
   import type { Document, NodeData } from '@contentful/rich-text-types';
   import { BLOCKS } from '@contentful/rich-text-types';
   import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
   import { content } from '$lib/store';
-  import { getParsedImageSeriesData, getItemById } from '$lib/utilities';
+  import {
+    getParsedImageSeriesData,
+    getItemById,
+    getImage,
+  } from '$lib/utilities';
   import CodeSnippet from '$components/CodeSnippet.svelte';
   import CardCarousel from '$components/CardCarousel.svelte';
   import HeroCarousel from '$components/HeroCarousel.svelte';
@@ -18,7 +22,9 @@
   const richTextOptions = {
     renderNode: {
       [BLOCKS.EMBEDDED_ENTRY]: (node: NodeData) =>
-        `EMBEDDED_ENTRY_ID=${node.data.target.sys.id}EMBEDDED_ENTRY`,
+        `EMBEDDED_ITEM&TYPE=ENTRY&ID=${node.data.target.sys.id}EMBEDDED_ITEM`,
+      [BLOCKS.EMBEDDED_ASSET]: (node: NodeData) =>
+        `EMBEDDED_ITEM&TYPE=ASSET&ID=${node.data.target.sys.id}EMBEDDED_ITEM`,
     },
   };
 
@@ -26,29 +32,37 @@
     const conData = $content.contentfulData;
 
     const subSectionsString = documentToHtmlString(richtext, richTextOptions);
-    const subSectionsArray = subSectionsString.split('EMBEDDED_ENTRY');
+    const subSectionsArray = subSectionsString.split('EMBEDDED_ITEM');
     const subSectionDataArray: SubSectionData[] = subSectionsArray.map(
       (str) => {
-        if (str.startsWith('_ID=')) {
-          const id = str.slice(4);
-          const embeddedEntry = getItemById(id, conData);
-          const contentType: string = embeddedEntry?.sys?.contentType?.sys?.id;
+        if (str.startsWith('&TYPE=')) {
+          const blockType = str.slice(6, 11); // ASSET or ENTRY
+          const id = str.slice(15); // node.data.target.sys.id
 
-          if (contentType === 'imageSeries') {
-            return {
-              contentType,
-              imageSeries: {
-                uiComponent: embeddedEntry.fields.uiComponent,
-                data: getParsedImageSeriesData(
-                  embeddedEntry.fields.fid,
-                  conData,
-                ),
-              },
-            };
+          if (blockType === 'ENTRY') {
+            const entry: CfItem = getItemById(id, conData);
+            const contentType: string = entry?.sys?.contentType?.sys?.id;
+
+            if (contentType === 'imageSeries') {
+              return {
+                contentType,
+                imageSeries: {
+                  uiComponent: entry.fields.uiComponent,
+                  data: getParsedImageSeriesData(entry.fields.fid, conData),
+                },
+              };
+            }
+
+            if (contentType === 'htmlCodeSnippet') {
+              return { contentType, html: entry.fields.html };
+            }
           }
 
-          if (contentType === 'htmlCodeSnippet') {
-            return { contentType, html: embeddedEntry.fields.html };
+          if (blockType === 'ASSET') {
+            return {
+              contentType: 'image',
+              image: getImage(id, conData),
+            };
           }
         }
 
@@ -74,6 +88,14 @@
     {#each subsections as subsec}
       {#if subsec?.contentType === 'html'}
         <div class="blog-subsection">{@html subsec?.html}</div>
+      {:else if subsec?.contentType === 'image'}
+        <div class="blog-subsection">
+          <img
+            src={subsec?.image?.url}
+            alt={subsec?.image?.title}
+            title={subsec?.image?.title}
+          />
+        </div>
       {:else if subsec?.contentType === 'htmlCodeSnippet'}
         <CodeSnippet snippetHTML={subsec?.html} cssClass="blog-subsection" />
       {:else if subsec?.contentType === 'imageSeries'}

@@ -63,8 +63,11 @@
       }
     }
 
-    // & img {
-    //   height: 400px;
-    // }
+    & > div.blog-subsection > img {
+      width: calc(800px + 2rem);
+      margin-left: -2rem;
+      border-radius: var(--rad2);
+      box-shadow: var(--shadow);
+    }
   }
 }
