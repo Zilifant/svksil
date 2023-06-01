@@ -6,7 +6,8 @@
   import chevLeft from '../assets/svgs/chevLeft.svg';
   import '$styles/components/card-carousel.scss';
 
-  export let images: ImageData[];
+  export let images: ImageData[] = [];
+  export let cssClass: string = '';
 
   let currentIdx = 0;
   let prevIdx = -1;
@@ -43,7 +44,7 @@
   }
 </script>
 
-<div class="card-carousel-wrapper">
+<div class={`${cssClass} card-carousel-wrapper`}>
   <ul>
     {#each images as { url, title, alt }, index}
       <li class={setImgClass(index)}>

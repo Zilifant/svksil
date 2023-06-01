@@ -11,9 +11,10 @@
   import chevLeft from '../assets/svgs/chevLeft.svg';
   import doubleChevUp from '../assets/svgs/doubleChevUp.svg';
 
-  export let images: ImageData[];
+  export let images: ImageData[] = [];
   export let title: string | null = null;
   export let wrap: boolean = false;
+  export let cssClass: string = '';
 
   let currentIdx = 0;
   let prevIdx = -1;
@@ -59,7 +60,7 @@
 </script>
 
 {#if wrap}
-  <section class="hero-carousel-section-wrapper">
+  <section class={`${cssClass} hero-carousel-section-wrapper`}>
     {#if title}
       <h3 class="hero-carousel-title">{title}</h3>
     {/if}
@@ -103,7 +104,7 @@
     </div>
   </section>
 {:else}
-  <div class={wrapperClasses}>
+  <div class={`${wrapperClasses} ${cssClass}`}>
     {#if title}
       <h3 class="hero-carousel-title">{title}</h3>
     {/if}
