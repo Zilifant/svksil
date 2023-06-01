@@ -11,13 +11,13 @@
   let code: CodeContent;
   $: code = $content?.contentfulJSON?.code;
 
-  $: icon = getItemField('mhk', null, $content?.contentfulData);
-  $: iconImgSeries = getItemById(
-    icon?.imageSeries?.sys?.id,
+  $: deception = getItemField('mhk', null, $content?.contentfulData);
+  $: deceptionImgSeries = getItemById(
+    deception?.imageSeries?.sys?.id,
     $content?.contentfulData,
   );
-  $: iconImgData = getImageSeries(
-    iconImgSeries?.fields?.images,
+  $: deceptionImgData = getImageSeries(
+    deceptionImgSeries?.fields?.images,
     $content?.contentfulData,
   );
 </script>
@@ -30,7 +30,7 @@
   {#each code.projects as project}
     <section class="code-project">
       {#if project.type === 'multi-section'}
-        <HeroCarousel images={iconImgData} />
+        <HeroCarousel images={deceptionImgData} />
         <h3>{project.title}</h3>
         <div class="code-project-description">
           {#each project.description.split('\n') as line}
