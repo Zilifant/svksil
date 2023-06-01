@@ -115,3 +115,31 @@
     width: 100%;
   }
 }
+
+@mixin styledCodeBlock($overflow: true) {
+  display: block;
+
+  padding: 20px;
+  margin: 20px 0 20px 0;
+  border-radius: var(--rad2);
+
+  box-shadow: var(--shadow);
+  color: var(--para3);
+  background-color: var(--para8);
+
+  @if $overflow {
+    width: calc(800px + 2rem);
+    margin-left: -2rem;
+  }
+
+  & * {
+    font-family: 'Fira Code', monospace;
+  }
+}
+
+@mixin styledInlineCode() {
+  padding: 3px 5px 3px 5px;
+  background: var(--res-item-bg);
+  border: var(--headshotBorder);
+  border-radius: var(--rad);
+}

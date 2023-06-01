@@ -26,6 +26,10 @@ main {
   color: var(--text);
 }
 
+code {
+  font-family: 'Fira Code', monospace;
+}
+
 button {
   appearance: none;
   cursor: pointer;
@@ -38,6 +42,7 @@ h1,h2,h3,h4,h5,h6,li,ol,p,ul {
   font-style:normal;
   text-decoration:none;
   overflow-wrap: break-word;
+  list-style: none;
 }
 
 h1,h2,h3,h4,h5,h6{font-weight:400}
@@ -116,6 +121,14 @@ p, ul, ol, li {
 
 .no-margin {
   margin: 0 !important;
+}
+
+.styled-code-block {
+  @include styledCodeBlock();
+}
+
+code:not(.styled-code-block) {
+  @include styledInlineCode();
 }
 
 // .preload,
