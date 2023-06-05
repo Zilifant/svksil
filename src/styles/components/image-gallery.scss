@@ -1,0 +1,71 @@
+// image gallery
+
+@import '../mixins.scss';
+
+$padding: 2rem;
+
+/* prettier-ignore */
+ul.img-gallery {
+  list-style: none;
+  display: grid;
+  gap: $padding;
+  padding: 0 $padding;
+
+  grid-template-columns: repeat(12, 1fr);
+
+  & > li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    grid-column: span 3;
+    &.small  { grid-column: span 1; }
+    &.medium { grid-column: span 6; }
+    &.large  { grid-column: 1 / span 12; }
+
+    &.rec-sheet-v1 { grid-column: span 12; }
+    &.paradigm-hero { grid-column: span 12; }
+
+    &.crisis-icons {
+      grid-column: 2 / span 10;
+      padding: 2rem;
+      box-shadow: var(--boxShadowBold);
+      border-radius: 20px;
+      background: var(--partnerBgDark);
+      & > img {
+        box-shadow: none;
+      }
+    }
+
+    // background-color: var(--blug6);
+
+    & > img {
+      display: block;
+      width: 100%;
+      box-shadow: var(--boxShadowBold);
+    }
+  }
+}
+
+li.helios > img {
+  border-radius: 20px !important;
+}
+
+li.expedition > img {
+  border-radius: 20px !important;
+}
+
+li.battle > img {
+  border-radius: 20px !important;
+}
+
+li.rec-sheet-v1 > img,
+li.future > img {
+  border-radius: 20px !important;
+  max-width: 800px;
+}
+
+li.paradigm-hero > img {
+  border-radius: 10px !important;
+}
