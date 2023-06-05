@@ -146,6 +146,7 @@ export type ImageData = {
   url: string;
   title: string;
   alt: string;
+  id?: string;
   order?: string | number;
   description?: string;
   tags?: string[];

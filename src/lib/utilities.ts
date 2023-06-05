@@ -115,6 +115,7 @@ function parseImageData(data: CfItem): ImageData {
     url: 'https:' + data?.fields?.file?.url,
     title: data?.fields?.title,
     alt: data?.fields?.title,
+    id: data?.sys?.id,
     order: data?.fields?.order,
     description: data?.fields?.description,
     tags: data?.metadata?.tags.map((tag: CfItem) => tag.sys.id),
@@ -129,6 +130,7 @@ export function getImage(id: string, data: ContentfulData): ImageData {
     url: 'https:' + asset?.fields?.file?.url,
     title: asset?.fields?.title,
     alt: asset?.fields?.title,
+    id: id,
   };
 }
 
