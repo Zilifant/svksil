@@ -9,7 +9,7 @@
   import '$styles/pages/code.scss';
 
   let code: CodeContent;
-  $: code = $content?.contentfulJSON?.code;
+  $: code = $content?.code;
 
   $: deception = getItemField('mhk', null, $content?.contentfulData);
   $: deceptionImgSeries = getItemById(

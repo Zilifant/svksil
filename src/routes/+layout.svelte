@@ -18,17 +18,17 @@
   let quote: Quote;
   let pageId: PageId = setInitialPageId($page?.route?.id);
 
-  $: ({ contentfulData, jsioRecord, themeCookie } = data);
+  $: ({ contentfulData, themeCookie } = data);
   $: contentfulJSON = getItemField(
     'content master json',
     'webAllContent',
     contentfulData,
   );
-  $: content.set({ ...jsioRecord, contentfulData, contentfulJSON });
+  $: content.set({ contentfulData, ...contentfulJSON });
   $: theme.set(themeCookie || dark);
-  $: quotes = jsioRecord.quotes.quotes;
+  $: quotes = contentfulJSON?.quotes?.quotes;
   $: quote = sample(quotes);
-  $: socials = jsioRecord.socials;
+  $: socials = contentfulJSON?.socials;
 </script>
 
 <main class="main-wrapper" data-page={pageId} data-theme={$theme}>

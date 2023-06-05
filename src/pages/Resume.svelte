@@ -7,7 +7,7 @@
 
   let highlightedCat = 'coding';
   let res: ResumeContent;
-  $: res = $content?.contentfulJSON.resume;
+  $: res = $content?.resume;
 
   let endorsements: Endorsement[];
   $: endorsements = getItemsByContentType(
