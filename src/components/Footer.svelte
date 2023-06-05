@@ -20,7 +20,7 @@
     <div class="foot-item foot-item-center">
       <a
         class="foot-social-icon foot-social-icon-github"
-        href={socials?.github.url}
+        href={socials?.github?.url}
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -32,7 +32,7 @@
       </a>
       <a
         class="foot-social-icon foot-social-icon-linkedin"
-        href={socials?.linkedin.url}
+        href={socials?.linkedin?.url}
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -44,7 +44,7 @@
       </a>
       <a
         class="foot-social-icon foot-social-icon-email"
-        href={socials?.email.url}
+        href={socials?.email?.url}
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -56,10 +56,10 @@
       </a>
     </div>
     <p class="foot-item foot-item-right copyright-2-line">
-      © 2022 Scott Silsbe<br />All Rights Reserved<br />version {version}
+      © 2023 Scott Silsbe<br />All Rights Reserved<br />version {version}
     </p>
     <p class="foot-item foot-item-right copyright-1-line">
-      © 2022 Scott Silsbe. All Rights Reserved<br />version {version}
+      © 2023 Scott Silsbe. All Rights Reserved<br />version {version}
     </p>
   </div>
 </footer>

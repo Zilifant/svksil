@@ -42,7 +42,7 @@
 
   <h2 class="partner-section-title large-text">{partnersHeader}</h2>
   <section class="partner-logo-grid">
-    {#each bio.partners as { id, alt }}
+    {#each bio?.partners as { id, alt }}
       <div class="partner-logo-wrapper">
         <img class="switchable-img" src={setImgSrc(id)} {id} {alt} />
       </div>
