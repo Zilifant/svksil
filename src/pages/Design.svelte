@@ -41,7 +41,7 @@
   {#if dev}
     <ImageGallery images={allImages} />
   {/if}
-  <!-- <section class="content">
+  <section class="content">
     {@html placeholderText}
   </section>
   <Gallery images={[ftOneSheet]} />
@@ -59,5 +59,5 @@
   </ul>
   <CardCarousel images={exCards} />
   <CardCarousel images={bsCards} />
-  <CardCarousel images={cuCards} /> -->
+  <CardCarousel images={cuCards} />
 </div>
