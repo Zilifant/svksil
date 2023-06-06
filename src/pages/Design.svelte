@@ -11,6 +11,7 @@
   import HeroCarousel from '$components/HeroCarousel.svelte';
   import CardCarousel from '$components/CardCarousel.svelte';
   import Gallery from '$components/Gallery.svelte';
+  import ImageGrid from '$components/ImageGrid.svelte';
   import ImageGallery from '$components/ImageGallery.svelte';
   import BigImg from '$components/BigImg.svelte';
 
@@ -36,11 +37,11 @@
   $: heliosMap = miscImgs[1];
 </script>
 
-{#if dev}
-  <ImageGallery images={allImages} squareSize={300} columns={4} />
-{/if}
 <div class="page-wrapper design">
-  <section class="content">
+  {#if dev}
+    <ImageGallery images={allImages} />
+  {/if}
+  <!-- <section class="content">
     {@html placeholderText}
   </section>
   <Gallery images={[ftOneSheet]} />
@@ -58,5 +59,5 @@
   </ul>
   <CardCarousel images={exCards} />
   <CardCarousel images={bsCards} />
-  <CardCarousel images={cuCards} />
+  <CardCarousel images={cuCards} /> -->
 </div>

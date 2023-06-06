@@ -2,70 +2,140 @@
 
 @import '../mixins.scss';
 
-$padding: 2rem;
+// div.wrapper {
+//   width: 800px;
+//   height: 70vh;
+//   background: var(--chlg9);
+//   padding: 10px;
+//   border-radius: var(--rad2);
+// }
 
-/* prettier-ignore */
-ul.img-gallery {
+div.current-img-wrapper {
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
+  padding: 10px;
+  background: var(--chlg9);
+  border-radius: var(--rad2);
+
+  & > img.current {
+    display: block;
+    width: 100%;
+    height: 500px;
+    object-fit: scale-down;
+  }
+
+  &:hover {
+    & > p.current-index-display {
+      opacity: 50%;
+    }
+  }
+
+  & > p.current-index-display {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+
+    line-height: 100%;
+    padding: 5px;
+
+    border-radius: var(--rad);
+    background-color: var(--chlg9);
+
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+}
+
+ul {
   list-style: none;
   display: grid;
-  gap: $padding;
-  padding: 0 $padding;
+  grid-template-columns: 60px repeat(7, max-content) 60px;
+  grid-template-rows: 120px;
 
-  grid-template-columns: repeat(12, 1fr);
+  $pad: 10px;
+  margin-top: $pad;
+  gap: $pad;
 
-  & > li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  & li {
+    height: 120px;
+    width: 120px;
 
-    grid-column: span 3;
-    &.small  { grid-column: span 1; }
-    &.medium { grid-column: span 6; }
-    &.large  { grid-column: 1 / span 12; }
+    @include contentCard();
+    @include colorfade();
 
-    &.rec-sheet-v1 { grid-column: span 12; }
-    &.paradigm-hero { grid-column: span 12; }
+    &.current-img-indicator {
+      width: 10px;
 
-    &.crisis-icons {
-      grid-column: 2 / span 10;
-      padding: 2rem;
-      box-shadow: var(--boxShadowBold);
-      border-radius: 20px;
-      background: var(--partnerBgDark);
-      & > img {
-        box-shadow: none;
+      & > div {
+        position: relative;
+        bottom: 20px;
+        height: calc(100% + 20px);
+        width: 100%;
+        background: var(--chlg9);
+        border-radius: var(--rad);
       }
     }
 
-    // background-color: var(--blug6);
+    &.placeholder {
+      opacity: 0.5;
+      border-color: transparent;
+    }
 
-    & > img {
+    & > button {
       display: block;
       width: 100%;
-      box-shadow: var(--boxShadowBold);
+      height: 100%;
+      padding: 5px;
+
+      background: none;
+      border: var(--headshotBorder);
+      border-radius: var(--rad);
+
+      @include colorfade();
+
+      &:hover:not(:disabled) {
+        border-color: var(--accent);
+      }
+
+      &:disabled {
+        cursor: default;
+        // border-color: transparent;
+      }
+
+      & > img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: scale-down;
+      }
     }
   }
 }
 
-li.helios > img {
-  border-radius: 20px !important;
-}
+div.nav-buttons-wrapper {
+  display: grid;
+  grid-template-rows: 1fr max-content;
+  gap: 5px;
 
-li.expedition > img {
-  border-radius: 20px !important;
-}
+  height: 120px;
 
-li.battle > img {
-  border-radius: 20px !important;
-}
+  & > button {
+    @include colorfade();
+    @include contentCard();
+    border: var(--headshotBorder);
 
-li.rec-sheet-v1 > img,
-li.future > img {
-  border-radius: 20px !important;
-  max-width: 800px;
-}
+    padding: 5px;
 
-li.paradigm-hero > img {
-  border-radius: 10px !important;
+    &:hover:not(:disabled) {
+      border-color: var(--accent);
+    }
+
+    &:disabled {
+      cursor: default;
+      opacity: 0.5;
+      border-color: transparent;
+    }
+  }
 }
