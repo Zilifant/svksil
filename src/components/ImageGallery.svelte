@@ -74,7 +74,7 @@
       {`${currentImgIndex + 1} / ${numOfImages}`}
     </p>
   </div>
-  <ul>
+  <ul class="image-gallery-list">
     <div class="nav-buttons-wrapper">
       <button
         on:click={() => setCurrent('prev')}

@@ -48,7 +48,7 @@ div.current-img-wrapper {
   }
 }
 
-ul {
+ul.image-gallery-list {
   list-style: none;
   display: grid;
   grid-template-columns: 60px repeat(7, max-content) 60px;
