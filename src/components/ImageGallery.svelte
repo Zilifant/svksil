@@ -1,6 +1,7 @@
 <!-- image grid -->
 <script lang="ts">
   import type { ImageData } from '$lib/types';
+  import Image from './Image.svelte';
   import '$styles/components/image-gallery.scss';
 
   type IndexedImgData = ImageData & { idx: number };
@@ -58,18 +59,23 @@
     const end = start + 7;
     return indexedImgs.slice(start, end);
   };
-
-  $: visibleImgs = getVisibleImages();
 </script>
+
+<!-- <svelte:head>
+  {#each images as { url }}
+    <link rel="preload" as="image" href={url} />
+  {/each}
+</svelte:head> -->
 
 <div class={`wrapper ${cssClass}`}>
   <div class="current-img-wrapper">
-    <img
+    <Image cssClass="current" image={images[currentImgIndex]} />
+    <!-- <img
       class="current"
       src={images[currentImgIndex].url}
       title={images[currentImgIndex].title}
       alt={images[currentImgIndex].alt}
-    />
+    /> -->
     <p class="current-index-display">
       {`${currentImgIndex + 1} / ${numOfImages}`}
     </p>
@@ -86,7 +92,7 @@
         {'Start'}
       </button>
     </div>
-    {#each visibleImgs as { url, title, alt, id, idx }}
+    {#each getVisibleImages() as { id, idx }}
       {#if id === 'placeholder'}
         <li class="placeholder" />
       {:else}
@@ -95,7 +101,8 @@
             on:click={() => setCurrent(idx)}
             disabled={currentImgIndex === idx}
           >
-            <img src={url} {title} {alt} />
+            <Image image={images[idx]} />
+            <!-- <img src={url} {title} {alt} /> -->
           </button>
         </li>
       {/if}
