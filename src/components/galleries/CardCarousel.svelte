@@ -2,8 +2,8 @@
 <script lang="ts">
   import type { ImageData } from '$lib/types';
   import StandardBtn from '$components/StandardBtn.svelte';
-  import chevRight from '../assets/svgs/chevRight.svg';
-  import chevLeft from '../assets/svgs/chevLeft.svg';
+  import chevRight from '$assets/svgs/chevRight.svg';
+  import chevLeft from '$assets/svgs/chevLeft.svg';
   import '$styles/components/card-carousel.scss';
 
   export let images: ImageData[] = [];

@@ -1,6 +1,7 @@
 <!-- big image -->
 <script lang="ts">
   import type { ImageData } from '$lib/types';
+
   export let image: ImageData;
   export let wrap: boolean = false;
   export let classes: string = '';
@@ -22,7 +23,7 @@
 {/if}
 
 <style lang="scss">
-  @import '../styles/mixins.scss';
+  @import '../../styles/mixins.scss';
 
   $frameBg: var(--res-item-bg);
 

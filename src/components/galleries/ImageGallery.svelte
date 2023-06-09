@@ -1,7 +1,7 @@
 <!-- image grid -->
 <script lang="ts">
   import type { ImageData } from '$lib/types';
-  import Image from './Image.svelte';
+  import Image from '$components/galleries/Image.svelte';
   import '$styles/components/image-gallery.scss';
 
   type IndexedImgData = ImageData & { idx: number };

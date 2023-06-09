@@ -4,7 +4,7 @@
   import { content } from '$lib/store';
   import { dev } from '$app/environment';
   import { getItemField, getItemById, getImageSeries } from '$lib/utilities';
-  import HeroCarousel from '$components/HeroCarousel.svelte';
+  import HeroCarousel from '$components/galleries/HeroCarousel.svelte';
   import Tooltip from '$components/Tooltip.svelte';
   import '$styles/pages/code.scss';
 

@@ -11,9 +11,9 @@
     getImage,
   } from '$lib/utilities';
   import CodeSnippet from '$components/CodeSnippet.svelte';
-  import CardCarousel from '$components/CardCarousel.svelte';
-  import HeroCarousel from '$components/HeroCarousel.svelte';
-  import Gallery from '$components/Gallery.svelte';
+  import CardCarousel from '$components/galleries/CardCarousel.svelte';
+  import HeroCarousel from '$components/galleries/HeroCarousel.svelte';
+  import ImageList from '$components/galleries/ImageList.svelte';
   import '$styles/pages/blog.scss';
 
   export let post: BlogPost;
@@ -110,7 +110,7 @@
             cssClass="blog-subsection"
           />
         {:else}
-          <Gallery
+          <ImageList
             images={subsec?.imageSeries?.data}
             cssClass="blog-subsection"
           />

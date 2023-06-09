@@ -2,14 +2,13 @@
 <script lang="ts">
   import type { ImageData } from '$lib/types';
   import classNames from 'classnames';
-  import StandardBtn from './StandardBtn.svelte';
+  import StandardBtn from '$components/StandardBtn.svelte';
+  import plus from '$assets/svgs/plus.svg';
+  import minus from '$assets/svgs/minus.svg';
+  import chevRight from '$assets/svgs/chevRight.svg';
+  import chevLeft from '$assets/svgs/chevLeft.svg';
+  import doubleChevUp from '$assets/svgs/doubleChevUp.svg';
   import '$styles/components/hero-carousel.scss';
-
-  import plus from '../assets/svgs/plus.svg';
-  import minus from '../assets/svgs/minus.svg';
-  import chevRight from '../assets/svgs/chevRight.svg';
-  import chevLeft from '../assets/svgs/chevLeft.svg';
-  import doubleChevUp from '../assets/svgs/doubleChevUp.svg';
 
   export let images: ImageData[] = [];
   export let title: string | null = null;

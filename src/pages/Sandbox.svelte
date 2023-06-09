@@ -6,8 +6,8 @@
     filterParsedImageSeriesData,
   } from '$lib/utilities';
 
-  import Gallery from '$components/Gallery.svelte';
-  import BigImg from '$components/BigImg.svelte';
+  // import ImageList from '$components/galleries/ImageList.svelte';
+  import FullWidthImage from '$components/galleries/FullWidthImage.svelte';
 
   import Blackhole from '$components/svgs/Blackhole.svelte';
   import Circle1 from '$components/svgs/Circle1.svelte';
@@ -57,12 +57,12 @@
 </script>
 
 <div class="page-wrapper sandbox">
-  <BigImg image={miscImgs[0]} wrap={false} classes="paper" />
-  <BigImg image={miscImgs[1]} wrap={true} classes="full-width framed" />
+  <FullWidthImage image={miscImgs[0]} wrap={false} classes="paper" />
+  <FullWidthImage image={miscImgs[1]} wrap={true} classes="full-width framed" />
   <ul>
     {#each cuMaps as map}
       <li style={'margin-bottom: 5px'}>
-        <BigImg image={map} wrap={true} classes="full-width" />
+        <FullWidthImage image={map} wrap={true} classes="full-width" />
       </li>
     {/each}
   </ul>
