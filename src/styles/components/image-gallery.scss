@@ -15,14 +15,15 @@ div.current-img-wrapper {
   overflow: hidden;
 
   width: 100%;
+  height: 500px;
   padding: 10px;
   background: var(--chlg9);
   border-radius: var(--rad2);
 
-  & > img.current {
+  & > img {
     display: block;
     width: 100%;
-    height: 500px;
+    height: 100%;
     object-fit: scale-down;
   }
 
