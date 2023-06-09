@@ -128,14 +128,7 @@ export function getImage(id: string, data: ContentfulData): ImageData {
   const asset = data?.includes?.Asset?.find(
     (asset: AssetRef) => asset?.sys?.id === id,
   );
-  return {
-    url: 'https:' + asset?.fields?.file?.url,
-    title: asset?.fields?.title,
-    alt: asset?.fields?.title,
-    id: id,
-    width: asset?.fields?.details?.image?.width,
-    height: asset?.fields?.details?.image?.height,
-  };
+  return parseImageData(asset);
 }
 
 export function getItemField(
