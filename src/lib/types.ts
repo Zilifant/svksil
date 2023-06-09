@@ -150,6 +150,8 @@ export type ImageData = {
   order?: string | number;
   description?: string;
   tags?: string[];
+  width?: number;
+  height?: number;
 };
 
 export type AssetData = any;
