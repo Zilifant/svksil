@@ -116,6 +116,8 @@ function parseImageData(data: CfItem): ImageData {
     title: data?.fields?.title,
     alt: data?.fields?.title,
     id: data?.sys?.id,
+    width: data?.fields?.details?.image?.width,
+    height: data?.fields?.details?.image?.height,
     order: data?.fields?.order,
     description: data?.fields?.description,
     tags: data?.metadata?.tags.map((tag: CfItem) => tag.sys.id),
@@ -131,6 +133,8 @@ export function getImage(id: string, data: ContentfulData): ImageData {
     title: asset?.fields?.title,
     alt: asset?.fields?.title,
     id: id,
+    width: asset?.fields?.details?.image?.width,
+    height: asset?.fields?.details?.image?.height,
   };
 }
 
