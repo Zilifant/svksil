@@ -22,6 +22,12 @@
   );
 </script>
 
+<svelte:head>
+  {#each deceptionImgData as { url }}
+    <link rel="preload" as="image" href={url} />
+  {/each}
+</svelte:head>
+
 <div class="page-wrapper code">
   <section>
     <p class="headline-text">{code.summary}</p>
