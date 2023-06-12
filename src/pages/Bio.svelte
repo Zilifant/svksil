@@ -5,6 +5,7 @@
   import { parseMarkdown } from '$lib/utilities';
   import { content, theme } from '$lib/store';
   import { dark } from '$lib/constants';
+  // import Image from '$components/galleries/Image.svelte';
   import '$styles/pages/bio.scss';
 
   const matchFID = (item: any) => item?.fields?.fid === 'bio page';
@@ -37,6 +38,13 @@
         title="Witness me!"
         alt="Headshot: Scott Silsbe, Cool Guy"
       />
+      <!-- <Image
+        cssClass="switchable-img"
+        id="headshot"
+        src={setImgSrc('headshot')}
+        title="Witness me!"
+        alt="Headshot: Scott Silsbe, Cool Guy"
+      /> -->
     </div>
   </section>
 
@@ -45,6 +53,7 @@
     {#each bio?.partners as { id, alt }}
       <div class="partner-logo-wrapper">
         <img class="switchable-img" src={setImgSrc(id)} {id} {alt} />
+        <!-- <Image cssClass="switchable-img" src={setImgSrc(id)} {id} {alt} /> -->
       </div>
     {/each}
   </section>
