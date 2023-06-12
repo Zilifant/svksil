@@ -7,7 +7,12 @@
   import Footer from '$components/Footer.svelte';
   import { content, theme } from '$lib/store';
   import { version, dark } from '$lib/constants';
-  import { sample, setInitialPageId, getItemField } from '$lib/utilities';
+  import {
+    sample,
+    setInitialPageId,
+    getItemField,
+    // getParsedImageSeriesData,
+  } from '$lib/utilities';
   import '$styles/variables.scss';
   import '$styles/mixins.scss';
   import '$styles/global.scss';
@@ -29,7 +34,14 @@
   $: quotes = contentfulJSON?.quotes?.quotes;
   $: quote = sample(quotes);
   $: socials = contentfulJSON?.socials;
+  // $: allImages = getParsedImageSeriesData('graphic design', contentfulData);
 </script>
+
+<!-- <svelte:head>
+  {#each allImages as { url }}
+    <link rel="preload" as="image" href={url} />
+  {/each}
+</svelte:head> -->
 
 <main class="main-wrapper" data-page={pageId} data-theme={$theme}>
   <div class="fixed-bg" />
