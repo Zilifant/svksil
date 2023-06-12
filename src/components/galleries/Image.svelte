@@ -3,17 +3,23 @@
   import type { ImageData } from '$lib/types';
   import { onMount } from 'svelte';
 
-  export let image: ImageData;
+  export let image: ImageData | null = null;
   export let cssClass: string = '';
   export let dimensions: string[] = ['100%', '100%'];
+  export let src: string = '';
+  export let alt: string = '';
+  export let title: string = '';
+  export let id: string = '';
 
   let loading = false;
   let loaded = false;
   let failed = false;
 
+  $: imageData = image ?? { url: src, alt, title, id };
+
   onMount(() => {
     const img = new Image();
-    img.src = image.url;
+    img.src = imageData.url;
     loading = true;
 
     img.onload = () => {
@@ -33,9 +39,9 @@
     style:width={dimensions[0]}
     style:height={dimensions[1]}
     class={cssClass}
-    src={image.url}
-    alt={image.alt}
-    title={image.title}
+    src={imageData?.url}
+    alt={imageData?.alt}
+    title={imageData?.title}
   />
 {:else if loading}
   <div
