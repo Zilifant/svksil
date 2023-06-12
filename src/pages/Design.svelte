@@ -39,28 +39,28 @@
 </script>
 
 <div class="page-wrapper design">
-  <!-- {#if dev} -->
-  <Image image={heliosMap} dimensions={['500px', '300px']} />
-  <ImageGallery images={allImages} />
-  <!-- {:else} -->
-  <section class="content">
-    {@html placeholderText}
-  </section>
-  <ImageList images={[ftOneSheet]} />
-  <FullWidthImage image={heliosMap} wrap={false} classes="full-width" />
-  <HeroCarousel images={bbpPosters} wrap={true} />
-  <div class="embed-wrapper">
-    <embed class="crisis-rules" src={crisisPdfUrl} type="application/pdf" />
-  </div>
-  <ul>
-    {#each cuMaps as map}
-      <li style={'margin-bottom: 5px'}>
-        <FullWidthImage image={map} wrap={true} classes="full-width" />
-      </li>
-    {/each}
-  </ul>
-  <CardCarousel images={exCards} />
-  <CardCarousel images={bsCards} />
-  <CardCarousel images={cuCards} />
-  <!-- {/if} -->
+  {#if dev}
+    <Image image={heliosMap} dimensions={['500px', '300px']} />
+    <ImageGallery images={allImages} />
+  {:else}
+    <section class="content">
+      {@html placeholderText}
+    </section>
+    <ImageList images={[ftOneSheet]} />
+    <FullWidthImage image={heliosMap} wrap={false} classes="full-width" />
+    <HeroCarousel images={bbpPosters} wrap={true} />
+    <div class="embed-wrapper">
+      <embed class="crisis-rules" src={crisisPdfUrl} type="application/pdf" />
+    </div>
+    <ul>
+      {#each cuMaps as map}
+        <li style={'margin-bottom: 5px'}>
+          <FullWidthImage image={map} wrap={true} classes="full-width" />
+        </li>
+      {/each}
+    </ul>
+    <CardCarousel images={exCards} />
+    <CardCarousel images={bsCards} />
+    <CardCarousel images={cuCards} />
+  {/if}
 </div>
