@@ -17,6 +17,7 @@
   import Image from '$components/galleries/Image.svelte';
 
   import '$styles/pages/design.scss';
+  import Spinner from '$components/galleries/Spinner.svelte';
 
   const otherImages = ['Future Tense One Sheet for web', 'helios-map-padded'];
   const placeholderText =
@@ -40,7 +41,9 @@
 
 <div class="page-wrapper design">
   {#if dev}
-    <Image image={heliosMap} dimensions={['500px', '300px']} />
+    <Image image={heliosMap} dimensions={{ x: '500px', y: 300 }}>
+      <Spinner slot="loading" showBackground={true} />
+    </Image>
     <ImageGallery images={allImages} />
   {:else}
     <section class="content">
