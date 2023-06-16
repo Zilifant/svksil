@@ -2,6 +2,7 @@
 <script lang="ts">
   import type { ImageData } from '$lib/types';
   import Image from '$components/galleries/Image.svelte';
+  import Spinner from '$components/galleries/Spinner.svelte';
   import '$styles/components/image-gallery.scss';
 
   type IndexedImgData = ImageData & { idx: number };
@@ -69,13 +70,9 @@
 
 <div class={`wrapper ${cssClass}`}>
   <div class="current-img-wrapper">
-    <Image cssClass="current" image={images[currentImgIndex]} />
-    <!-- <img
-      class="current"
-      src={images[currentImgIndex].url}
-      title={images[currentImgIndex].title}
-      alt={images[currentImgIndex].alt}
-    /> -->
+    <Image cssClass="current" image={images[currentImgIndex]}>
+      <Spinner slot="loading" />
+    </Image>
     <p class="current-index-display">
       {`${currentImgIndex + 1} / ${numOfImages}`}
     </p>
@@ -101,8 +98,7 @@
             on:click={() => setCurrent(idx)}
             disabled={currentImgIndex === idx}
           >
-            <Image image={images[idx]} />
-            <!-- <img src={url} {title} {alt} /> -->
+            <Image image={images[idx]}><Spinner slot="loading" /></Image>
           </button>
         </li>
       {/if}
