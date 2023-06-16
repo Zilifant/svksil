@@ -3,9 +3,14 @@
   import type { ImageData } from '$lib/types';
   import { onMount } from 'svelte';
 
+  type Dimensions = {
+    x: string | number;
+    y: string | number;
+  };
+
   export let image: ImageData | null = null;
   export let cssClass: string = '';
-  export let dimensions: string[] = ['100%', '100%'];
+  export let dimensions: Dimensions = { x: '100%', y: '100%' };
   export let src: string = '';
   export let alt: string = '';
   export let title: string = '';
@@ -16,6 +21,10 @@
   let failed = false;
 
   $: imageData = image ?? { url: src, alt, title, id };
+  $: width =
+    typeof dimensions.x === 'number' ? `${dimensions.x}px` : dimensions.x;
+  $: height =
+    typeof dimensions.y === 'number' ? `${dimensions.y}px` : dimensions.y;
 
   onMount(() => {
     const img = new Image();
@@ -36,28 +45,22 @@
 
 {#if loaded}
   <img
-    style:width={dimensions[0]}
-    style:height={dimensions[1]}
+    style:width
+    style:height
     class={cssClass}
     src={imageData?.url}
     alt={imageData?.alt}
     title={imageData?.title}
   />
 {:else if loading}
-  <div
-    style:width={dimensions[0]}
-    style:height={dimensions[1]}
-    class={`${cssClass} image-loading`}
-  >
-    <slot name="loading"><p>Loading...</p></slot>
+  <div style:width style:height class={`${cssClass} image-loading`}>
+    <slot name="loading">
+      <p>Loading...</p>
+    </slot>
   </div>
 {:else if failed}
-  <div
-    style:width={dimensions[0]}
-    style:height={dimensions[1]}
-    class={`${cssClass} image-failed`}
-  >
-    <slot name="failed"><p>Failed</p></slot>
+  <div style:width style:height class={`${cssClass} image-failed`}>
+    <slot name="failed"><div /></slot>
   </div>
 {/if}
 
