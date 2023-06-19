@@ -11,6 +11,12 @@
 
   const matchFID = (item: any) => item?.fields?.fid === 'bio page';
 
+  const videoData = {
+    header: 'A thing I did at PAX Unplugged a few years ago...',
+    title: 'Megagames at PAX Unplugged 2017',
+    src: 'https://www.youtube.com/embed/OTEtQvGU1h0',
+  };
+
   $: bioData = $content?.contentfulData?.items?.find((item) => matchFID(item));
   $: introHTML = parseMarkdown(bioData?.fields?.introMd);
   $: partnersHeader = bioData?.fields?.partnersHeader;
@@ -51,7 +57,7 @@
     </div>
   </section>
 
-  <h2 class="partner-section-title large-text">{partnersHeader}</h2>
+  <h2 class="section-title large-text">{partnersHeader}</h2>
   <section class="partner-logo-grid">
     {#each bio?.partners as { id, alt }}
       <div class="partner-logo-wrapper">
@@ -59,5 +65,16 @@
         <!-- <Image cssClass="switchable-img" src={setImgSrc(id)} {id} {alt} /> -->
       </div>
     {/each}
+  </section>
+
+  <h2 class="section-title large-text">{videoData.header}</h2>
+  <section class="video">
+    <iframe
+      src={videoData.src}
+      title={videoData.title}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      frameBorder="0"
+      allowFullScreen
+    />
   </section>
 </div>

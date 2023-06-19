@@ -2,6 +2,8 @@
 
 @import '../mixins.scss';
 
+$sectionMargin: 3rem;
+
 .large-text,
 .large-text * {
   font-size: 1.25rem;
@@ -93,9 +95,9 @@ $headshotWidth: 200px;
   }
 }
 
-.partner-section-title {
+.section-title {
   font-style: italic;
-  margin-top: 3rem;
+  margin-top: $sectionMargin;
 }
 
 .partner-logo-grid {
@@ -104,7 +106,7 @@ $headshotWidth: 200px;
   gap: 1.5rem;
   width: 100%;
   justify-items: stretch;
-  margin-top: 3rem;
+  margin-top: $sectionMargin;
 
   & > .partner-logo-wrapper {
     display: flex;
@@ -123,5 +125,16 @@ $headshotWidth: 200px;
       height: 65px;
       width: 144px;
     }
+  }
+}
+
+.video {
+  width: 100%;
+  margin-top: $sectionMargin;
+
+  & > iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    @include contentCard();
   }
 }
