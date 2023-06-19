@@ -14,6 +14,8 @@
   import CardCarousel from '$components/galleries/CardCarousel.svelte';
   import HeroCarousel from '$components/galleries/HeroCarousel.svelte';
   import ImageList from '$components/galleries/ImageList.svelte';
+  import Image from '$components/galleries/Image.svelte';
+  import Spinner from './galleries/Spinner.svelte';
   import '$styles/pages/blog.scss';
 
   export let post: BlogPost;
@@ -87,32 +89,43 @@
   <div class="content">
     {#each subsections as subsec}
       {#if subsec?.contentType === 'html'}
-        <div class="blog-subsection">{@html subsec?.html}</div>
+        <div class="blog-subsection html">{@html subsec?.html}</div>
       {:else if subsec?.contentType === 'image'}
-        <div class="blog-subsection">
-          <img
+        <div class="blog-subsection image">
+          <Image
+            dimensions={{ x: 'calc(800px + 2rem)', y: 468 }}
             src={subsec?.image?.url}
             alt={subsec?.image?.title}
             title={subsec?.image?.title}
-          />
+          >
+            <Spinner slot="loading" showBackground={true} />
+          </Image>
+          <!-- <img
+            src={subsec?.image?.url}
+            alt={subsec?.image?.title}
+            title={subsec?.image?.title}
+          /> -->
         </div>
       {:else if subsec?.contentType === 'htmlCodeSnippet'}
-        <CodeSnippet snippetHTML={subsec?.html} cssClass="blog-subsection" />
+        <CodeSnippet
+          snippetHTML={subsec?.html}
+          cssClass="blog-subsection code"
+        />
       {:else if subsec?.contentType === 'imageSeries'}
         {#if subsec?.imageSeries?.uiComponent === 'cardCarousel'}
           <CardCarousel
             images={subsec?.imageSeries?.data}
-            cssClass="blog-subsection"
+            cssClass="blog-subsection cardcarousel"
           />
         {:else if subsec?.imageSeries?.uiComponent === 'heroCarousel'}
           <HeroCarousel
             images={subsec?.imageSeries?.data}
-            cssClass="blog-subsection"
+            cssClass="blog-subsection herocarousel"
           />
         {:else}
           <ImageList
             images={subsec?.imageSeries?.data}
-            cssClass="blog-subsection"
+            cssClass="blog-subsection imagelist"
           />
         {/if}
       {:else}

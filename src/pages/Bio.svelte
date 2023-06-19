@@ -5,7 +5,8 @@
   import { parseMarkdown } from '$lib/utilities';
   import { content, theme } from '$lib/store';
   import { dark } from '$lib/constants';
-  // import Image from '$components/galleries/Image.svelte';
+  import Image from '$components/galleries/Image.svelte';
+  import Spinner from '$components/galleries/Spinner.svelte';
   import '$styles/pages/bio.scss';
 
   const matchFID = (item: any) => item?.fields?.fid === 'bio page';
@@ -31,20 +32,22 @@
       {@html introHTML}
     </div>
     <div class="headshot-wrapper">
-      <img
+      <!-- <img
         class="switchable-img"
         id="headshot"
         src={setImgSrc('headshot')}
         title="Witness me!"
         alt="Headshot: Scott Silsbe, Cool Guy"
-      />
-      <!-- <Image
+      /> -->
+      <Image
         cssClass="switchable-img"
+        dimensions={{ x: 198, y: 297 }}
         id="headshot"
         src={setImgSrc('headshot')}
         title="Witness me!"
         alt="Headshot: Scott Silsbe, Cool Guy"
-      /> -->
+        ><Spinner slot="loading" showBackground={true} /></Image
+      >
     </div>
   </section>
 

@@ -63,7 +63,7 @@
       }
     }
 
-    & > div.blog-subsection > img {
+    & > div.blog-subsection.image > * {
       width: calc(800px + 2rem);
       margin-left: -2rem;
       border-radius: var(--rad2);

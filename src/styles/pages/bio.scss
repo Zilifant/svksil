@@ -72,13 +72,21 @@ $headshotWidth: 200px;
   @include colorfade();
 
   & > img {
-    width: 100%;
-    height: auto !important;
+    // width: 100%;
+    // height: auto !important;
+    width: 198px;
+    height: auto;
     display: block;
   }
 
+  & > div {
+    @media (max-width: 650px) {
+      height: 198px !important;
+    }
+  }
+
   @media (max-width: 650px) {
-    height: $headshotWidth;
+    height: $headshotWidth !important;
     border-radius: 50%;
     aspect-ratio: 1 / 1;
     margin: 10px;
