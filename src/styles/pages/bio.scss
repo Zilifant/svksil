@@ -17,6 +17,7 @@ $headshotWidth: 200px;
   grid-template-columns: 1fr $headshotWidth;
   gap: 1.5rem;
 
+  height: 259px;
   margin-top: 20px;
   padding-left: 1rem;
   @include contentCard();
