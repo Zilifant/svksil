@@ -52,8 +52,9 @@
         src={setImgSrc('headshot')}
         title="Witness me!"
         alt="Headshot: Scott Silsbe, Cool Guy"
-        ><Spinner slot="loading" showBackground={true} /></Image
       >
+        <Spinner slot="loading" />
+      </Image>
     </div>
   </section>
 
