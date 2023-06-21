@@ -23,7 +23,9 @@ export const load = (async ({ fetch, setHeaders, cookies }) => {
   const contentfulJson = await contentfulResponse.json();
   if (dev) console.timeEnd('fetching from contentful...');
 
-  if (cacheLifetime) {
+  // only use in prod due to issue with live dev server
+  // 'Cache-Control Headers not set' error hides other errors
+  if (!dev && cacheLifetime) {
     setHeaders({ 'Cache-Control': `max-age=${cacheLifetime}` });
   }
 
