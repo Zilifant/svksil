@@ -41,10 +41,10 @@
 
 <div class="page-wrapper design">
   {#if dev}
+    <ImageGallery images={allImages} />
     <Image image={heliosMap} dimensions={{ x: '500px', y: 300 }}>
       <Spinner slot="loading" showBackground={true} />
     </Image>
-    <ImageGallery images={allImages} />
   {:else}
     <section class="content">
       {@html placeholderText}
