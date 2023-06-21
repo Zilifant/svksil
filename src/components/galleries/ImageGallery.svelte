@@ -1,8 +1,6 @@
 <!-- image grid -->
 <script lang="ts">
   import type { ImageData } from '$lib/types';
-  import ImageComponent from '$components/galleries/Image.svelte';
-  import Spinner from '$components/galleries/Spinner.svelte';
   import '$styles/components/image-gallery.scss';
 
   type IndexedImgData = ImageData & { idx: number };
@@ -60,38 +58,20 @@
     const end = start + 7;
     return indexedImgs.slice(start, end);
   };
-
-  // let img: HTMLImageElement;
-  // let loaded: boolean = false;
-
-  // $: {
-  //   loaded = false;
-  //   img = new Image();
-  //   img.src = images[currentImgIndex].url;
-  //   img.onload = () => (loaded = true);
-  // }
 </script>
 
-<!-- <svelte:head>
+<svelte:head>
   {#each images as { url }}
     <link rel="preload" as="image" href={url} />
   {/each}
-</svelte:head> -->
+</svelte:head>
 
 <div class={`wrapper ${cssClass}`}>
   <div class="current-img-wrapper">
-    <ImageComponent cssClass="current" image={images[currentImgIndex]}>
-      <Spinner slot="loading" />
-    </ImageComponent>
-    <!-- <img src={img?.src} alt={img?.alt} /> -->
-    <!-- {#if loaded}
-      <img
-        src={images[currentImgIndex]?.url}
-        alt={images[currentImgIndex]?.alt}
-      />
-    {:else}
-      <div>Loading...</div>
-    {/if} -->
+    <img
+      src={images[currentImgIndex]?.url}
+      alt={images[currentImgIndex]?.alt}
+    />
 
     <p class="current-index-display">
       {`${currentImgIndex + 1} / ${numOfImages}`}
@@ -118,9 +98,7 @@
             on:click={() => setCurrent(idx)}
             disabled={currentImgIndex === idx}
           >
-            <ImageComponent image={images[idx]}
-              ><Spinner slot="loading" /></ImageComponent
-            >
+            <img src={images[idx]?.url} alt={images[idx]?.alt} />
           </button>
         </li>
       {/if}
