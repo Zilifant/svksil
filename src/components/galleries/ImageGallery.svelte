@@ -1,7 +1,7 @@
 <!-- image grid -->
 <script lang="ts">
   import type { ImageData } from '$lib/types';
-  import Image from '$components/galleries/Image.svelte';
+  import ImageComponent from '$components/galleries/Image.svelte';
   import Spinner from '$components/galleries/Spinner.svelte';
   import '$styles/components/image-gallery.scss';
 
@@ -60,6 +60,16 @@
     const end = start + 7;
     return indexedImgs.slice(start, end);
   };
+
+  // let img: HTMLImageElement;
+  // let loaded: boolean = false;
+
+  // $: {
+  //   loaded = false;
+  //   img = new Image();
+  //   img.src = images[currentImgIndex].url;
+  //   img.onload = () => (loaded = true);
+  // }
 </script>
 
 <!-- <svelte:head>
@@ -70,9 +80,19 @@
 
 <div class={`wrapper ${cssClass}`}>
   <div class="current-img-wrapper">
-    <Image cssClass="current" image={images[currentImgIndex]}>
+    <ImageComponent cssClass="current" image={images[currentImgIndex]}>
       <Spinner slot="loading" />
-    </Image>
+    </ImageComponent>
+    <!-- <img src={img?.src} alt={img?.alt} /> -->
+    <!-- {#if loaded}
+      <img
+        src={images[currentImgIndex]?.url}
+        alt={images[currentImgIndex]?.alt}
+      />
+    {:else}
+      <div>Loading...</div>
+    {/if} -->
+
     <p class="current-index-display">
       {`${currentImgIndex + 1} / ${numOfImages}`}
     </p>
@@ -98,7 +118,9 @@
             on:click={() => setCurrent(idx)}
             disabled={currentImgIndex === idx}
           >
-            <Image image={images[idx]}><Spinner slot="loading" /></Image>
+            <ImageComponent image={images[idx]}
+              ><Spinner slot="loading" /></ImageComponent
+            >
           </button>
         </li>
       {/if}
