@@ -46,6 +46,7 @@
   }
 
   function backToStart() {
+    disableForAnimation();
     currentIdx = 0;
     prevIdx = -1;
   }
