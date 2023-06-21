@@ -4,43 +4,51 @@
   import { onMount } from 'svelte';
 
   type Dimensions = {
-    x: string | number;
-    y: string | number;
+    x: string | number | null;
+    y: string | number | null;
   };
 
   export let image: ImageData | null = null;
   export let cssClass: string = '';
-  export let dimensions: Dimensions = { x: '100%', y: '100%' };
+  export let dimensions: Dimensions = { x: null, y: null };
   export let src: string = '';
   export let alt: string = '';
   export let title: string = '';
   export let id: string = '';
 
+  let img: HTMLImageElement;
   let loading = false;
   let loaded = false;
   let failed = false;
+
+  let hasMounted = false;
+  onMount(() => (hasMounted = true));
+
+  $: {
+    if (hasMounted) {
+      loaded = false;
+      loading = true;
+
+      img = new Image();
+      img.src = imageData?.url;
+
+      img.onload = () => {
+        loaded = true;
+        loading = false;
+      };
+
+      img.onerror = () => {
+        loading = false;
+        failed = true;
+      };
+    }
+  }
 
   $: imageData = image ?? { url: src, alt, title, id };
   $: width =
     typeof dimensions.x === 'number' ? `${dimensions.x}px` : dimensions.x;
   $: height =
     typeof dimensions.y === 'number' ? `${dimensions.y}px` : dimensions.y;
-
-  onMount(() => {
-    const img = new Image();
-    img.src = imageData.url;
-    loading = true;
-
-    img.onload = () => {
-      loading = false;
-      loaded = true;
-    };
-
-    img.onerror = () => {
-      loading = false;
-      failed = true;
-    };
-  });
 </script>
 
 {#if loaded}
@@ -65,11 +73,6 @@
 {/if}
 
 <style lang="scss">
-  img {
-    object-fit: contain;
-    /* background-color: var(--chlg9); */
-  }
-
   div {
     display: flex;
     align-items: center;
@@ -77,6 +80,5 @@
     flex-direction: column;
 
     color: var(--text);
-    /* background-color: var(--chlg7); */
   }
 </style>
