@@ -40,6 +40,7 @@
   display: grid;
   box-shadow: var(--boxShadowBold);
   border-radius: var(--rad2);
+  background-color: black;
 }
 
 .hero-carousel-wrapper li {
@@ -49,6 +50,10 @@
 
 /* prettier-ignore */
 .hero-carousel-wrapper li {
+  &:first-child {
+    z-index: 2;
+  }
+
   &.behind  { transform: translateY(-100%); }
   &.current { transform: translateY(0);     }
   &.ahead   { transform: translateY(100%);  }
