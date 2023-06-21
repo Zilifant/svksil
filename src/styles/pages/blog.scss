@@ -64,6 +64,8 @@
     }
 
     & > div.blog-subsection.image > * {
+      display: block;
+
       width: calc(800px + 2rem);
       margin-left: -2rem;
       border-radius: var(--rad2);
