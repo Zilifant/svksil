@@ -93,7 +93,6 @@
       {:else if subsec?.contentType === 'image'}
         <div class="blog-subsection image">
           <Image
-            dimensions={{ x: 'calc(800px + 2rem)', y: 468 }}
             src={subsec?.image?.url}
             alt={subsec?.image?.title}
             title={subsec?.image?.title}
