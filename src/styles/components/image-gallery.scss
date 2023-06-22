@@ -10,6 +10,8 @@
 //   border-radius: var(--rad2);
 // }
 
+$hoverBorderColor: var(--cyan4);
+
 div.current-img-wrapper {
   position: relative;
   overflow: hidden;
@@ -94,6 +96,24 @@ ul.image-gallery-list {
       height: 100%;
       padding: 5px;
 
+      &.img-cover {
+        padding: 0;
+        overflow: hidden;
+        border: none;
+
+        & > img {
+          object-fit: cover;
+          // filter: contrast(50%);
+          // transition: filter 0.25s;
+        }
+
+        // &:hover:not(:disabled) {
+        //   & > img {
+        //     filter: contrast(100%);
+        //   }
+        // }
+      }
+
       background: none;
       border: var(--headshotBorder);
       border-radius: var(--rad);
@@ -101,7 +121,7 @@ ul.image-gallery-list {
       @include colorfade();
 
       &:hover:not(:disabled) {
-        border-color: var(--accent);
+        border-color: $hoverBorderColor;
       }
 
       &:disabled {
@@ -134,7 +154,7 @@ div.nav-buttons-wrapper {
     padding: 5px;
 
     &:hover:not(:disabled) {
-      border-color: var(--accent);
+      border-color: $hoverBorderColor;
     }
 
     &:disabled {
