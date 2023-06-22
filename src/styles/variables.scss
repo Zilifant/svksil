@@ -239,6 +239,8 @@
   --para4: #8e99b1;
   --para5: #575b72;
   --para6: #535773;
+  --para65: #4b5164;
+  --para69: #444b5e;
   --para7: #353e50;
   --para8: #2e3440;
   --para9: #252830;
@@ -296,12 +298,14 @@
   --shadowLight: var(--boxShadow);
   --shadowBoldLight: var(--boxShadow);
 
-  --contentBgDark: linear-gradient(
-    -20deg, #2b5876 0%, #4e4376 100%
-    );
-  --contentCardBgDark: linear-gradient(
-    -20deg, #8e92ac4e 0%, #878bad2a 100%
-    );
+  // --contentBgDark: linear-gradient(
+  //   -20deg, #2b5876 0%, #4e4376 100%
+  //   );
+  // --contentCardBgDark: linear-gradient(
+  //   -20deg, #8e92ac4e 0%, #878bad2a 100%
+  //   );
+  --contentBgDark: var(--para7);
+  --contentCardBgDark: var(--para69);
   --partnerBgDark: linear-gradient(
     -20deg, #f2f3fcd9 0%, #f1f2fff5 100%
     );
