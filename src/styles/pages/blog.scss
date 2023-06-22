@@ -31,9 +31,9 @@
     margin: 1rem 0 1rem 0;
 
     & > li {
-      padding: 3px 5px 3px 5px;
+      padding: 3px 8px 3px 8px;
       border-radius: var(--rad);
-      color: var(--white);
+      color: var(--blog-tags-fg);
       background: var(--blog-tags-bg);
 
       &:not(:first-child) {

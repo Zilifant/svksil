@@ -378,6 +378,7 @@ main[data-theme='light'] {
   --btn-fg-hover: var(--white);
   --btn-bg: var(--accent-res);
   --btn-bg-hover: var(--accent-res-hover);
+  --blog-tags-fg: var(--white);
   --blog-tags-bg: var(--blug8);
   --carousel-shadow: var(--boxShadowBold);
   --theme-weight-adjust-text: 350;
@@ -449,7 +450,8 @@ main[data-theme='dark'] {
   --btn-fg-hover: var(--white);
   --btn-bg: var(--accent-res);
   --btn-bg-hover: var(--accent-res-hover);
-  --blog-tags-bg: var(--res-item-bg);
+  --blog-tags-fg: var(--trug9);
+  --blog-tags-bg: var(--partnerBgDark);
   --carousel-shadow: var(--dualBoxShadow);
   --theme-weight-adjust-text: 350;
   --theme-weight-adjust-title-text: 400;
