@@ -408,11 +408,15 @@
 .x-content-li {
   @include font-adjust();
 
+  a {
+    @include animatedUnderline();
+  }
+
   &:not(:first-child) {
     margin-top: 1rem;
   }
 
   & > .details {
-    opacity: 0.65;
+    color: var(--text-resume-faded);
   }
 }

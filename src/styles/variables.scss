@@ -272,6 +272,9 @@
   --bdr3: 3px;
   --time: 0.5s;
 
+  --fadedTextDark: #A9B3BB;
+  --fadedTextLight: #686868;
+
   --shadow: rgba(0, 0, 0, 0.03);
   --shadow2: rgba(0, 0, 0, 0.1);
 
@@ -337,6 +340,7 @@ main[data-theme='light'] {
   --text-alt-faded: var(--trug8);
   --text-alt-bright: var(--indi5);
   --text-alt-title: var(--trug9);
+  --text-resume-faded: var(--fadedTextLight);
   --text-hover: var(--trug6);
   --text-anchor: var(--cyan5);
   --content-bg: var(--contentBgLight);
@@ -409,6 +413,7 @@ main[data-theme='dark'] {
   --text-alt-faded: var(--chlg1);
   --text-alt-bright: var(--libl3);
   --text-alt-title: var(--colg2);
+  --text-resume-faded: var(--fadedTextDark);
   --text-hover: var(--colg1);
   --text-anchor: var(--cyan4);
   --content-bg: var(--contentBgDark);
