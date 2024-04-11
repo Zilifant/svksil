@@ -49,6 +49,7 @@
     <section class="content">
       {@html placeholderText}
     </section>
+    <ImageGallery images={allImages} />
     <ImageList images={[ftOneSheet]} />
     <FullWidthImage image={heliosMap} wrap={false} classes="full-width" />
     <HeroCarousel images={bbpPosters} wrap={true} />
