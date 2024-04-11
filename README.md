@@ -13,3 +13,4 @@ A server side rendered site built with TypeScript, Svelte, SvelteKit, and SCSS. 
 - Transition all of my content to Contentful.
 - A proper 404 page.
 - More animations, images, and science fiction stories.
+- Make Code page responsive.
