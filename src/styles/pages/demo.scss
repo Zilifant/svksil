@@ -26,6 +26,10 @@ ul.short-answer-questions p.question {
   margin-bottom: 5px;
 }
 
+p.answer a {
+  @include animatedUnderline();
+}
+
 div.outer-box {
   display: flex;
   height: 100px;
@@ -51,16 +55,17 @@ div.inner-box {
   background-color: var(--bg);
 }
 
-.text-replacer-wrapper {
+.quote-modifier-wrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: 20px;
 
   & > * {
     width: 100%;
   }
 
-  .text-replacer-form :not(:first-child) {
+  .quote-modifier-form :not(:first-child) {
     margin-top: 10px;
   }
 
@@ -120,7 +125,7 @@ button.demo-button {
   }
 }
 
-.text-replacer-wrapper :not(:first-child) {
+.quote-modifier-wrapper :not(:first-child) {
   margin-top: 10px;
 }
 

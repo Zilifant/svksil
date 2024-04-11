@@ -1,7 +1,6 @@
 <!-- Sandbox -->
 <script lang="ts">
   import { sample } from '$lib/utilities';
-  import { browser } from '$app/environment';
   import '$styles/pages/demo.scss';
 
   const QUOTE = `All the world's a stage,
@@ -69,24 +68,32 @@ Sans teeth, sans eyes, sans taste, sans everything`;
     window.alert(alertText);
   };
 
-  let inputText = '';
+  {
+    /*
+  General Notes:
+  - I've tried to use as much vanilla JavaScript/TypeScript as I could, rather than stuff provided by Svelte.
+  - I don't make a habit of using @ts-ignore, but given the time constraint and that using TypeScript wasn't explicitely part of tha task, I used it a few times to squelch the errors.
+  - I've broken things down into a bunch of more-or-less single-task functions. Not the quickest, shortest solution for a one-off task; but I wanted to approach it as if it was part of something larger and much more complex.
+  - Two bugs I'm aware of: 1) after submitting, the 'please fill out this field' text appears. For the moment, I prefer that visual bug to removing the 'required' attribute. 2) the output text loses the new lines in the original quote.
+  */
+  }
 
   const getQuote = (): string => {
-    // const element = document.querySelector('#quote');
-    // // @ts-ignore
-    // const quote = element?.value;
-    // return quote;
-    return inputText;
+    const element = document.querySelector('#quote');
+    // @ts-ignore
+    const quote = element?.value;
+    return quote;
   };
 
   const tallyModifications = (quote: string): { modifications: number } => {
-    const regex = /( his )|(His)|('big manly voice', 'assertive voice')/g;
+    const regex = /( his )|(His)|(big manly voice)/g;
     const tally = (quote.match(regex) || []).length;
     return {
       modifications: tally,
     };
   };
 
+  // Since the task only specified using the sample input, I targeted that text. If we were testing this against any number of quotes, I would take more time and use regex to account for variations of white space, new lines, capitalization, etc.
   const updateQuote = (quote: string): string => {
     return quote
       .replaceAll(' his ', ' his/her ')
@@ -114,18 +121,14 @@ Sans teeth, sans eyes, sans taste, sans everything`;
     const quote = getQuote();
     if (!quote) return;
 
-    const updatedQuote = updateQuote(quote);
-    displayUpdatedQuote(updatedQuote);
     const tally = tallyModifications(quote);
     displayTally(JSON.stringify(tally));
+    const updatedQuote = updateQuote(quote);
+    displayUpdatedQuote(updatedQuote);
 
-    inputText = '';
+    // @ts-ignore
+    document.querySelector('#quote').value = '';
   };
-
-  if (browser) {
-    console.log(location.pathname);
-    console.log(document.URL);
-  }
 </script>
 
 <div class="page-wrapper demo">
@@ -166,7 +169,10 @@ Sans teeth, sans eyes, sans taste, sans everything`;
       </p>
       <div class="answer">
         <p class="answer">
-          Find the solution here. Click the button to see it work.
+          Find the solution <a
+            href="https://github.com/Zilifant/svksil/blob/7515bea18063fa6e5272810e0e9a709db01b3ae6/src/pages/Demo.svelte#L36"
+            >here</a
+          >. Click the button to see it work.
         </p>
         <button class="demo-button alert" on:click={alertTodaysMeals}>
           <p>Today's Meals!</p>
@@ -198,7 +204,12 @@ Sans teeth, sans eyes, sans taste, sans everything`;
         center of the container:
       </p>
       <div class="answer">
-        <p class="answer">Find the solutions here.</p>
+        <p class="answer">
+          Find the solutions <a
+            href="https://github.com/Zilifant/svksil/blob/7515bea18063fa6e5272810e0e9a709db01b3ae6/src/pages/Demo.svelte#L36"
+            >here</a
+          >.
+        </p>
         <div class="outer-box top-right">
           <div class="inner-box" />
         </div>
@@ -209,11 +220,17 @@ Sans teeth, sans eyes, sans taste, sans everything`;
     </li>
   </ul>
   <h2>Quote Modifier</h2>
-  <div class="text-replacer-wrapper">
-    <form class="text-replacer-form">
+  <p class="answer">
+    See <a
+      href="https://github.com/Zilifant/svksil/blob/7515bea18063fa6e5272810e0e9a709db01b3ae6/src/pages/Demo.svelte#L36"
+      >here</a
+    > for the code, including comments on my thought-process.
+  </p>
+  <div class="quote-modifier-wrapper">
+    <form class="quote-modifier-form">
       <div class="input-wrapper">
         <label for="text">Enter Quote: </label>
-        <textarea bind:value={inputText} id="quote" required />
+        <textarea value="" id="quote" required />
       </div>
       <button class="demo-button submit" on:click={updateQuoteAndDisplay}>
         <p>Update Quote</p>
