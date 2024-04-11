@@ -3,8 +3,52 @@
 @import '../mixins.scss';
 
 .page-wrapper.demo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   width: 100vw;
   padding: 0 50px;
+}
+
+.page-wrapper.demo h2 {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+ul.short-answer-questions li:not(:first-child) {
+  margin-top: 20px;
+}
+
+ul.short-answer-questions p.question {
+  color: var(--text-alt-faded);
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+div.outer-box {
+  display: flex;
+  height: 100px;
+  width: 100px;
+  padding: 5px;
+  margin-top: 10px;
+  background-color: var(--accent);
+}
+
+div.outer-box.top-right {
+  align-items: start;
+  justify-content: end;
+}
+
+div.outer-box.center {
+  align-items: center;
+  justify-content: center;
+}
+
+div.inner-box {
+  height: 25px;
+  width: 25px;
+  background-color: var(--bg);
 }
 
 .text-replacer-wrapper {
@@ -32,41 +76,47 @@
       background-color: var(--form-bg-focus);
     }
   }
+}
 
-  button.submit-button {
-    color: var(--text);
-    background-color: var(--form-bg);
-    flex-grow: 1;
-    border-radius: 24px;
-    min-width: max-content;
-    padding: 0.5rem 1rem;
-    border: var(--bdr1) solid rgba(255, 255, 255, 0.222);
-    background: var(--res-item-bg);
-    box-shadow: var(--shadow-bold);
+button.demo-button {
+  color: var(--text);
+  background-color: var(--form-bg);
+  flex-grow: 1;
+  border-radius: 24px;
+  min-width: max-content;
+  padding: 0.5rem 1rem;
+  border: var(--bdr1) solid rgba(255, 255, 255, 0.222);
+  background: var(--res-item-bg);
+  box-shadow: var(--shadow-bold);
 
-    margin-bottom: 20px;
+  $t: var(--time);
+  transition: color $t, background-color $t, border-color $t, transform $t,
+    padding $t;
 
-    $t: var(--time);
-    transition: color $t, background-color $t, border-color $t, transform $t,
-      padding $t;
+  & > p {
+    position: relative;
+    @include font-adjust();
+    @include colorfade();
+  }
 
+  &.highlight {
+    background: var(--skill-bg-highlight);
+    border-color: var(--skill-bg-highlight);
     & > p {
-      position: relative;
-      @include font-adjust();
-      @include colorfade();
+      color: var(--white);
     }
+  }
 
-    &.highlight {
-      background: var(--skill-bg-highlight);
-      border-color: var(--skill-bg-highlight);
-      & > p {
-        color: var(--white);
-      }
-    }
+  &:hover:not(.highlight) {
+    border-color: var(--accent-hover);
+  }
 
-    &:hover:not(.highlight) {
-      border-color: var(--accent-hover);
-    }
+  &.submit {
+    margin-bottom: 20px;
+  }
+
+  &.alert {
+    margin-top: 10px;
   }
 }
 

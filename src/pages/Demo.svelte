@@ -1,5 +1,6 @@
 <!-- Sandbox -->
 <script lang="ts">
+  import { sample } from '$lib/utilities';
   import '$styles/pages/demo.scss';
 
   const QUOTE = `All the world's a stage,
@@ -30,6 +31,42 @@ And whistles in his sound. Last scene of all,
 That ends this strange eventful history,
 Is second childishness and mere oblivion;
 Sans teeth, sans eyes, sans taste, sans everything`;
+
+  const meals = {
+    breakfast: ['cereal', 'buttered toast', 'orange juice'],
+    lunch: ['salad', 'sandwich', 'soda'],
+    dinner: ['fingerling potatoes', 'beef Wellington', 'crème brulee'],
+  };
+
+  type TodaysMeals = {
+    breakfast: string;
+    lunch: string;
+    dinner: string;
+  };
+
+  const getTodaysMealsAtRandom = (): TodaysMeals => {
+    const todaysRandomMeals = {};
+
+    for (const meal in meals) {
+      // @ts-ignore
+      todaysRandomMeals[meal] = sample(meals[meal]);
+    }
+
+    // @ts-ignore
+    return todaysRandomMeals;
+  };
+
+  const alertTodaysMeals = (): void => {
+    const todaysMeals = getTodaysMealsAtRandom();
+
+    let alertText = '';
+
+    for (const meal in todaysMeals) {
+      // @ts-ignore
+      alertText = alertText + `${[meal]}: ${todaysMeals[meal]}\n`;
+    }
+    window.alert(alertText);
+  };
 
   let inputText = '';
 
@@ -86,13 +123,85 @@ Sans teeth, sans eyes, sans taste, sans everything`;
 </script>
 
 <div class="page-wrapper demo">
+  <h1>Coding Task for NAVEX</h1>
+  <h2>Short Answers</h2>
+  <ul class="short-answer-questions">
+    <li>
+      <p class="question">
+        What is the difference between a JS Array and an Object?
+      </p>
+      <p class="answer">
+        With the exception of 'primitives' such as booleans, strings, and
+        numbers, under the hood everything in JavaScript is an object. Arrays
+        are a type of object. Both objects and arrays are used to store sets of
+        data (and/or functions, in the case of object methods). Objects are
+        indexed by key-value pairs, or 'properties', whereas arrays are indexed
+        by number (starting at 0).
+      </p>
+    </li>
+    <li>
+      <p class="question">
+        Write a line of JS that determines whether the current page is
+        <code>index.html</code>
+      </p>
+      <p class="answer">answer</p>
+    </li>
+    <li>
+      <p class="question">
+        For the following object, write a line of JS that will alert select a
+        single option from each meal of the day: <code
+          >{JSON.stringify(meals)}</code
+        >
+      </p>
+      <div class="answer">
+        <p class="answer">
+          Find the solution here. Click the button to see it work.
+        </p>
+        <button class="demo-button alert" on:click={alertTodaysMeals}>
+          <p>Today's Meals!</p>
+        </button>
+      </div>
+    </li>
+    <li>
+      <p class="question">
+        What is the <code>g</code> modifier in a Regular Expression?
+      </p>
+      <p class="answer">
+        The <code>g</code> flag indicates that we want to identify <b>all</b> possible
+        matches to the regex in the given string, not just the first match.
+      </p>
+    </li>
+    <li>
+      <p class="question">
+        What property would you use to call a function when a dropdown is
+        changed?
+      </p>
+      <p class="answer">answer</p>
+    </li>
+    <li>
+      <p class="question">
+        Using FlexBox, write CSS to move the black box to the top right and
+        center of the container:
+      </p>
+      <div class="answer">
+        <p class="answer">Find the solutions here.</p>
+        <div class="outer-box top-right">
+          <div class="inner-box" />
+        </div>
+        <div class="outer-box center">
+          <div class="inner-box" />
+        </div>
+      </div>
+    </li>
+  </ul>
+  <h2>Quote Modifier</h2>
   <div class="text-replacer-wrapper">
     <form class="text-replacer-form">
       <div class="input-wrapper">
         <label for="text">Enter Quote: </label>
         <textarea bind:value={inputText} id="quote" required />
       </div>
-      <button class="submit-button" on:click={updateQuoteAndDisplay}>
+      <button class="demo-button submit" on:click={updateQuoteAndDisplay}>
         <p>Update Quote</p>
       </button>
     </form>
