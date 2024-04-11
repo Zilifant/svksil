@@ -206,7 +206,7 @@ Sans teeth, sans eyes, sans taste, sans everything`;
       <div class="answer">
         <p class="answer">
           Find the solutions <a
-            href="https://github.com/Zilifant/svksil/blob/7515bea18063fa6e5272810e0e9a709db01b3ae6/src/pages/Demo.svelte#L36"
+            href="https://github.com/Zilifant/svksil/blob/98f7f6512fcb9e800be5dfae10cd92a3de6911bb/src/styles/pages/demo.scss#L33"
             >here</a
           >.
         </p>
@@ -222,7 +222,7 @@ Sans teeth, sans eyes, sans taste, sans everything`;
   <h2>Quote Modifier</h2>
   <p class="answer">
     See <a
-      href="https://github.com/Zilifant/svksil/blob/7515bea18063fa6e5272810e0e9a709db01b3ae6/src/pages/Demo.svelte#L36"
+      href="https://github.com/Zilifant/svksil/blob/98f7f6512fcb9e800be5dfae10cd92a3de6911bb/src/pages/Demo.svelte#L73"
       >here</a
     > for the code, including comments on my thought-process.
   </p>
