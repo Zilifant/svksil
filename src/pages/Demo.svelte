@@ -1,6 +1,7 @@
 <!-- Sandbox -->
 <script lang="ts">
   import { sample } from '$lib/utilities';
+  import { browser } from '$app/environment';
   import '$styles/pages/demo.scss';
 
   const QUOTE = `All the world's a stage,
@@ -120,6 +121,11 @@ Sans teeth, sans eyes, sans taste, sans everything`;
 
     inputText = '';
   };
+
+  if (browser) {
+    console.log(location.pathname);
+    console.log(document.URL);
+  }
 </script>
 
 <div class="page-wrapper demo">
@@ -144,7 +150,12 @@ Sans teeth, sans eyes, sans taste, sans everything`;
         Write a line of JS that determines whether the current page is
         <code>index.html</code>
       </p>
-      <p class="answer">answer</p>
+      <p class="answer">
+        <code>const isIndexDotHtml = location.pathname === '/index.html'</code
+        ><br />
+        Depending on the environment/framework we might first need to check if
+        <code>location</code> is defined.
+      </p>
     </li>
     <li>
       <p class="question">
@@ -176,7 +187,10 @@ Sans teeth, sans eyes, sans taste, sans everything`;
         What property would you use to call a function when a dropdown is
         changed?
       </p>
-      <p class="answer">answer</p>
+      <p class="answer">
+        For vanilla JavaScript using a <code>select</code> element, I would use
+        the <code>onchange</code> property.
+      </p>
     </li>
     <li>
       <p class="question">
