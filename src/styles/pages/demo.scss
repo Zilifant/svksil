@@ -1,0 +1,80 @@
+// demo page
+
+@import '../mixins.scss';
+
+.page-wrapper.demo {
+  width: 100vw;
+  padding: 0 50px;
+}
+
+.text-replacer-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  & > * {
+    width: 100%;
+  }
+
+  .text-replacer-form :not(:first-child) {
+    margin-top: 10px;
+  }
+
+  textarea {
+    height: 250px;
+    width: 100%;
+    padding: 5px;
+    color: var(--form-text);
+    background-color: var(--form-bg);
+    resize: none;
+
+    &:focus {
+      background-color: var(--form-bg-focus);
+    }
+  }
+
+  button.submit-button {
+    color: var(--text);
+    background-color: var(--form-bg);
+    flex-grow: 1;
+    border-radius: 24px;
+    min-width: max-content;
+    padding: 0.5rem 1rem;
+    border: var(--bdr1) solid rgba(255, 255, 255, 0.222);
+    background: var(--res-item-bg);
+    box-shadow: var(--shadow-bold);
+
+    margin-bottom: 20px;
+
+    $t: var(--time);
+    transition: color $t, background-color $t, border-color $t, transform $t,
+      padding $t;
+
+    & > p {
+      position: relative;
+      @include font-adjust();
+      @include colorfade();
+    }
+
+    &.highlight {
+      background: var(--skill-bg-highlight);
+      border-color: var(--skill-bg-highlight);
+      & > p {
+        color: var(--white);
+      }
+    }
+
+    &:hover:not(.highlight) {
+      border-color: var(--accent-hover);
+    }
+  }
+}
+
+.text-replacer-wrapper :not(:first-child) {
+  margin-top: 10px;
+}
+
+p.untouched {
+  color: var(--text-alt-faded);
+  font-style: italic;
+}
