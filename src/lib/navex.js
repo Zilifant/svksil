@@ -4,11 +4,11 @@ Hey gang,
 
 Thanks for taking the time to meet with me. I'd of course welcome the opportunity to learn more about the team and how I could contribute. Something the job description mentions that we didn't get a chance to cover is design and web page layout.
 
-If you haven't already, Check out the design page on my personal website, as well as my web implementation of the social deduction game 'Deception' (best experienced with enough people to start a game, though there are screenshots on my website's 'code' page as well).
+If you haven't already, Check out the design page of my personal website, as well as my web implementation of the social deduction game 'Deception' (best experienced with enough people to start a game, though there are screenshots on my website's 'code' page as well).
 See here: https://www.scottsilsbe.com/design
 and here: https://mhk.vercel.app
 
-As for vanilla JavaScript, if you haven't already, check out the my 'Deception' GitHub repos (which include plenty of documentation). The front end is in React. But there's quite a bit of vanilla Js and close-to-vanilla Js in there, including custom hooks for forms and http calls. On the back end, there is loads more vanilla Js logic.
+As for JavaScript, if you haven't already, check out my 'Deception' GitHub repos (which include plenty of documentation). The front end is in React. But there's quite a bit of vanilla Js and close-to-vanilla Js in there, including custom hooks for forms and http calls. On the back end, there is loads more vanilla Js logic.
 See here: https://github.com/Zilifant/mhk-front
 and here: https://github.com/Zilifant/mhk-back
 
@@ -19,6 +19,11 @@ Below, please find my solutions to the tasks from our meeting.
 
 Lastly, I woud like to humbly defend my `location.pathname` answer. It is part of the HTML standard! I blanked at the time, but I do remember why I chose it over `window.location.href`. Basically, the question didn't specify the whole URL, only the path. So I opted for the method that would return just the path, rather than getting the whole URL and then breaking out a substring to test. Not sure if that is the best way to do it, but that was my logic.
 See here: https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname
+
+I look forward to hearing from you.
+
+Best,
+Scott
 
 */
 
